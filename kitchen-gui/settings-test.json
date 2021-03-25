@@ -1,0 +1,20 @@
+{
+	"public": {
+		"ga": {
+			"account": "UA-44853853-3"
+		},
+		"terminalEyeURL": "ws://localhost:1234",
+		"buildServerURL": "http://localhost"
+	},
+
+	"oauth": {
+	},
+
+	"env": {
+	},
+
+	"PrerenderIO": {
+		"prerenderServiceUrl": "http://localhost:3013/",
+		"prerenderToken": "9l3wVylnQ4yY6SzNFUlY"
+	}
+}

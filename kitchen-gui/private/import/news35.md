@@ -1,0 +1,2 @@
+- Meteor Kitchen for linux is now compiled with older glibc 2.12
+- Fixed few small bugs (kitchen-site.json is now valid json etc.)

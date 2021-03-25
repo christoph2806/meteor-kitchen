@@ -1,0 +1,35 @@
+{
+	"packages": {
+		"meteor": [
+			"blaze-html-templates",
+			"accounts-base",
+			"http",
+			"email",
+			"spiderable",
+			"ejson",
+			"random",
+			"session",
+			"iron:router",
+			"fortawesome:fontawesome",
+			"matb33:collection-hooks",
+			"perak:user-roles",
+			"copleykj:livestamp"
+		],
+		"npm": [
+			"bcrypt"
+		],
+		"mrt": [
+		]
+	},
+	"copy_files": [
+		{ "source": "TEMPLATE_CODE_DIR/string_utils.js", "dest": "LIB_DIR/string_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/case_utils.js", "dest": "LIB_DIR/case_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/object_utils.js", "dest": "LIB_DIR/object_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/http_utils.js",   "dest": "CLIENT_LIB_DIR/http_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/router_utils.js",   "dest": "CLIENT_LIB_DIR/router_utils.js" },
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/confirmation_dialog.html", "dest": "CLIENT_COMPONENTS_DIR/confirmation_dialog/"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/confirmation_dialog.js", "dest": "CLIENT_COMPONENTS_DIR/confirmation_dialog/"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/input_dialog.html", "dest": "CLIENT_COMPONENTS_DIR/input_dialog/"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/input_dialog.js", "dest": "CLIENT_COMPONENTS_DIR/input_dialog/"}
+	]
+}

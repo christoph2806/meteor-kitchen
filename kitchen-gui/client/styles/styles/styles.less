@@ -1,0 +1,730 @@
+@import "../framework/semantic-ui/themes/default/globals/site.variables.import.less";
+@import "./fonts.less";
+
+@navbar_height: 50px;
+@footer_height: 150px;
+
+h3 a,
+h3 a:hover {
+	color: inherit;
+}
+
+h3 a:hover {
+	text-decoration: underline;
+}
+
+.muted {
+	opacity: 0.5;
+}
+
+.break-word {
+	word-wrap: break-word;
+}
+
+.sticky-wrapper {
+	padding-bottom: @footer_height;
+	min-height: 100%;
+}
+
+.navbar-spacer {
+	height: @navbar_height;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+
+.sticky-footer,
+.ui.segment.sticky-footer {
+	position: relative;
+	margin-top: -(@footer_height);
+	height: @footer_height;
+	z-index: 3;
+}
+
+.footer-logo {
+	height: 4em;
+	width: auto;
+}
+
+.max-400{
+	max-width: 400px;
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.no-padding-vertical {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0 !important;
+}
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.no-border-radius {
+    border-radius: 0px !important;
+}
+
+.small-text {
+	font-size: 0.85em;
+}
+
+.half-text {
+	font-size: 0.75em
+}
+
+.pushable > .pusher.fill-viewport,
+.fill-viewport {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+body.pushable {
+	background: none !important;	
+}
+
+.pusher {
+	background: none !important;
+}
+
+
+.masthead.segment {
+	min-height: 700px;
+	padding: 1em 0em;
+}
+
+.masthead .logo.item img {
+	margin-right: 1em;
+}
+
+.masthead .ui.menu .ui.button {
+	margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+	margin-top: 2em;
+	margin-bottom: 0em;
+	font-size: 4em;
+	font-weight: normal;
+}
+
+.masthead h2 {
+	font-size: 1.7em;
+	font-weight: normal;
+}
+
+.masthead .landing-logo {
+	margin-top: 5em;
+	height: 13em;
+}
+
+.file-input-1 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.ui.small.menu.designer-navbar .toc.item,
+.secondary.pointing.menu.main-navbar .toc.item {
+	display: none;
+}
+
+.ui.vertical.menu.designer-sidenav,
+.ui.vertical.menu.main-sidenav {
+	width: 260px;
+	z-index: 4;
+}
+
+@media only screen and (max-width: 1000px) {
+	.ui.small.menu.designer-navbar .item {
+		display: none;
+	}
+
+	.ui.small.menu.designer-navbar .right.menu .item {
+		display: block;
+	}
+
+	.ui.small.menu.designer-navbar .toc.item {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 950px) {
+	.secondary.pointing.menu.main-navbar .item {
+		display: none;
+	}
+
+	.secondary.pointing.menu.main-navbar .right.menu .item {
+		display: block;
+	}
+
+	.secondary.pointing.menu.main-navbar .toc.item {
+		display: block;
+	}
+
+	.masthead.segment {
+		min-height: 350px;
+		padding: 1em 0em;
+	}
+
+	.masthead h1.ui.header {
+		font-size: 2em;
+		margin-top: 1.5em;
+	}
+
+	.masthead .landing-logo {
+		margin-top: 4em;
+		height: 8em;
+	}
+
+	.masthead h2 {
+		margin-top: 0.5em;
+		font-size: 1.5em;
+	}
+}
+
+
+#error-text{
+	color:red;
+}
+
+.account-form {
+	max-width: 450px;
+}
+
+.account-form .text-after {
+	margin: 0.5em 0;
+	width: 100%;
+}
+
+.account-form .text-after p {
+	display: inline-block;
+	width: 100%;
+	margin: 0.5em 0 0 0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.ui.vertical.menu {
+	width: initial;
+}
+
+#dataview-controls {
+	margin: 0 0 1em 0;
+}
+
+#dataview-controls .item {
+	padding-left: 0;
+	padding-right: 10px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#dataview-controls-search {
+	min-width: 250px;
+}
+
+.read-only-field {
+	margin-bottom: 5px;
+}
+
+
+.td-icon i,
+.td-icon span {
+	cursor: pointer;
+	margin-right: 5px;
+}
+
+.ui.table thead th.th-sortable {
+	cursor: pointer;
+}
+
+.ui.table.invisible td {
+	border: none;
+}
+
+table.selectable tr {
+	cursor: pointer;
+}
+
+.navbar-menu.ui.segment {
+	padding: 0.5em 0;
+}
+
+#landing-content .page-container,
+#public-content .page-container,
+#private-content .page-container {
+	margin-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+#landing-content .navbar-menu {
+	background: none;
+	margin-bottom: -61px;
+}
+
+#landing-content .main-navbar {
+	border-color: transparent;
+}
+
+#design-content .page-container {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+.count-link,
+.count-link {
+	color: white;
+}
+
+.home-section p {
+	font-size: 1em;
+}
+
+.home-section h1 {
+	font-size: 2em;
+}
+
+.intro-section {
+	padding: 3em 0;
+}
+
+.navbar-menu .ui.inverted.menu .active.item {
+	background-color: transparent !important;
+}
+
+.ui.secondary.inverted.pointing.menu .active.dropdown.item {
+	border-color: transparent;
+}
+
+.main-column .secondary.menu {
+	overflow-x: auto;
+}
+
+.ui.cards > .card, .ui.card {
+	width: 250px;
+}
+
+.field .help-block {
+	color: rgba(0, 0, 0, 0.6);
+	padding: 0.5em 0 1em 0;
+}
+
+.ui.form {
+	margin-bottom: 1em;
+}
+
+.item .avatar {
+	margin: -20px 0;
+}
+
+.CodeMirror {
+	border: 1px solid #ddd;
+}
+
+.ui.secondary.pointing.menu .ui.circular.label {
+	margin-bottom: -0.5em;
+}
+
+.ui.menu.sub-nav {
+	margin: 0;
+	border-radius: 0px;
+}
+
+//
+
+.editor-grid {
+	height: 100%;
+}
+
+.ui.grid > .column.editor-column:not(.row) {
+	padding: 0;
+	height: 100%;
+}
+
+.editor-content {
+	padding: 0.3em;
+}
+
+.editor-content-text {
+	padding: 1em;
+}
+
+.editor-content.title {
+	background-color: @lightGrey;
+}
+
+.editor-content-text.title {
+	padding-bottom: 0;
+}
+
+.editor-content.title .controls {
+	padding-right: 0.4em;
+}
+
+.properties-column .editor-content {
+	padding: 0.3em 0;
+}
+
+.properties-column .editor-content.title {
+	padding: 0.3em 0.2em;
+}
+
+.properties-column .ui[class*="very basic"].table:not(.sortable):not(.striped) th:first-child, 
+.properties-column .ui[class*="very basic"].table:not(.sortable):not(.striped) td:first-child {
+	padding-left: 0.3em;
+}
+
+.properties-column .ui[class*="very basic"].table:not(.sortable):not(.striped) th:last-child,
+.properties-column .ui[class*="very basic"].table:not(.sortable):not(.striped) td:last-child {
+	padding-right: 0.5em;
+}
+
+.display-table {
+	display: table;
+	width: 100%;
+}
+
+.transparent {
+	opacity: 0;
+}
+
+.height-max {
+	height: 100%;	
+}
+
+.height-half {
+	height: 50%;	
+}
+
+.height-quarter {
+	height: 25%;
+}
+
+.width-max {
+	width: 100%;	
+}
+
+.width-half {
+	width: 50%;	
+}
+
+.width-quarter {
+	width: 25%;	
+}
+
+.display-tr {
+	display: table-row;
+}
+
+.display-tc {
+	display: table-cell;
+}
+
+.display-tc.bordered {
+	border: 1px solid @lightGrey;
+	border-top: none;
+	border-bottom: none;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+/*
+.contains-scrollable {
+	width: 1px;
+	height: 1px;
+}
+*/
+.scrollable-area {
+	overflow: auto !important;
+	width: 100%;
+	height: 100%;
+}
+
+.tree-node {
+	margin: 0;
+	padding: 0;
+}
+
+.tree-node,
+.tree-node li {
+	list-style-type: none;
+}
+
+.tree-node ul {
+	padding-left: 0.5em;
+}
+
+.tree-node li {
+	padding-left: 1em;
+	white-space: nowrap;
+}
+
+.tree-node-caret {
+	width: 1em;
+	margin-left: -1.5em;
+}
+
+.tree-node-caret.small {
+	font-size: 0.5em;
+	width: 2em;
+	margin-left: -3em;
+}
+
+.tree-node-icon {
+	width: 1em;
+}
+
+.tree-node-title {
+	margin-left: 0em;
+	padding-left: 0.25em;
+}
+
+.tree-link {
+	margin: 0.1em;
+	padding: 0.25em 0.5em;
+	border-radius: 3px;
+	display: inline-block;
+	width: 100%;
+}
+
+.tree-link:link,
+.tree-link:active,
+.tree-link:visited,
+.tree-link:hover {
+	text-decoration: none;
+	color: inherit;
+	border: 1px solid transparent;
+}
+
+.tree-link:hover {
+	background-color: @lightGrey;
+}
+
+.tree-link.selected,
+.tree-link.selected:hover {
+	background-color: @lightGrey;
+}
+
+.tree-link.focused,
+.tree-link.focused:hover {
+	background-color: @highlightBackground;
+}
+
+.tree-link.droppable {
+	background-color: #fbf6d9;
+}
+
+.tree-node-controls {
+	display: none;
+}
+
+.tree-link.selected .tree-node-controls,
+.tree-link.focused .tree-node-controls,
+.tree-link:hover .tree-node-controls {
+	display: inline-block;
+}
+
+.tree-node-control {
+	padding: 0 0.25em;
+}
+
+.tree-node-control.disabled {
+	color: @lightGrey;
+}
+
+.object-table-caret {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.object-table tbody tr:hover {
+	background-color: @lightGrey;
+	cursor: pointer;
+}
+
+.object-table tbody tr.selected,
+.object-table tbody tr.selected:hover {
+	background-color: @lightGrey;
+}
+
+.object-table tbody tr.focused,
+.object-table tbody tr.focused:hover {
+	background-color: @highlightBackground;
+}
+
+.object-table-row-controls {
+	padding-right: 0.5em;
+}
+
+.object-table-row-controls i,
+.object-table-row-controls span,
+.object-table-row-controls .icon {
+	cursor: pointer;
+}
+
+/*
+.object-table-row.selected .object-table-row-controls,
+.object-table-row.focused .object-table-row-controls,
+.object-table-row:hover .object-table-row-controls {
+}
+*/
+
+.handler-editor-row,
+.attribute-editor-row,
+.property-editor-row {
+	height: 38px;
+}
+
+.property-editor-row-head {
+	height: 26px;
+	background-color: lighten(@lightGrey, 5%);
+}
+
+
+.property-editor-row .property-description {
+	color: transparent;
+}
+
+.property-editor-row:hover .property-description {
+	color: inherit;
+}
+
+
+.lock-item {
+	cursor: pointer;
+}
+
+.terminal-container {
+	background: black;
+	color: silver;
+}
+
+.terminal-window {
+	overflow: auto;
+	line-height: 1.2em;
+	margin: 0;
+	padding-left: 0.5em;
+}
+
+.button-toolbar .button {
+	margin-bottom: 1em;
+}
+
+.toggler .title {
+	cursor: pointer;
+	padding-bottom: 0.5em;
+}
+
+.toggler .content {
+	padding: 0 0 1em 1.5em;
+}
+
+.toggler.off .content {
+	display: none;
+}
+
+.micro-blog {
+
+}
+
+.micro-blog .meta-header {
+	margin-top: -1em;
+	margin-bottom: 1em;
+	width: 100%;
+}
+
+.micro-blog .blog-controls {
+	color: transparent;
+}
+
+.micro-blog .blog-controls .fa {
+	cursor: pointer;
+}
+
+.micro-blog-post:hover .blog-controls {
+	color: inherit;
+}
+
+.micro-blog-post {
+	margin-bottom: 1.5em;
+}
+
+.ui.form.route-editor-item {
+	margin-bottom: 2em;
+}
+
+.field h3 {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.field h4 {
+	margin-top: 1em;
+	margin-bottom: 0.25em;
+}
+
+.field h4.list-label {
+	padding-bottom: 1em;	
+}
+
+.title-div {
+	padding-bottom: 1em;
+}
+
+
+@media only screen and (max-width: 991px) {
+	.computer-and-larger-only {
+		display: none !important;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.tablet-and-smaller-only {
+		display: none !important;
+	}
+}
+
+.form-control-iframe {
+	border: none;
+	width: 100%;
+}
+
+.gasoline-frame {
+	border: none;
+	margin-left: 2px;
+}
+
+.code-readonly .CodeMirror-scroll {
+	background-color: #f8f8f8;
+}
+
+.messenger-container .contacts-column {
+	border-right: 1px solid silver;
+}
+
+.ui.floating.label.avatar-label {
+	left: 55px;
+	top: -0.5em;
+}

@@ -1,0 +1,74 @@
+<template name="AdminNewslettersInsert">
+	<div class="ui container" id="content">
+		{{> AdminNewslettersInsertInsertForm}}
+	</div>
+</template>
+
+<template name="AdminNewslettersInsertInsertForm">
+	<div id="admin-newsletters-insert-form">
+		<h2 class="ui header">
+			Send Newsletter
+		</h2>
+
+		<form class="ui form" role="form">
+			{{#if errorMessage}}
+				<div class="ui visible warning message">
+					{{errorMessage}}
+				</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+				<div class="ui visible positive message">
+					{{infoMessage}}
+				</div>
+			{{/if}}
+
+			<div class="field">
+				<label for="email">Email</label>
+				<div class="ui fluid selection dropdown">
+					<input type="hidden" name="email">
+					<i class="dropdown icon"></i>
+					<div class="default text">Select mailing list</div>
+					<div class="menu">
+						{{#each mailingLists}}
+							<div class="item" data-value="{{email}}">{{name}}</div>
+						{{/each}}
+					</div>
+				</div>
+				<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+			</div>
+
+			<div class="field">
+				<label for="subject">
+					Subject
+				</label>
+				<input placeholder="Subject" type="text" name="subject" value="" class="form-control" autofocus="autofocus" required="required">
+				<div id="error-text" class="ui basic red pointing prompt label transition hidden">
+				</div>
+			</div>
+
+			<div class="field">
+				<label for="body">
+					Body
+				</label>
+				<textarea name="body" class="form-control"></textarea>
+				<div id="error-text" class="ui basic red pointing prompt label transition hidden">
+				</div>
+			</div>
+
+			<div class="">
+				<div class="submit-div">
+					<a href="#" id="form-cancel-button" class="ui basic button">
+						Cancel
+					</a>
+					<button id="form-submit-button" class="ui green icon button" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

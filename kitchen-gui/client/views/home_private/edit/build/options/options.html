@@ -1,0 +1,63 @@
+<template name="HomePrivateEditBuildOptions">
+	<div class="page-container ui container config-container height-max">
+		<div class="display-table height-max">
+			<div class="display-tr">
+				<h1>
+					Build Options
+					<div class="ui right floated no-padding no-margin basic segment">
+						<div class="ui large basic button goto-console">Cancel</div>
+						<div class="ui large green button save-options"><i class="icon fa fa-check"></i> Save</div>
+					</div>
+				</h1>
+			</div>
+			<div class="ui form display-tr">
+				<div class="grouped fields">
+					<label for="templating">View Layer</label>
+
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" name="templating" value="-" {{templatingChecked ''}}>
+							<label>Default ({{defaultTemplating}})</label>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" name="templating" value="blaze" {{templatingChecked 'blaze'}}>
+							<label>Force Blaze</label>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" name="templating" value="react" {{templatingChecked 'react'}}>
+							<label>Force React</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="grouped fields">
+					<label>Output configuration</label>
+					<div class="field">
+						<div class="ui checkbox {{coffeeDisabled}}">
+							<input type="checkbox" name="coffee" {{coffeeDisabled}} {{coffeeChecked}}>
+							<label>Convert JavaScript to CoffeeScript</label>
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui checkbox {{jadeDisabled}}">
+							<input type="checkbox" name="jade" {{jadeDisabled}} {{jadeChecked}}>
+							<label>Convert HTML to Jade</label>
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<label>mobile-config.js</label>
+				</div>
+			</div>
+			<div class="ui form display-tr height-max">
+					{{> CodeMirror id="mobile-config-input" options=mobileConfigInputOptions reactiveVar="mobileConfigInputText"}}
+			</div>
+		</div>
+	</div>
+</template>

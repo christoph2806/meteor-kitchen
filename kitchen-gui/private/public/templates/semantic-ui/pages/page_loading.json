@@ -1,0 +1,26 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "loading",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "ui active centered inline loader"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

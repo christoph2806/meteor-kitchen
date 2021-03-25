@@ -1,0 +1,38 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "loading",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "loading"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "i",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "fa fa-circle-o-notch fa-4x fa-spin"
+								}
+							],
+							"children": []
+						}
+					]
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

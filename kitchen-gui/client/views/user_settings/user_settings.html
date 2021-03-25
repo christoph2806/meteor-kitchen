@@ -1,0 +1,48 @@
+<template name="UserSettings">
+	<div class="page-container ui container">
+		<div class="row">
+			<div class="column" id="content">
+				<div class="row" id="title_row">
+					<div class="column">
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui stackable padded grid">
+			<div id="menu" class="three wide column">
+				{{> UserSettingsSideMenu}}
+			</div>
+			<div id="subcontent" class="thirteen wide column">
+				{{> yield region='UserSettingsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="UserSettingsSideMenu">
+	<div id="menu-items" class="ui secondary vertical pointing menu">
+		<a href="{{pathFor 'user_settings.profile'}}" class="item {{menuItemClass 'user_settings.profile'}}">
+			<span class="item-title">
+				Profile
+			</span>
+		</a>
+		<a href="{{pathFor 'user_settings.change_pass'}}" class="item {{menuItemClass 'user_settings.change_pass'}}">
+			<span class="item-title">
+				Change password
+			</span>
+		</a>
+		<a href="{{pathFor 'user_settings.notifications'}}" class="item {{menuItemClass 'user_settings.notifications'}}">
+			<span class="item-title">
+				Notifications
+			</span>
+		</a>
+		<a href="{{pathFor 'user_settings.danger'}}" class="item {{menuItemClass 'user_settings.danger'}}">
+			<span class="item-title">
+				Danger Zone
+			</span>
+		</a>
+	</div>
+</template>
+

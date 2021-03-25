@@ -1,0 +1,165 @@
+<template name="Messenger">
+	<div class="messenger-container">
+		<div class="ui two column padded grid height-max">
+			<div class="three wide column no-padding contacts-column">
+
+				<div class="display-table height-max">
+					<div class="display-tr">
+						<div class="display-tc">
+							<div class="editor-content-text">
+								<form class="ui form add-contact-form">
+									<div class="ui small fluid action input">
+										<input type="text" class="contact-input" placeholder="Username">
+										<button type="submit" class="ui green button add-contact">
+											<i class="plus icon"></i>
+											Add
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area">
+								<div class="ui secondary vertical menu no-margin editor-content-text">
+								{{> MessengerContacts}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="thirteen wide column no-padding">
+				{{#if contact}}
+					{{> MessengerMain}}
+				{{else}}
+
+					<div class="display-table height-max">
+						<div class="display-tr">
+							<div class="display-tc">
+								<div class="editor-content-text">
+									<h2 class="ui header page-header">
+										Kitchen Messenger
+									</h2>
+									<p>
+										Please select contact from a list.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="MessengerContacts">
+	<div class="ui middle aligned divided selection list">
+		{{#if gotContacts}}
+			{{#each contacts}}
+				{{> MessengerContactsItem}}
+			{{/each}}
+		{{else}}
+			<div>
+				You don't have contacts.
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="MessengerContactsItem">
+	<div class="messenger-item item {{itemClass}}">
+		{{#if unreadMessagesCount}}
+			<div class="right floated content">
+					<div class="ui red horizontal label">{{unreadMessagesCount}}</div>
+			</div>
+		{{/if}}
+
+		<img class="ui avatar image" src="{{userAvatarURL userData._id 150}}" title="{{userData.profile.username}}">
+
+		<div class="content">
+			<div class="header">
+				{{userData.profile.name}}
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="MessengerMain">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc">
+				<div class="editor-content-text">
+					<h2 class="ui header page-header">
+						<img class="ui avatar image" src="{{userAvatarURL userData._id 150}}">
+						{{userData.profile.name}}
+					</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area scrollable-content">
+					<div class="editor-content-text">
+						{{#if gotMessages}}
+							<div class="ui comments">
+								{{#each groupedMessages}}
+									{{> MessengerMainMessage}}
+								{{/each}}
+							</div>
+						{{else}}
+							No messages.
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="display-tr scrollable-footer">
+			<div class="display-tc">
+				<div class="editor-content-text">
+					<form class="ui form message-form">
+						<div class="ui fluid action input">
+							<input type="text">
+							<button type="submit" class="ui button send-button">Send</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="MessengerMainMessage">
+	<div class="comment">
+		<a class="avatar">
+			<img src="{{userAvatarURL userData._id 150}}">
+		</a>
+
+		<div class="content">
+			<a class="author">{{userData.profile.name}}</a>
+
+			<div class="metadata">
+				<span class="date">{{livestamp createdAt}}</span>
+			</div>
+
+			<div class="text">
+				<p>
+					{{message}}
+					{{#each list}}
+						<span style="line-height: 1.75em"><br /></span>{{this}}
+					{{/each}}
+				</p>
+			</div>
+		</div>
+	</div>
+</template>

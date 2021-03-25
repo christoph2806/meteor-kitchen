@@ -1,0 +1,90 @@
+<template name="QueryVarsBox">
+	<div id="{{boxId}}" class="ui small modal query-vars-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<h2 class="header">
+				&nbsp;
+				<button class="ui right floated small green button add-item">
+					<i class="plus icon"></i>
+					Add New
+				</button>
+			</h2>
+
+			<div class="ui form">
+				{{#if items.length}}
+					<div class="field">
+						<table class="ui very basic celled table">
+							<thead>
+								<tr>
+									<th>
+										{{nameTitle}}
+									</th>
+									<th>
+										{{valueTitle}}
+									</th>
+									<th>
+										{{queryNameTitle}}
+									</th>
+									<th class="collapsing">
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each items}}
+									{{> QueryVarsBoxItem}}
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				{{else}}
+					<div class="ui info message">Empty.</div>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="QueryVarsBoxItem">
+		<tr class="object-table-row" data-id={{_id}} data-name-field={{nameField}} data-value-field={{valueField}} data-query-name-field={{queryNameField}}>
+			<td>
+				<input type="text" value="{{itemName}}" class="name-input">
+			</td>
+			<td>
+				<input type="text" value="{{itemValue}}" class="value-input">
+			</td>
+			<td>
+				<select class="ui search selection dropdown" name="queryName">
+					<option value="" {{queryIsSelected ""}}>&nbsp;</option>
+					{{#each queryList}}
+						<option value="{{this}}" {{queryIsSelected this}}>{{this}}</option>
+					{{/each}}
+				</select>
+
+<!--
+				<input type="text" value="{{itemQueryName}}" class="query-name-input">
+-->
+			</td>
+			<td class="collapsing">
+				<div class="object-table-row-controls">
+					<i class="fa fa-trash remove-item"></i>
+				</div>
+			</td>
+		</tr>
+</template>

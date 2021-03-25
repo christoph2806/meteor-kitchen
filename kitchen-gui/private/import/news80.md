@@ -1,0 +1,4 @@
+- Added more support for <a href="https://facebook.github.io/react/" target="_blank">React</a> - "dataview" component is now implemented and functional (except search and sort functions).
+- Improved support for A-Frame (actually nothing spectacular: "Enter VR" control is now visible)
+- When kitchen creates new meteor app it automatically executes "meteor npm install".
+- Fixed few bugs and produced few new bugs ;)

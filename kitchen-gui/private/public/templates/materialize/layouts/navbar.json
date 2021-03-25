@@ -1,0 +1,119 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "content"
+						},
+						{
+							"name": "class",
+							"value": "sticky-wrapper"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "nav",
+							"attributes": [],
+							"children": [
+								{
+									"type": "html",
+									"element": "a",
+									"attributes": [
+										{
+											"name": "href",
+											"value": "/"
+										},
+										{
+											"name": "class",
+											"value": "brand-logo center"
+										}
+									],
+									"children": [
+										{
+											"type": "text",
+											"text": "APP_TITLE"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "menu"
+										},
+										{
+											"name": "class",
+											"value": "nav-wrapper"
+										}
+									],
+									"children": []
+								}
+							]
+						},
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "navbar-spacer"
+								}
+							],
+							"children": []
+						},
+						{
+							"type": "inclusion",
+							"template": "yield",
+							"children": []
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "footer"
+						},
+						{
+							"name": "class",
+							"value": "sticky-footer"
+						}
+					],
+					"children": []
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

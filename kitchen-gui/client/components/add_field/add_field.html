@@ -1,0 +1,37 @@
+<template name="AddFieldForm">
+	<div id="{{boxId}}" class="ui small modal add-field-form">
+		<div class="header">
+			New Field
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+
+				<div class="field">
+					<label for="name">Field name</label>
+					<input type="text" name="name" data-required="true" value="{{defaultName}}">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="grouped fields">
+					<label for="required">Required?</label>
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" name="required">
+							<label>Required</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="actions">
+					<div class="ui green ok button">
+						OK
+					</div>
+					<div class="ui basic cancel button">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

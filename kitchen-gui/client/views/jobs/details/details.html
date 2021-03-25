@@ -1,0 +1,67 @@
+<template name="JobsDetails">
+	<div class="ui container page-container">
+
+		{{#with job}}
+			<div class="ui clearing no-padding basic segment">
+				<h1 class="ui left floated header">
+					{{name}}
+				</h1>
+
+				<div class="ui right floated no-padding no-margin basic segment">
+
+					<div class="ui right floated">
+
+						{{#if currentUser}}
+							{{#if userCanStarJob}}
+								<div class="ui labeled button" tabindex="0">
+									<div class="ui button star-button">
+										{{#if starredByMe}}
+											<i class="yellow star icon"></i> Unstar
+										{{else}}
+											<i class="star icon"></i> Star
+										{{/if}}
+									</div>
+									<span class="ui basic label">
+										{{starCount}}
+									</span>
+								</div>
+							{{/if}}
+						{{else}}
+							<div class="ui labeled button" tabindex="0">
+								<div class="ui button login-first-button">
+									<i class="star icon"></i> Star
+								</div>
+								<span class="ui basic label">
+									{{starCount}}
+								</span>
+							</div>
+						{{/if}}
+
+						{{#if currentUser}}
+							{{#if canContactUser}}
+								<div class="ui green button contact-me-button">
+									<i class="mail icon"></i> Contact
+								</div>
+							{{/if}}
+						{{else}}
+							<div class="ui green button login-first-button">
+								<i class="mail icon"></i> Contact
+							</div>
+						{{/if}}
+
+					</div>
+				</div>
+
+			</div>
+
+			{{#if description}}
+				{{#markdown}}{{description}}{{/markdown}}
+			{{else}}
+				<i>No description provided</i>
+			{{/if}}
+		{{/with}}
+
+		{{> JobDetailsContent job}}
+
+	</div>
+</template>

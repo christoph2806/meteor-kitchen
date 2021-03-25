@@ -1,0 +1,31 @@
+<template name="Uploader">
+	<div id="{{boxId}}" class="ui small modal input-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="field">
+					<label for="inputValue">{{message}}</label>
+					<input type="text" name="inputValue">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

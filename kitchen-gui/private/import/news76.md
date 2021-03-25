@@ -1,0 +1,1 @@
+- Fixed compatibility issues with Meteor 1.4

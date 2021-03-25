@@ -1,0 +1,2 @@
+- Added new example: simple **invoicing application**. See it <a href="http://example-invoices.meteorfarm.com" target="_blank">live</a>, source is <a href="https://github.com/perak/kitchen-examples/tree/master/example-invoices" target="_blank">here</a>.
+- Fixed some bugs

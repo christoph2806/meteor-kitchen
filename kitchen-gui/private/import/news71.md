@@ -1,0 +1,1 @@
+- Fixed few minor bugs and added some internal features required by the new GUI

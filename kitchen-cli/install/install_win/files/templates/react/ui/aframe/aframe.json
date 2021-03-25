@@ -1,0 +1,9 @@
+{
+	"packages": {
+		"meteor": ["session"],
+		"npm"   : ["aframe"]
+	},
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/assets/images", "dest": "PUBLIC_IMAGES_DIR/" }
+	]
+}

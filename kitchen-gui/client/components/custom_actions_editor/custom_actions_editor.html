@@ -1,0 +1,62 @@
+<template name="CustomActionsEditor">
+	<div class="display-table">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="ui header">
+					{{property.title}}
+					<button class="ui right floated small green button add-action">
+						<i class="plus icon"></i>
+						Add Action
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr">
+			<div class="display-tc editor-content-text">
+				{{#if actionList}}
+					<table class="ui very basic single line table object-table">
+						<thead>
+							<tr>
+								<th>
+									Action name
+								</th>
+								<th>
+									Title
+								</th>
+
+								<th>
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{{#each actionList}}
+								{{> CustomActionsEditorItem}}
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<div class="ui info message">Empty.</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="CustomActionsEditorItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			<span class="fa fa-flash icon object-table-caret"></span>{{name}}
+		</td>
+		<td>
+			{{title}}
+		</td>
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>

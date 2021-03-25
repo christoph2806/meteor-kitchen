@@ -1,0 +1,25 @@
+<template name="DocsCliExamples">
+	<div class="ui container">
+		<h1 id="page_title" class="ui header page-header">
+			Example Applications
+		</h1>
+		<div class="ui cards">
+			{{#each examples}}
+				<div class="ui card">
+					<div class="content">
+						<h2>{{title}}</h2>
+					</div>
+					<div class="image">
+						<img src="{{image}}">
+					</div>
+					<div class="content">
+						{{#if liveURL}}
+							<a href="{{liveURL}}" target="_blank" class="ui small green button">Live App</a>
+						{{/if}}
+						<a href="{{sourceURL}}" target="_blank" class="ui small button">Source Code</a>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

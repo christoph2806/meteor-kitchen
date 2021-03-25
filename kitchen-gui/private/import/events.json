@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"title": "Worldwide Meteor Day in Chicago, USA",
+			"date": "Nov 6, 2014",
+			"file": "event1.md"
+		},
+		{
+			"title": "Meteor Meetup in L.A., USA",
+			"date": "Dec 9, 2014",
+			"file": "event2.md"
+		},
+		{
+			"title": "Meteor Meetup in Melbourne, Australia",
+			"date": "Aug 5, 2015",
+			"file": "event3.md"
+		}
+	]
+}

@@ -1,0 +1,108 @@
+<template name="CrudWizard">
+	<div id="{{boxId}}" class="ui small modal crud-wizard">
+		<div class="header">
+			CRUD Wizard
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+
+				{{#if askToCreatePage}}
+					<div class="grouped fields">
+						<label>Where to add CRUD?</label>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="createPage" value="0" {{itemIsChecked createPage 0}}>
+								<label>Into this page</label>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="createPage" value="1" {{itemIsChecked createPage 1}}>
+								<label>Into new subpage (create one)</label>
+							</div>
+						</div>
+					</div>
+				{{else}}
+					<input type="hidden" name="createPage" value="{{createPage}}">
+				{{/if}}
+
+				<div class="field">
+					<label for="collectionId">Collection</label>
+					<div class="ui fluid selection dropdown">
+						<input type="hidden" name="collectionId">
+						<i class="dropdown icon"></i>
+						<div class="default text">Select Collection</div>
+						<div class="menu">
+							<div class="item" data-value=""></div>
+							{{#each collections}}
+								<div class="item" data-value="{{_id}}">{{name}}</div>
+							{{/each}}
+						</div>
+					</div>
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="field">
+					<div class="toggler {{crudQueryFilterClass}}" data-session="crudWizardShowQueryFilter">
+						<label for="queryFilter">
+							<i class="fa fa-fw {{crudQueryFilterIconClass}}"></i>
+							Query filter
+						</label>
+						<div class="content">
+							{{> CodeMirror id="crud-query-filter-input" name="queryFilter" options=crudQueryFilterInputOptions reactiveVar="crudQueryFilterInputText"}}
+							<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<label for="nameSingular">Item name (singular)</label>
+					<input type="text" name="nameSingular" data-required="true">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="field">
+					<label for="namePlural">Item name (plural)</label>
+					<input type="text" name="namePlural" data-required="true">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="grouped fields">
+					<label>Which forms to create?</label>
+
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" name="createInsertForm" checked="checked">
+							<label>Insert form</label>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" name="createUpdateForm" checked="checked">
+							<label>Update form</label>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" name="createDetailsForm" checked="checked">
+							<label>Details (read-only) form</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="actions">
+					<div class="ui green ok button">
+						OK
+					</div>
+					<div class="ui basic cancel button">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

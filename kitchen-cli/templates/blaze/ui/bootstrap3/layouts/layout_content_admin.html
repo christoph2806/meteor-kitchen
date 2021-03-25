@@ -1,0 +1,39 @@
+<template name="TEMPLATE_NAME">
+    <div class="overlay">
+    </div>
+    <header>
+        <nav id="navbar" class="navbar main-nav">
+            <div class="navbar-container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-btn navbar-toggle collapsed" id="sidebar-collapse" data-toggle="collapse">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        APP_TITLE
+                    </a>
+                </div>
+                <div id="menu" class="navbar-collapse collapse">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="admin-layout-row">
+        <nav id="sidebar" class="admin-layout-sidebar sidebar">
+        </nav>
+
+        <div class="admin-layout-col">
+            {{> yield}}
+            <div id="background-image" style="background-image: url(BACKGROUND_IMAGE)">
+            </div>
+        </div>
+    </div>
+</template>

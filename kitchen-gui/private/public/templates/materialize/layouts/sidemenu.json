@@ -1,0 +1,204 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "ul",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "menu"
+						},
+						{
+							"name": "class",
+							"value": "side-nav"
+						}
+					],
+					"children": []
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [],
+					"children": [
+						{
+							"type": "html",
+							"element": "nav",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "navbar"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "nav-wrapper"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "row"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "col s1"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "a",
+															"attributes": [
+																{
+																	"name": "href",
+																	"value": "#"
+																},
+																{
+																	"name": "data-activates",
+																	"value": "menu"
+																},
+																{
+																	"name": "class",
+																	"value": "button-collapse show-on-large"
+																}
+															],
+															"children": [
+																{
+																	"type": "html",
+																	"element": "i",
+																	"attributes": [
+																		{
+																			"name": "class",
+																			"value": "mdi-navigation-menu"
+																		}
+																	],
+																	"children": []
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "col s11"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "a",
+															"attributes": [
+																{
+																	"name": "href",
+																	"value": "/"
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "APP_TITLE"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "inclusion",
+							"template": "yield",
+							"children": []
+						},
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "footer"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "footer-container"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "p",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "text-muted"
+												}
+											],
+											"children": [
+												{
+													"type": "text",
+													"text": "FOOTER_TEXT"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

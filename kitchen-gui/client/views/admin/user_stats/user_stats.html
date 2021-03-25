@@ -1,0 +1,74 @@
+<template name="AdminUserStats">
+	<div id="content" class="ui container">
+		<h2>
+			User Growth
+		</h2>
+
+		<h3>
+			Weekly user growth
+		</h3>
+		{{> c3 id="user-growth-weekly" data=userGrowthWeeklyChart}}
+
+		<h3>
+			Daily user growth
+		</h3>
+		{{> c3 id="user-growth-daily" data=userGrowthDailyChart}}
+
+
+		<h2>
+			Login Count
+		</h2>
+
+		<h3>
+			Weekly login count
+		</h3>
+		{{> c3 id="user-logins-weekly" data=userLoginsWeeklyChart}}
+
+		<h3>
+			Daily login count
+		</h3>
+		{{> c3 id="user-logins-daily" data=userLoginsDailyChart}}
+
+
+		<h2>
+			Total users per country
+		</h2>
+
+		<table class="ui very basic unstackable table">
+			<thead>
+				<tr>
+					<th>
+						Country Name
+					</th>
+
+					<th>
+						Country Code
+					</th>
+
+					<th>
+						Count
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each usersPerCountry}}
+					<tr>
+						<td>
+							{{name}}
+						</td>
+
+						<td>
+							{{code}}
+						</td>
+
+						<td>
+							{{count}}
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+
+	</div>
+</template>

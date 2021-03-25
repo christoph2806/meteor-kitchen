@@ -1,0 +1,2 @@
+Template.DocsGui.rendered = function() {
+};

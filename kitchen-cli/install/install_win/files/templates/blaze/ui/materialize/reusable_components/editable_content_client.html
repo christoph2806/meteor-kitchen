@@ -1,0 +1,13 @@
+<template name="EditableContent">
+	<div class="{{editableContentClass}}">
+		{{#markdown}}{{content}}{{/markdown}}
+
+		{{#if userCanUpdate}}
+			<div class="editable-content-controls">
+				<button type="button" class="editable-content-control edit-button btn btn-danger btn-sm">
+					Edit
+				</button>
+			</div>
+		{{/if}}
+	</div>
+</template>

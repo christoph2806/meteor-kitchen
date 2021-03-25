@@ -1,0 +1,27 @@
+{
+	"public": {
+		"ga": {
+			"account": "UA-44853853-3"
+		},
+
+		"terminalEyeURL": "wss://terminal-eye.meteorfarm.com",
+		"buildServerURL": "https://www.meteorfarm.com"
+	},
+
+	"oauth": {
+	},
+
+	"env": {
+	},
+
+	"PrerenderIO": {
+		"prerenderServiceUrl": "https://service.prerender.io/",
+		"prerenderToken": "9l3wVylnQ4yY6SzNFUlY",
+		"protocol": "https"
+	},
+
+	"mailgun": {
+		"apiKey": "key-358eaff4f2214ee856928ce82ccbcd99",
+		"domain": "meteorkitchen.com"
+	}
+}

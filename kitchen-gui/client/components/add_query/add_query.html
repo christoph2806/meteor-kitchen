@@ -1,0 +1,43 @@
+<template name="AddQueryForm">
+	<div id="{{boxId}}" class="ui small modal add-query-form">
+		<div class="header">
+			New Query
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+
+				<div class="field">
+					<label for="name">Query name</label>
+					<input type="text" name="name" data-required="true" value="{{defaultName}}">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="field">
+					<label for="collectionId">Collection</label>
+					<div class="ui fluid selection dropdown">
+						<input type="hidden" name="collectionId">
+						<i class="dropdown icon"></i>
+						<div class="default text">Select Collection</div>
+						<div class="menu">
+							<div class="item" data-value=""></div>
+							{{#each collections}}
+								<div class="item" data-value="{{_id}}">{{name}}</div>
+							{{/each}}
+						</div>
+					</div>
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="actions">
+					<div class="ui green ok button">
+						OK
+					</div>
+					<div class="ui basic cancel button">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

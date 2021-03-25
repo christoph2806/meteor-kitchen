@@ -1,0 +1,226 @@
+<template name="DevDetailsProfile">
+	<div class="ui stackable two column grid">
+
+		<div class="column">
+			<h2 class="ui header">
+				Basic Info
+			</h2>
+
+			<form class="ui form">
+
+				<div class="form-group read-only-field">
+					<div class="fields">
+						<div class="four wide field">
+							<label>
+								Full name
+							</label>
+						</div>
+						<div class="twelve wide field">
+							<p>
+								{{user.profile.name}}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group read-only-field">
+					<div class="fields">
+						<div class="four wide field">
+							<label>
+								Username
+							</label>
+						</div>
+						<div class="twelve wide field">
+							<p>
+								{{user.profile.username}}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				{{#if user.profile.availableForHire}}
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									Country
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{countryName user.profile.country}}
+								</p>
+							</div>
+						</div>
+					</div>
+				{{/if}}
+
+				<div class="field form-group read-only-field">
+					<label>
+						About
+					</label>
+					<p>
+						{{#if user.profile.about}}
+							{{#markdown}}{{user.profile.about}}{{/markdown}}
+						{{else}}
+							-
+						{{/if}}
+					</p>
+				</div>
+			</form>
+		</div>
+
+
+		<div class="column">
+			<h2 class="ui header">
+				Developer Profile
+			</h2>
+
+			<form class="ui form">
+				{{#if user.profile.availableForHire}}
+					{{#if user.profile.devProfile.cvURL}}
+						<div class="form-group read-only-field">
+							<div class="fields">
+								<div class="four wide field">
+									<label>
+										Resume/CV
+									</label>
+								</div>
+								<div class="twelve wide field">
+									<p>
+										<a href="{{user.profile.devProfile.cvURL}}" target="_blank">{{user.profile.devProfile.cvURL}}</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					{{/if}}
+
+					{{#if user.profile.devProfile.team}}
+						<div class="form-group read-only-field">
+							<div class="fields">
+								<div class="four wide field">
+									<label>
+										Team name
+									</label>
+								</div>
+								<div class="twelve wide field">
+									<p>
+										{{user.profile.devProfile.teamName}}
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group read-only-field">
+							<div class="fields">
+								<div class="four wide field">
+									<label>
+										Team size
+									</label>
+								</div>
+								<div class="twelve wide field">
+									<p>
+										{{user.profile.devProfile.teamSize}} members
+									</p>
+								</div>
+							</div>
+						</div>
+					{{/if}}
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									Preference
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{devTypeStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									Self rating
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{selfRatingStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									UI frameworks
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{uiFrameworksStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									Back-end or Front-end?
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{stackStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									Programming Languages
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{progLangsStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group read-only-field">
+						<div class="fields">
+							<div class="four wide field">
+								<label>
+									OS
+								</label>
+							</div>
+							<div class="twelve wide field">
+								<p>
+									{{osStr}}
+								</p>
+							</div>
+						</div>
+					</div>
+				{{else}}
+					<p><i>User is not available for hire</i></p>
+				{{/if}}
+
+			</form>
+		</div>
+	</div>	
+</template>

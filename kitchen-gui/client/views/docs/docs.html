@@ -1,0 +1,40 @@
+<template name="Docs">
+	<div id="content" class="page-container ui container">
+		<h1 id="page_title" class="ui header page-header">
+			Meteor Kitchen Documentation
+		</h1>
+
+		<div class="ui grid">
+			<div class="eight wide column">
+				<h2><a href="{{pathFor 'docs.cli.getting_started'}}">Kitchen CLI Docs</a></h2>
+
+				<p>
+					Meteor Kitchen Command Line Interface
+				</p>
+
+				<p>
+					<ul>
+						<li><a href="{{pathFor 'docs.cli.getting_started'}}">Getting Started</a></li>
+						<li><a href="{{pathFor 'docs.cli.api_reference'}}">API Reference</a></li>
+						<li><a href="{{pathFor 'docs.cli.videos'}}">Video Tutorials</a></li>
+						<li><a href="{{pathFor 'docs.cli.examples'}}">Example Applications</a></li>
+					</ul>
+				</p>
+			</div>
+
+			<div class="eight wide column">
+				<h2><a href="{{pathFor 'docs.gui'}}">Kitchen GUI Docs</a></h2>
+
+				<p>
+					Meteor Kitchen Visual IDE
+				</p>
+
+				<p>
+					<ul>
+						<li><a href="{{pathFor 'docs.gui.videos'}}">Video Tutorials</a></li>
+					</ul>
+				</p>
+			</div>
+		</div>
+	</div>
+</template>

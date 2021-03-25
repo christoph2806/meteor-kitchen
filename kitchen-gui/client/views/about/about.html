@@ -1,0 +1,33 @@
+<template name="About">
+	<div id="content" class="page-container ui container">
+		<h1 id="page_title" class="ui header page-header">
+			About
+		</h1>
+		<p>
+			Meteor Kitchen was started by <a href="https://www.linkedin.com/in/petar-korponai%25C4%2587-3253604a" target="_blank">Petar Korponaić</a> as a personal hobby project in 2013 while Meteor was 0.5 beta. Meteor changed a lot since then, and it was almost a nightmare to keep the code generator up to date. However, somehow Meteor Kitchen survived all the "earthquakes" and today we have both CLI and GUI with <a href="{{pathFor 'developers'}}" target="_blank">
+					<span class="{{userCountDisplayClass}}">
+						{{#if gotUserCount}}
+							{{userCount}}
+						{{/if}}
+					</span>
+					registered users
+				</a>.
+		</p>
+
+		<p>
+        	Since July 2017, we have grown to a 5 member team and our goal is to make this project rock.
+        	<br />
+        	<br />
+        	<b>Short list of our most important goals:</b>
+
+        	<ul>
+				<li>Align generated code with Meteor's best practices</li> 
+				<li>Improve visual UI designer</li>
+				<li>Write better docs and tutorials</li>
+				<li>Fix bugs (oh that bugs!)</li>
+				<li>And more...</li>
+        	</ul> 
+        </p>
+	</div>
+</template>
+

@@ -1,0 +1,336 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="fragment" content="!">
+	<title>
+		Meteor Kitchen
+	</title>
+</head>
+<template name="layout">
+	{{#if currentUser}}
+		{{> PrivateLayoutMainSideNav}}
+
+		<div id="public-content" class="pusher sticky-wrapper">
+			{{> PrivateLayout}}
+		</div>
+
+		<div id="footer" class="sticky-footer ui inverted center aligned vertical footer segment">
+			{{> PrivateLayoutFooterMenu}}
+		</div>
+	{{else}}
+		{{> PublicLayoutMainSideNav}}
+
+		<div id="private-content" class="pusher sticky-wrapper">
+			{{> PublicLayout}}
+		</div>
+
+		<div id="footer" class="sticky-footer ui inverted center aligned vertical footer segment">
+			{{> PublicLayoutFooterMenu}}
+		</div>
+	{{/if}}
+</template>
+
+
+<template name="PublicLayout">
+	<div id="menu" class="navbar-menu ui vertical inverted segment">
+		{{> PublicLayoutMainNavbar}}
+	</div>
+	{{> yield}}
+</template>
+
+<template name="PublicLayoutMainSideNav">
+	<div class="ui vertical inverted sidebar menu main-sidenav">
+		<div class="item">
+			<a href="#" class="ui logo image">
+				<img src="/images/kitchen-logo-3.svg">
+			</a>
+		</div>
+		<a href="{{pathFor 'home_public'}}" class="item {{menuItemClass 'home_public'}}">
+			Home
+		</a>
+		<a href="{{pathFor 'discover'}}" class="item {{menuItemClass 'discover'}}">
+			Discover
+		</a>
+		<a href="{{pathFor 'developers'}}" class="item {{menuItemClass 'developers'}}">
+			Developers
+		</a>
+		<a href="{{pathFor 'jobs'}}" class="item {{menuItemClass 'jobs'}}">
+			Jobs
+		</a>
+		<a href="{{pathFor 'news'}}" class="item {{menuItemClass 'news'}}">
+			What's Up?
+		</a>
+		<a href="{{pathFor 'contribute'}}" class="item {{menuItemClass 'contribute'}}">
+			Contribute
+		</a>
+		<a href="{{pathFor 'docs'}}" class="item {{menuItemClass 'docs'}}">
+			Docs
+		</a>
+	</div>
+</template>
+
+<template name="PublicLayoutMainNavbar">
+	<div class="ui large secondary inverted pointing menu main-navbar">
+		<a class="toc item">
+			<span class="sidebar icon"></span>
+		</a>
+
+		<div class="ui container menu-items-container">
+			<a href="{{pathFor 'home_public'}}" id="menu-item-simple" class="blue item {{menuItemClass 'home_public'}}">
+				<span class="item-title">
+					Home
+				</span>
+			</a>
+			<a href="{{pathFor 'discover'}}" id="menu-item-simple" class="blue item {{menuItemClass 'discover'}}">
+				<span class="item-title">
+					Discover
+				</span>
+			</a>
+			<a href="{{pathFor 'developers'}}" id="menu-item-simple" class="blue item {{menuItemClass 'developers'}}">
+				<span class="item-title">
+					Developers
+				</span>
+			</a>
+
+			<a href="{{pathFor 'jobs'}}" id="menu-item-simple" class="blue item {{menuItemClass 'jobs'}}">
+				<span class="item-title">
+					Jobs
+				</span>
+			</a>
+
+			<a href="{{pathFor 'news'}}" id="menu-item-simple" class="blue item {{menuItemClass 'news'}}">
+				<span class="item-title">
+					What's Up?
+				</span>
+			</a>
+			<a href="{{pathFor 'contribute'}}" id="menu-item-simple" class="blue item {{menuItemClass 'contribute'}}">
+				<span class="item-title">
+					Contribute
+				</span>
+			</a>
+			<a href="{{pathFor 'docs'}}" id="menu-item-simple" class="blue item {{menuItemClass 'docs'}}">
+				<span class="item-title">
+					Docs
+				</span>
+			</a>
+			{{> PublicLayoutRightMenu}}
+		</div>
+	</div>
+</template>
+
+<template name="PublicLayoutRightMenu">
+	<div class="right menu">
+		<a href="{{pathFor 'register'}}" id="menu-item-simple" class="green item {{menuItemClass 'register'}}">
+			<span class="item-title">
+				Register
+			</span>
+		</a>
+		<a href="{{pathFor 'login'}}" id="menu-item-simple" class="green item {{menuItemClass 'login'}}">
+			<span class="item-title">
+				Login
+			</span>
+		</a>
+	</div>
+</template>
+
+<template name="PublicLayoutFooterMenu">
+	<img class="footer-logo" src="/images/kitchen-logo-2.svg" />
+	<p>Made in the kitchen with <i class="ui icon bug"></i>and <i class="ui icon coffee"></i></p>
+	<div id="menu-items" class="">
+		<div class="ui horizontal inverted small divided link list">
+			<a href="{{pathFor 'about'}}" id="menu-item-simple" class="item {{menuItemClass 'about'}}">
+				<span class="item-title">
+					About
+				</span>
+			</a>
+			<a href="{{pathFor 'privacy'}}" id="menu-item-simple" class="item {{menuItemClass 'privacy'}}">
+				<span class="item-title">
+					Privacy Policy
+				</span>
+			</a>
+			<a href="{{pathFor 'terms'}}" id="menu-item-simple" class="item {{menuItemClass 'terms'}}">
+				<span class="item-title">
+					Terms of Service
+				</span>
+			</a>
+			<a href="https://twitter.com/MeteorKitchen" target="_blank" id="menu-item-simple" class="item">
+				<span class="fa fa-twitter"></span>
+			</a>
+			<a href="https://www.youtube.com/channel/UC-Oa30wsgeKtK4UU8g8UllA/videos" target="_blank" id="menu-item-simple" class="item">
+				<span class="fa fa-youtube-play"></span>
+			</a>
+			<a href="https://github.com/perak/kitchen-site" target="_blank" id="menu-item-simple" class="item">
+				<span class="fa fa-github"></span>
+			</a>
+		</div>
+	</div>
+</template>
+
+<template name="PrivateLayout">
+	<div id="menu" class="navbar-menu ui vertical inverted segment">
+		{{> PrivateLayoutMainNavbar}}
+	</div>
+	{{> yield}}
+</template>
+
+<template name="PrivateLayoutMainSideNav">
+	<div class="ui vertical inverted sidebar menu main-sidenav">
+		<div class="item">
+			<a href="#" class="ui logo image">
+				<img src="/images/kitchen-logo-3.svg">
+			</a>
+		</div>
+		<a href="{{pathFor 'home'}}" class="item {{menuItemClass 'home'}}">
+			My Projects
+		</a>
+		<a href="{{pathFor 'discover'}}" class="item {{menuItemClass 'discover'}}">
+			Discover
+		</a>
+		<a href="{{pathFor 'developers'}}" class="item {{menuItemClass 'developers'}}">
+			Developers
+		</a>
+		<a href="{{pathFor 'jobs'}}" class="item {{menuItemClass 'jobs'}}">
+			Jobs
+		</a>
+		<a href="{{pathFor 'news'}}" class="item {{menuItemClass 'news'}}">
+			What's Up?
+		</a>
+		<a href="{{pathFor 'contribute'}}" class="item {{menuItemClass 'contribute'}}">
+			Contribute
+		</a>
+		<a href="{{pathFor 'docs'}}" class="item {{menuItemClass 'docs'}}">
+			Docs
+		</a>
+	</div>
+</template>
+
+<template name="PrivateLayoutMainNavbar">
+	<div class="ui large inverted secondary pointing menu main-navbar">
+		<a class="toc item">
+			<span class="sidebar icon"></span>
+		</a>
+
+		<div class="ui container menu-items-container">
+			<a href="{{pathFor 'home'}}" id="menu-item-simple" class="blue item {{menuItemClass 'home'}}">
+				<span class="item-title">
+					My Projects
+				</span>
+			</a>
+			<a href="{{pathFor 'discover'}}" id="menu-item-simple" class="blue item {{menuItemClass 'discover'}}">
+				<span class="item-title">
+					Discover
+				</span>
+			</a>
+			<a href="{{pathFor 'developers'}}" id="menu-item-simple" class="blue item {{menuItemClass 'developers'}}">
+				<span class="item-title">
+					Developers
+				</span>
+			</a>
+
+			<a href="{{pathFor 'jobs'}}" id="menu-item-simple" class="blue item {{menuItemClass 'jobs'}}">
+				<span class="item-title">
+					Jobs
+				</span>
+			</a>
+
+			<a href="{{pathFor 'news'}}" id="menu-item-simple" class="blue item {{menuItemClass 'news'}}">
+				<span class="item-title">
+					What's Up?
+				</span>
+			</a>
+			<a href="{{pathFor 'contribute'}}" id="menu-item-simple" class="blue item {{menuItemClass 'contribute'}}">
+				<span class="item-title">
+					Contribute
+				</span>
+			</a>
+			<a href="{{pathFor 'docs'}}" id="menu-item-simple" class="blue item {{menuItemClass 'docs'}}">
+				<span class="item-title">
+					Docs
+				</span>
+			</a>
+			{{> PrivateLayoutRightMenu}}
+		</div>
+	</div>
+</template>
+
+<template name="PrivateLayoutRightMenu">
+	<div class="right menu">
+		<a href="{{pathFor 'admin'}}" id="menu-item-simple" class="green item {{menuItemClass 'admin'}}">
+			<span class="item-title">
+				Admin
+			</span>
+		</a>
+
+		<div id="menu-item-dropdown" class="ui dropdown item">
+			<img class="ui avatar image" src="{{userAvatarURL currentUserId 40}}">
+			{{#if unreadContactCount}}
+				<div class="ui floating circular red label avatar-label">
+					{{unreadContactCount}}
+				</div>
+			{{/if}}
+
+			<span>{{username}}</span>
+
+			<span class="dropdown icon">
+			</span>
+
+			<div id="menu-items" class="menu">
+				<a href="{{pathFor 'user_settings'}}" class="item">
+					<span class="item-title">
+						Profile
+					</span>
+				</a>
+				<a href="{{pathFor 'messenger'}}" class="item">
+					<span class="item-title">
+						Messages
+					</span>
+					{{#if unreadContactCount}}
+						&nbsp;
+						<div class="ui red label">
+							{{unreadContactCount}}
+						</div>
+					{{/if}}
+				</a>
+
+				<a href="{{pathFor 'logout'}}" class="item">
+					<span class="item-title">
+						Logout
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="PrivateLayoutFooterMenu">
+	<img class="footer-logo" src="/images/kitchen-logo-2.svg" />
+	<p>Made in the kitchen with <i class="ui icon bug"></i>and <i class="ui icon coffee"></i></p>
+	<div id="menu-items" class="">
+		<div class="ui horizontal inverted small divided link list">
+			<a href="{{pathFor 'about'}}" id="menu-item-simple" class="item {{menuItemClass 'about'}}">
+				<span class="item-title">
+					About
+				</span>
+			</a>
+			<a href="{{pathFor 'privacy'}}" id="menu-item-simple" class="item {{menuItemClass 'privacy'}}">
+				<span class="item-title">
+					Privacy Policy
+				</span>
+			</a>
+			<a href="{{pathFor 'terms'}}" id="menu-item-simple" class="item {{menuItemClass 'terms'}}">
+				<span class="item-title">
+					Terms of Service
+				</span>
+			</a>
+			<a href="https://twitter.com/MeteorKitchen" target="_blank" id="menu-item-simple" class="item">
+				<span class="ui icon fa fa-twitter"></span>
+			</a>
+			<a href="https://www.youtube.com/channel/UC-Oa30wsgeKtK4UU8g8UllA/videos" target="_blank" id="menu-item-simple" class="item">
+				<span class="ui icon fa fa-youtube-play"></span>
+			</a>
+			<a href="https://github.com/perak/kitchen-site" target="_blank" id="menu-item-simple" class="item">
+				<span class="ui icon fa fa-github"></span>
+			</a>
+		</div>
+	</div>
+</template>
+

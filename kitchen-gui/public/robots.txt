@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: //
+Disallow: /api/
+Disallow: /home/
+Disallow: /admin/
+Disallow: /user_settings/
+Disallow: /messenger/
+Disallow: /logout/

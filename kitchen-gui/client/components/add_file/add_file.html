@@ -1,0 +1,68 @@
+<template name="AddFileForm">
+	<div id="{{boxId}}" class="ui small modal add-file-form">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+
+				<div class="grouped fields">
+					<label>Source</label>
+
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" class="file-source" name="fileSource" value="internal" {{itemIsChecked isExternalFile false}}>
+							<label>Internal editor</label>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input type="radio" class="file-source" name="fileSource" value="external" {{itemIsChecked isExternalFile true}}>
+							<label>External file</label>
+						</div>
+					</div>
+				</div>
+
+				{{#if isExternalFile}}
+					<div class="field">
+						<label for="source">Source file URL</label>
+						<input type="text" name="source" data-required="true" placeholder="http://" value={{defaultSource}}>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+				{{/if}}
+
+				<div class="field">
+					<label for="destDir">Destination directory</label>
+					<div class="ui fluid selection dropdown">
+						<input type="hidden" name="destDir" value={{defaultDestDir}}>
+						<i class="dropdown icon"></i>
+						<div class="default text">Select Directory</div>
+						<div class="menu">
+							{{#each rootDirs}}
+								<div class="item" data-value="{{this.name}}">{{this.displayName}}</div>
+							{{/each}}
+						</div>
+					</div>
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="field">
+					<label for="fileName">Destination file name</label>
+					<input type="text" name="fileName" data-required="true" value="{{defaultDestFile}}">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="actions">
+					<div class="ui green ok button">
+						OK
+					</div>
+					<div class="ui basic cancel button">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

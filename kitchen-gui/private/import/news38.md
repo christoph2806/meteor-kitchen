@@ -1,0 +1,1 @@
+- **Windows**: Meteor kitchen is now available for Windows.

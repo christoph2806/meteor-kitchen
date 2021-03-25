@@ -1,0 +1,2 @@
+- Input file now can be in <a href="http://www.yaml.org/" target="_blank">YAML</a> format. Input YAML file must have extension ".yml" or ".yaml". You need to install <a href="https://www.npmjs.org/package/yaml2json" target="_blank">yaml2json</a>.
+- Fixed few bugs

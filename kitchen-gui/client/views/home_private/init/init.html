@@ -1,0 +1,123 @@
+<template name="HomePrivateInit">
+	<div id="content" class="page-container ui container">
+		{{> HomePrivateInitForm}}
+	</div>
+</template>
+
+<template name="HomePrivateInitForm">
+	<div id="home-private-insert-form" class="">
+		<form class="ui form" role="form">
+			<h2 class="ui header">
+				New project
+
+				<button id="form-submit-button" class="ui right floated large green button" type="submit">
+					<span class="fa fa-check">
+					</span>
+					Save
+				</button>
+				<a href="{{pathFor 'home.insert'}}" class="ui right floated large basic button">
+					<span class="fa fa-chevron-left">
+					</span>
+					Back
+				</a>
+			</h2>
+
+			{{#if errorMessage}}
+			<div class="ui visible warning message">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="ui visible positive message">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+
+			<div class="two fields">
+				<div class="field">
+					<div class="grouped fields">
+						<label for="method">How to initialize project?</label>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="method" value="boilerplate-accounts" tabindex="0" class="hidden" {{itemIsChecked initAppData.method "boilerplate-accounts"}}>
+								<label>Minimal application with user account system</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="method" value="empty" tabindex="0" class="hidden" {{itemIsChecked initAppData.method "empty"}}>
+								<label>Create empty project</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="method" value="human2machine" tabindex="0" class="hidden" {{itemIsChecked initAppData.method "human2machine"}}>
+								<label>Describe application in everyday English language (human2machine)</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="method" value="json" tabindex="0" class="hidden" {{itemIsChecked initAppData.method "json"}}>
+								<label>Enter (or paste) json file</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="grouped fields">
+						<label for="templating">Frontend rendering</label>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="templating" value="" tabindex="0" class="hidden" {{itemIsChecked initAppData.templating ""}}>
+								<label>Default (Blaze)</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="templating" value="blaze" tabindex="0" class="hidden" {{itemIsChecked initAppData.templating "blaze"}}>
+								<label>Blaze</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="templating" value="react" tabindex="0" class="hidden" {{itemIsChecked initAppData.templating "react"}}>
+								<label>React</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{> UI.dynamic template=initMethodTemplate}}
+		</form>
+	</div>
+</template>
+
+<template name="HomePrivateInitFormEmpty">
+</template>
+
+<template name="HomePrivateInitFormBoilerplateAccounts">
+</template>
+
+<template name="HomePrivateInitFormHuman2Machine">
+	<div class="ui two column stackable grid">
+		<div class="column">
+			<div class="field">
+				<label for="human-text-editor">Description in English</label>
+				<textarea name="human-text-editor" rows="16">{{humanEditorText}}</textarea>
+			</div>
+		</div>
+		<div class="column">
+			<div class="field">
+				<label>Resulting json</label>
+				{{> CodeMirror id="human-json-editor" options=humanJsonEditorOptions reactiveVar="humanJsonEditorText"}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateInitFormJson">
+	{{> CodeMirror id="json-editor" options=jsonEditorOptions reactiveVar="jsonEditorText"}}
+</template>

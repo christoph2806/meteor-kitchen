@@ -1,0 +1,1 @@
+- Fixed few minor bugs (related to form input type "crud")

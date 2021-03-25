@@ -1,0 +1,8 @@
+Linker options
+-static -static-libgcc -static-libstdc++
+
+Linker directories
+C:/MinGW/lib;../libgit2/output/lib;./lib
+
+Linker Libraries
+git2;ws2_32;winhttp;ole32;crypt32;Rpcrt4

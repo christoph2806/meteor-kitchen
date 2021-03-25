@@ -1,0 +1,46 @@
+<template name="HomePrivateSettings">
+	<div class="page-container ui container">
+		<div class="row">
+			<div class="column" id="content">
+				<div class="row" id="title_row">
+					<div class="column">
+						<h2 id="page_title">
+							{{application.name}}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui stackable padded grid">
+			<div id="menu" class="three wide column">
+				{{> HomePrivateSettingsMenu}}
+			</div>
+			<div id="subcontent" class="thirteen wide column">
+				{{> yield region='HomePrivateSettingsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateSettingsMenu">
+	<div id="menu-items" class="ui secondary vertical pointing menu">
+		<a href="{{pathFor 'home.settings.general' applicationId=params.applicationId}}" id="menu-item-simple" class="item {{menuItemClass 'home.settings.general'}}">
+			<span class="item-title">
+				Settings
+			</span>
+		</a>
+
+		<a href="{{pathFor 'home.settings.webhooks' applicationId=params.applicationId}}" id="menu-item-simple" class="item {{menuItemClass 'home.settings.webhooks'}}">
+			<span class="item-title">
+				Webhooks
+			</span>
+		</a>
+
+		<a href="{{pathFor 'home.settings.danger' applicationId=params.applicationId}}" id="menu-item-simple" class="item {{menuItemClass 'home.settings.danger'}}">
+			<span class="item-title">
+				Danger zone
+			</span>
+		</a>
+	</div>
+</template>
+

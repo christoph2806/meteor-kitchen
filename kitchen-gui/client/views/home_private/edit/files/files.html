@@ -1,0 +1,155 @@
+<template name="HomePrivateEditFiles">
+	<div class="ui two column padded grid editor-grid">
+		<div class="four wide column editor-column">
+			{{> HomePrivateEditFilesLeftColumn}}
+		</div>
+
+		<div class="twelve wide column editor-column main-column">
+			{{> HomePrivateEditFilesMainColumn}}
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditFilesLeftColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr height-max">
+			<div class="display-tc bordered">
+
+				<div class="display-table height-max">
+					<div class="display-tr">
+						<div class="display-tc editor-content title">
+							<b>Files</b>
+						</div>
+					</div>
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area">
+								<div class="editor-content">
+									{{#each rootDirs}}
+										{{> HomePrivateEditFilesDir}}
+									{{/each}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditFilesDir">
+	<ul class="tree-node">
+		<li>
+			<a href="#" class="tree-link">
+				<div class="float-left">
+					<span class="fa fa-fw {{caretClass}} tree-node-caret">
+					</span>
+					<span class="tree-node-title">
+						<span class="fa {{iconClass}} tree-node-icon"></span>
+						{{displayName}}
+					</span>
+				</div>
+				<div class="float-right">
+					<span class="tree-node-controls">
+						{{#if canInsert}}
+							<span class="fa fa-plus tree-node-control add-file" title="Add">
+							</span>
+						{{/if}}
+					</span>
+				</div>
+			</a>
+		{{#if isExpanded}}
+			{{#each fileList}}
+				{{> HomePrivateEditFilesItem}}
+			{{/each}}
+		{{/if}}
+		</li>
+	</ul>
+</template>
+
+<template name="HomePrivateEditFilesItem">
+	<li>
+		<a href="#" class="tree-link {{treeLinkClass}}">
+			<span class="fa fa-fw tree-node-caret">
+			</span>
+
+			<span class="tree-node-title">
+				<span class="fa {{iconClass}} tree-node-icon"></span>
+				{{displayName}}
+				<span class="tree-node-controls float-right">
+					{{#if canEdit}}
+						<span class="fa fa-pencil tree-node-control rename-file" title="Rename">
+						</span>
+					{{/if}}
+					{{#if canRemove}}
+						<span class="fa fa-trash tree-node-control remove-file" title="Delete">
+						</span>
+					{{/if}}
+				</span>
+			</span>
+		</a>
+	</li>
+</template>
+
+
+<template name="HomePrivateEditFilesMainColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr">
+			<div class="display-tc editor-content title">
+				<b>{{selectedFilename}}</b>&nbsp;
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				{{> Template.dynamic template=mainViewTemplate}}
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditFilesEmptyView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text">
+				<h2>Custom Files</h2>
+				<p>Here you can add files with custom content into your project.</p>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditFilesExternalView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text">
+				<p>
+					<b>External file:</b><br />
+					<a href="{{sourceURL}}" target="_blank">{{sourceURL}}</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditFilesEditorView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content">
+				{{#if showEditor}}
+					{{>HomePrivateEditFilesEditor}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditFilesEditor">
+	{{> CodeMirror id="content-input" options=contentInputOptions reactiveVar="contentInputText"}}
+</template>

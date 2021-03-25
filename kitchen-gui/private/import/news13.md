@@ -1,0 +1,4 @@
+- GUI: Added two examples
+- GUI: Added syntax check (lints) into JSON and JS editors
+- CLI: Fixed json parser bug: if key name is a string it's now properly stringified to javascript: { "\"x.y\"": 1 } now becomes { "x.y": 1 }
+- CLI: Fixed bug related to query object: if some component's query doesn't have a name, generator reported error. Now it just ignores queries without names.

@@ -1,0 +1,1 @@
+- Fixed bug with FlowRouter and user roles (react app)

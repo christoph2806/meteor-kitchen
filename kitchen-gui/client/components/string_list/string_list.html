@@ -1,0 +1,43 @@
+<template name="StringList">
+	<div id="{{boxId}}" class="ui small modal string-list">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				{{#if fixedItems}}
+					<div class="grouped fields">
+						<label>{{message}}</label>
+						{{#each items}}
+							<div class="field">
+								<div class="ui checkbox">
+									<input type="checkbox" name="choice-item" value="{{this}}" {{itemChecked ../defaultValue}}>
+									<label>{{this}}</label>
+								</div>
+							</div>
+						{{/each}}
+					</div>
+				{{else}}
+					<div class="field">
+						<textarea class="items-editor">{{defaultValue}}</textarea>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

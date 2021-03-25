@@ -1,0 +1,3 @@
+- Implementing support for react - almost there! Most of examples now can be built without errors (with `--react` switch) but not all of them works... work still in progress...
+## 0.9.70 <span class="label label-danger">New!</span>
+- Added experimental support for <a href="https://aframe.io/" target="_blank">A-Frame</a> (Virtial Reality). See <a href="http://example-aframe-iss.meteorfarm.com" target="_blank">live example</a>  - it's International Space Station mini tour. Source code is <a href="https://github.com/perak/kitchen-examples/tree/master/example-aframe-iss" target="_blank">here</a>.

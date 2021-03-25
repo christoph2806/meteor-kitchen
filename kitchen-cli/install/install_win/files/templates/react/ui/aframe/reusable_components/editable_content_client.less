@@ -1,0 +1,32 @@
+.editable-content {
+	position: relative;
+}
+
+.editable-content.read-write {
+	border: 1px solid transparent;
+}
+
+.editable-content:hover.read-write {
+	border: 1px dashed silver;
+}
+
+.editable-content.read-write.empty-content {
+}
+
+.editable-content:hover.read-write.empty-content {
+}
+
+.editable-content.read-only {
+
+}
+
+.editable-content-controls {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.editable-content:hover .editable-content-controls {
+	display: block;
+}

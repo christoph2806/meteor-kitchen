@@ -1,0 +1,63 @@
+<template name="ImportSharedGasBox">
+	<div id="{{boxId}}" class="ui modal import-shared-gas-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			{{> ImportSharedGasList}}
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="ImportSharedGasList">
+	{{#if Template.subscriptionsReady}}
+		<div class="ui divided items">
+			{{#each items}}
+				{{> ImportSharedGasItem}}
+			{{/each}}
+		</div>
+	{{else}}
+		{{> loading}}
+	{{/if}}
+</template>
+
+
+<template name="ImportSharedGasItem">
+	<div class="item">
+		<div class="ui tiny image">
+			<img src="/images/image-empty-card-app.png">
+		</div>
+
+		<div class="content">
+			<span class="header">{{title}}</span>
+
+			<div class="description">
+				{{#if description}}
+					<p>{{description}}</p>
+				{{else}}
+					<p><i>No description provided</i></p>
+				{{/if}}
+			</div>
+
+
+			<div class="right floated">
+				<div class="ui primary button import-item">Import</div>
+			</div>
+		</div>
+	</div>
+</template>

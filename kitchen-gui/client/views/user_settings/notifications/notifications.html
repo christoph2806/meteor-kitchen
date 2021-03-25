@@ -1,0 +1,38 @@
+<template name="UserSettingsNotifications">
+	<div id="content" class="ui container">
+
+		<h2 class="ui header">
+			Notifications
+		</h2>
+
+		<form class="ui form">
+			<div class="field">
+				<div class="form-group field-newsletters">
+					<div class="field">
+						<div class="ui toggle checkbox">
+							<input type="checkbox" name="newsletters" {{newslettersChecked}}>
+							<label for="newsletters">
+								Receive monthly newsletters via e-mail
+							</label>
+						</div>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="field">
+				<div class="form-group field-unread-messages">
+					<div class="field">
+						<div class="ui toggle checkbox">
+							<input type="checkbox" name="unread-messages" {{unreadMessagesChecked}}>
+							<label for="unread-messages">
+								Receive unread message notifications via e-mail
+							</label>
+						</div>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>

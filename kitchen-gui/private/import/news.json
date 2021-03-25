@@ -1,0 +1,409 @@
+{
+	"news": [
+		{
+			"title": "Release 0.7.3",
+			"file": "news1.md",
+			"date": "Fri Oct 10 2014 00:00:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.7.4",
+			"file": "news2.md",
+			"date": "Sun Oct 19 2014 20:42:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.7.5",
+			"file": "news3.md",
+			"date": "Wed Oct 29 2014 16:25:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.7.6",
+			"file": "news4.md",
+			"date": "Sat Nov 08 2014 13:08:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.7.7",
+			"file": "news5.md",
+			"date": "Tue Nov 18 2014 09:51:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.7.8",
+			"file": "news6.md",
+			"date": "Fri Nov 28 2014 06:33:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.7.9",
+			"file": "news7.md",
+			"date": "Mon Dec 08 2014 03:16:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.8.0",
+			"file": "news8.md",
+			"date": "Wed Dec 17 2014 23:59:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.0",
+			"file": "news9.md",
+			"date": "Sat Dec 27 2014 20:42:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.1",
+			"file": "news10.md",
+			"date": "Tue Jan 06 2015 17:24:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.2",
+			"file": "news11.md",
+			"date": "Fri Jan 16 2015 14:07:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.3",
+			"file": "news12.md",
+			"date": "Mon Jan 26 2015 10:50:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.4",
+			"file": "news13.md",
+			"date": "Thu Feb 05 2015 07:33:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.5",
+			"file": "news14.md",
+			"date": "Sun Feb 15 2015 04:15:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.6",
+			"file": "news15.md",
+			"date": "Wed Feb 25 2015 00:58:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.7",
+			"file": "news16.md",
+			"date": "Fri Mar 06 2015 21:41:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.8",
+			"file": "news17.md",
+			"date": "Mon Mar 16 2015 18:24:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.9",
+			"file": "news18.md",
+			"date": "Thu Mar 26 2015 15:06:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.10",
+			"file": "news19.md",
+			"date": "Sun Apr 05 2015 12:49:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.11",
+			"file": "news20.md",
+			"date": "Wed Apr 15 2015 09:32:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.12",
+			"file": "news21.md",
+			"date": "Sat Apr 25 2015 06:15:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.13",
+			"file": "news22.md",
+			"date": "Tue May 05 2015 02:57:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.14",
+			"file": "news23.md",
+			"date": "Thu May 14 2015 23:40:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.15",
+			"file": "news24.md",
+			"date": "Sun May 24 2015 20:23:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.16",
+			"file": "news25.md",
+			"date": "Wed Jun 03 2015 17:06:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.17",
+			"file": "news26.md",
+			"date": "Sat Jun 13 2015 13:48:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.18",
+			"file": "news27.md",
+			"date": "Tue Jun 23 2015 10:31:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.19",
+			"file": "news28.md",
+			"date": "Fri Jul 03 2015 07:14:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.20",
+			"file": "news29.md",
+			"date": "Mon Jul 13 2015 03:57:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.21",
+			"file": "news30.md",
+			"date": "Thu Jul 23 2015 00:39:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.22",
+			"file": "news31.md",
+			"date": "Sat Aug 01 2015 21:22:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.23",
+			"file": "news32.md",
+			"date": "Tue Aug 11 2015 18:05:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.24",
+			"file": "news33.md",
+			"date": "Fri Aug 21 2015 14:48:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.25",
+			"file": "news34.md",
+			"date": "Mon Aug 31 2015 11:30:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.26",
+			"file": "news35.md",
+			"date": "Thu Sep 10 2015 08:13:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.27",
+			"file": "news36.md",
+			"date": "Sun Sep 20 2015 04:56:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.28",
+			"file": "news37.md",
+			"date": "Wed Sep 30 2015 01:39:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.29",
+			"file": "news38.md",
+			"date": "Fri Oct 09 2015 22:21:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.30",
+			"file": "news39.md",
+			"date": "Mon Oct 19 2015 19:04:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.31",
+			"file": "news40.md",
+			"date": "Thu Oct 29 2015 14:47:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.32",
+			"file": "news41.md",
+			"date": "Sun Nov 08 2015 11:30:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.33",
+			"file": "news42.md",
+			"date": "Wed Nov 18 2015 08:12:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.34",
+			"file": "news43.md",
+			"date": "Sat Nov 28 2015 04:55:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.35",
+			"file": "news44.md",
+			"date": "Tue Dec 08 2015 01:38:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.36",
+			"file": "news45.md",
+			"date": "Thu Dec 17 2015 22:21:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.37",
+			"file": "news46.md",
+			"date": "Sun Dec 27 2015 19:03:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.38",
+			"file": "news47.md",
+			"date": "Wed Jan 06 2016 15:46:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.39",
+			"file": "news48.md",
+			"date": "Sat Jan 16 2016 12:29:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.40",
+			"file": "news49.md",
+			"date": "Tue Jan 26 2016 09:12:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.41",
+			"file": "news50.md",
+			"date": "Fri Feb 05 2016 05:54:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.42",
+			"file": "news51.md",
+			"date": "Mon Feb 15 2016 02:37:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.43",
+			"file": "news52.md",
+			"date": "Wed Feb 24 2016 23:20:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.44",
+			"file": "news53.md",
+			"date": "Sat Mar 05 2016 20:03:00 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.45",
+			"file": "news54.md",
+			"date": "Tue Mar 15 2016 16:45:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.46",
+			"file": "news55.md",
+			"date": "Fri Mar 25 2016 13:28:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.47",
+			"file": "news56.md",
+			"date": "Mon Apr 04 2016 11:11:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.48",
+			"file": "news57.md",
+			"date": "Thu Apr 14 2016 07:54:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.49",
+			"file": "news58.md",
+			"date": "Sun Apr 24 2016 04:36:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.50",
+			"file": "news59.md",
+			"date": "Wed May 04 2016 01:19:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.51",
+			"file": "news60.md",
+			"date": "Fri May 13 2016 22:02:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.52",
+			"file": "news61.md",
+			"date": "Mon May 23 2016 18:45:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.53",
+			"file": "news62.md",
+			"date": "Thu Jun 02 2016 15:27:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.54",
+			"file": "news63.md",
+			"date": "Sun Jun 12 2016 12:10:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.55",
+			"file": "news64.md",
+			"date": "Wed Jun 22 2016 08:53:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.56",
+			"file": "news65.md",
+			"date": "Sat Jul 02 2016 05:36:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.57",
+			"file": "news66.md",
+			"date": "Tue Jul 12 2016 02:18:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.58",
+			"file": "news67.md",
+			"date": "Thu Jul 21 2016 23:01:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.59",
+			"file": "news68.md",
+			"date": "Sun Jul 31 2016 19:44:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.60",
+			"file": "news69.md",
+			"date": "Wed Aug 10 2016 16:27:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.61",
+			"file": "news70.md",
+			"date": "Sat Aug 20 2016 13:09:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.62",
+			"file": "news71.md",
+			"date": "Tue Aug 30 2016 09:52:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.63",
+			"file": "news72.md",
+			"date": "Fri Sep 09 2016 06:35:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.64",
+			"file": "news73.md",
+			"date": "Mon Sep 19 2016 03:18:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.65",
+			"file": "news74.md",
+			"date": "Thu Sep 29 2016 00:00:45 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.66",
+			"file": "news75.md",
+			"date": "Sat Oct 08 2016 20:43:30 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.67",
+			"file": "news76.md",
+			"date": "Tue Oct 18 2016 17:26:15 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.68",
+			"file": "news77.md",
+			"date": "Fri Oct 28 2016 14:09:00 GMT+0200 (CEST)"
+		},
+		{
+			"title": "Release 0.9.69",
+			"file": "news78.md",
+			"date": "Mon Nov 07 2016 09:51:45 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.71",
+			"file": "news79.md",
+			"date": "Thu Nov 17 2016 06:34:30 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.72",
+			"file": "news80.md",
+			"date": "Sun Nov 27 2016 03:17:15 GMT+0100 (CET)"
+		},
+		{
+			"title": "Release 0.9.73",
+			"file": "news81.md",
+			"date": "Wed Dec 07 2016 00:00:00 GMT+0100 (CET)"
+		}
+	]
+}

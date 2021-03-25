@@ -1,0 +1,26 @@
+<template name="ConfirmationBox">
+	<div id="{{boxId}}" class="ui small modal confirmation-box">
+		<div class="header">
+			{{title}}
+		</div>
+		<div class="content">
+			<div class="description">
+				{{message}}
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green approve button">
+				{{buttonYesTitle}}
+			</div>
+			<div class="ui basic deny button">
+				{{buttonNoTitle}}
+			</div>
+			{{#if showCancelButton}}
+				<div class="ui basic cancel button">
+					{{buttonCancelTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+

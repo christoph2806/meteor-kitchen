@@ -1,0 +1,37 @@
+<template name="GasItemProperties">
+	<div id="{{boxId}}" class="ui small modal gas-item-properties">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="field">
+					<label for="title">Block name</label>
+					<input type="text" name="title" value="{{defaultTitle}}" placeholder="">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="ui checkbox">
+					<input type="checkbox" name="shared" checked={{defaultShared}}>
+					<label>Share with the community</label>
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

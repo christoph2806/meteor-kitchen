@@ -1,0 +1,15 @@
+<template name="VerifyEmail">
+	<div class="ui middle aligned center aligned grid page-container">
+		<div class="ui centered column account-form">
+			{{#if errorMessage}}
+				<div class="ui visible warning message">
+					{{errorMessage}}
+				</div>
+				<button class="ui primary button go-home" type="button" data-loading-text="Please wait...">
+					OK
+				</button>
+			{{/if}}
+		</div>
+	</div>
+</template>
+

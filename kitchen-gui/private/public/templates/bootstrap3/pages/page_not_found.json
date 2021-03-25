@@ -1,0 +1,38 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "notFound",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "container"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "h2",
+							"attributes": [],
+							"children": [
+								{
+									"type": "text",
+									"text": "Page not found"
+								}
+							]
+						}
+					]
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

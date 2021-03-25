@@ -1,0 +1,25 @@
+<template name="CodeEditBox">
+	<div id="{{boxId}}" class="ui modal code-edit-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			{{> CodeMirror id="code-edit-box-input" options=codeEditBoxInputOptions reactiveVar="codeEditBoxInputText"}}
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

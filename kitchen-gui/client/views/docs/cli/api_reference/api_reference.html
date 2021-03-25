@@ -1,0 +1,40 @@
+<template name="DocsCliApiReference">
+	<div class="docs-container">
+		<div class="ui two column padded grid height-max">
+			<div class="three wide column no-padding">
+				<div class="display-table height-max">
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area">
+								<div class="ui secondary vertical menu no-margin editor-content-text">
+									{{#each apiClassList}}
+										<a href="#_{{this}}" class="item doc-menu-item">
+											{{this}}
+										</a>
+									{{/each}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="thirteen wide column no-padding">
+				<div class="display-table height-max">
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area scrollable-content">
+								<div class="editor-content-text">
+									<h1 id="page_title" class="ui header page-header">
+										API Reference
+									</h1>
+									{{#markdown}}{{apiReferenceMarkdown}}{{/markdown}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

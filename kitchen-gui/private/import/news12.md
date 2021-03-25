@@ -1,0 +1,4 @@
+- GUI: integrated <a href="http://codemirror.net/" target="_blank">CodeMirror</a> editor
+- GUI: few improvements
+- GUI: tree editor and object editor pages were generator plugins - now they are changed to regular components.
+- CLI: Page now can have "zoneless" property. If set to true page will be accessible both for authenticated and non-authenticated users.

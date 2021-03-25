@@ -1,0 +1,13 @@
+<template name="LandingLayout">
+	{{> PublicLayoutMainSideNav}}
+
+	<div id="landing-content" class="pusher sticky-wrapper">
+		<div id="menu" class="navbar-menu ui vertical inverted segment">
+			{{> PublicLayoutMainNavbar}}
+		</div>
+		{{> yield}}
+	</div>
+	<div id="footer" class="sticky-footer ui inverted center aligned vertical footer segment">
+		{{> PublicLayoutFooterMenu}}
+	</div>
+</template>

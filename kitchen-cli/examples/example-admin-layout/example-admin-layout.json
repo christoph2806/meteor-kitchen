@@ -1,0 +1,443 @@
+{
+	"application": {
+		"title": "example-admin-layout",
+		"templating": "",
+		"roles": [
+			"admin",
+			"user"
+		],
+		"default_role": "user",
+		"collections": [
+			{
+				"name": "users",
+				"type": "collection"
+			}
+		],
+		"queries": [
+			{
+				"name": "admin_users",
+				"collection": "users",
+				"filter": "{}",
+				"options": "{}"
+			},
+			{
+				"name": "admin_user",
+				"collection": "users",
+				"find_one": true,
+				"filter": "{ \"_id\": \":userId\" }",
+				"options": "{}"
+			},
+			{
+				"name": "users_null",
+				"collection": "users",
+				"find_one": true,
+				"filter": "{ \"_id\": null }",
+				"options": "{}"
+			},
+			{
+				"name": "current_user_data",
+				"collection": "users",
+				"find_one": true,
+				"filter": "{ \"_id\": \"Meteor.userId()\" }",
+				"options": "{}"
+			}
+		],
+		"free_zone": {
+			"type": "zone",
+			"pages": [
+				{
+					"name": "home_public",
+					"type": "page",
+					"components": [
+						{
+							"name": "home_jumbotron",
+							"type": "jumbotron",
+							"dest_position": "before",
+							"title": "example-admin-layout",
+							"button_title": "Continue &raquo;",
+							"button_route": "login",
+							"object_type": "jumbotron"
+						}
+					]
+				}
+			]
+		},
+		"public_zone": {
+			"type": "zone",
+			"components": [
+				{
+					"name": "left_menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "Home",
+							"route": "home_public"
+						}
+					],
+					"object_type": "menu"
+				},
+				{
+					"name": "right_menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "Register",
+							"route": "register"
+						},
+						{
+							"title": "Login",
+							"route": "login"
+						}
+					],
+					"object_type": "menu"
+				},
+				{
+					"name": "side_menu",
+					"type": "menu",
+					"dest_selector": "#sidebar",
+					"class": "nav nav-list",
+					"items": [
+						{
+							"title": "Home",
+							"route": "home_public"
+						},
+						{
+							"title": "Register",
+							"route": "register"
+						},
+						{
+							"title": "Login",
+							"route": "login"
+						}
+					],
+					"object_type": "menu"
+				}
+			],
+			"pages": [
+				{
+					"name": "login",
+					"type": "page",
+					"template": "login"
+				},
+				{
+					"name": "register",
+					"type": "page",
+					"template": "register"
+				},
+				{
+					"name": "verify_email",
+					"type": "page",
+					"template": "verify_email",
+					"route_params": [
+						"verifyEmailToken"
+					]
+				},
+				{
+					"name": "forgot_password",
+					"type": "page",
+					"template": "forgot_password"
+				},
+				{
+					"name": "reset_password",
+					"type": "page",
+					"template": "reset_password",
+					"route_params": [
+						"resetPasswordToken"
+					]
+				}
+			],
+			"layout": "landing",
+			"default_route": "home_public"
+		},
+		"private_zone": {
+			"type": "zone",
+			"components": [
+				{
+					"name": "left_menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "Home",
+							"route": "home_private",
+							"icon_class": "fa fa-home"
+						}
+					],
+					"object_type": "menu"
+				},
+				{
+					"name": "right_menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "{{userEmail}}",
+							"icon_class": "fa fa-cog",
+							"items": [
+								{
+									"title": "Edit profile",
+									"route": "user_settings.profile"
+								},
+								{
+									"title": "Change password",
+									"route": "user_settings.change_pass"
+								},
+								{
+									"title": "Logout",
+									"route": "logout"
+								}
+							]
+						}
+					],
+					"object_type": "menu"
+				},
+				{
+					"name": "side_menu",
+					"type": "menu",
+					"dest_selector": "#sidebar",
+					"class": "nav nav-list",
+					"items": [
+						{
+							"title": "Home",
+							"route": "home_private"
+						},
+						{
+							"title": "Users",
+							"route": "admin.users"
+						},
+						{
+							"title": "Edit profile",
+							"route": "user_settings.profile"
+						},
+						{
+							"title": "Change password",
+							"route": "user_settings.change_pass"
+						},
+						{
+							"title": "Logout",
+							"route": "logout"
+						}
+					],
+					"object_type": "menu"
+				}
+			],
+			"container_class": "container-fluid",
+			"pages": [
+				{
+					"name": "home_private",
+					"type": "page",
+					"title": "Welcome {{userFullName}}!"
+				},
+				{
+					"name": "admin",
+					"type": "page",
+					"roles": [
+						"admin"
+					],
+					"pages": [
+						{
+							"name": "users",
+							"type": "page",
+							"components": [
+								{
+									"name": "view",
+									"type": "data_view",
+									"title": "Users",
+									"query_name": "admin_users",
+									"text_if_empty": "No users yet",
+									"insert_route": "admin.users.insert",
+									"details_route": "admin.users.details",
+									"edit_route": "admin.users.edit",
+									"details_route_params": [
+										{
+											"name": "userId",
+											"value": "this._id"
+										}
+									],
+									"edit_route_params": [
+										{
+											"name": "userId",
+											"value": "this._id"
+										}
+									],
+									"fields": [
+										{
+											"name": "profile.name",
+											"title": "Name",
+											"type": "string"
+										},
+										{
+											"name": "roles",
+											"title": "Role",
+											"type": "string"
+										}
+									],
+									"object_type": "data_view"
+								}
+							],
+							"pages": [
+								{
+									"name": "details",
+									"type": "page",
+									"components": [
+										{
+											"name": "details_form",
+											"type": "form",
+											"title": "User details",
+											"query_name": "admin_user",
+											"mode": "read_only",
+											"close_route": "admin.users",
+											"back_route": "admin.users",
+											"fields": [
+												{
+													"name": "profile.name",
+													"title": "Name",
+													"type": "string"
+												},
+												{
+													"name": "roles",
+													"title": "Role",
+													"type": "string"
+												}
+											],
+											"object_type": "form"
+										}
+									],
+									"route_params": [
+										"userId"
+									]
+								},
+								{
+									"name": "insert",
+									"type": "page",
+									"components": [
+										{
+											"name": "insert_form",
+											"type": "form",
+											"title": "Add new user",
+											"query_name": "users_null",
+											"mode": "insert",
+											"submit_route": "admin.users",
+											"cancel_route": "admin.users",
+											"fields": [
+												{
+													"name": "profile.name",
+													"title": "Name",
+													"type": "string",
+													"required": true
+												},
+												{
+													"name": "email",
+													"title": "E-mail",
+													"type": "email",
+													"required": true
+												},
+												{
+													"name": "password",
+													"title": "Password",
+													"type": "string",
+													"required": true,
+													"input": "password"
+												}
+											],
+											"object_type": "form"
+										}
+									]
+								},
+								{
+									"name": "edit",
+									"type": "page",
+									"components": [
+										{
+											"name": "edit_form",
+											"type": "form",
+											"title": "Edit user",
+											"query_name": "admin_user",
+											"mode": "update",
+											"submit_route": "admin.users",
+											"cancel_route": "admin.users",
+											"fields": [
+												{
+													"name": "profile.name",
+													"title": "Name",
+													"type": "string",
+													"required": true
+												},
+												{
+													"name": "roles",
+													"title": "Role",
+													"type": "array",
+													"input": "radio",
+													"input_items": [
+														{
+															"value": "user",
+															"title": "User"
+														},
+														{
+															"value": "admin",
+															"title": "Admin"
+														},
+														{
+															"value": "blocked",
+															"title": "Blocked"
+														}
+													]
+												}
+											],
+											"object_type": "form"
+										}
+									],
+									"route_params": [
+										"userId"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "user_settings",
+					"type": "page",
+					"roles": [
+						"user",
+						"admin"
+					],
+					"pages": [
+						{
+							"name": "profile",
+							"type": "page",
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"title": "Edit your profile",
+									"query_name": "current_user_data",
+									"mode": "update",
+									"submit_route": "user_settings.profile",
+									"fields": [
+										{
+											"name": "profile.name",
+											"title": "Name",
+											"type": "string",
+											"required": true
+										}
+									],
+									"object_type": "form"
+								}
+							]
+						},
+						{
+							"name": "change_pass",
+							"type": "page",
+							"template": "change_pass"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"type": "page",
+					"template": "logout"
+				}
+			],
+			"layout": "admin"
+		}
+	}
+}

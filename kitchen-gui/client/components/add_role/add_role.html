@@ -1,0 +1,27 @@
+<template name="AddRoleForm">
+	<div id="{{boxId}}" class="ui small modal add-role-form">
+		<div class="header">
+			Add New Role
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+
+				<div class="field">
+					<label for="roleName">Role name</label>
+					<input type="text" name="roleName" data-required="true">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				<div class="actions">
+					<div class="ui green ok button">
+						OK
+					</div>
+					<div class="ui basic cancel button">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

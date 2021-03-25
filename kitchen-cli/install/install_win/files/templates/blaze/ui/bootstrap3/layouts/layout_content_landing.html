@@ -1,0 +1,45 @@
+<template name="TEMPLATE_NAME">
+    <div id="content" class="wrapper">
+        <div class="overlay"></div> 
+        <header>
+            <nav id="navbar" class="navbar navbar-default navbar-fixed-top main-nav">
+                <div class="navbar-container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-btn navbar-toggle collapsed" id="sidebar-collapse" data-toggle="collapse" data-target=".navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" href="/">APP_TITLE</a>
+                    </div>
+                    <div id="menu" class="navbar-collapse collapse">
+                    </div>
+                </div>
+            </nav>
+
+            <nav id="sidebar" class="sidebar">
+                <div id="dismiss" class="dismiss">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>APP_TITLE</h3>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="navbar-spacer"></div>
+
+        {{> yield}}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">FOOTER_TEXT</p>
+        </div>
+    </footer> 
+	<div id="background-image" style="background-image: url(BACKGROUND_IMAGE);">
+	</div>
+</template>

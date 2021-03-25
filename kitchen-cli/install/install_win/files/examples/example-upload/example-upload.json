@@ -1,0 +1,97 @@
+{
+	"application": {
+		"collections": [
+			{
+				"name": "files",
+				"type": "file_collection",
+				"storage_adapter_options": { 
+					"gridfs": {}
+				}
+			},
+
+			{
+				"name": "gallery",
+				"type": "collection",
+				"fields": [
+					{
+						"name": "title",
+						"title": "Title",
+						"required": true
+					},
+					{
+						"name": "fileId",
+						"title": "File",
+						"input": "file",
+						"file_collection": "files",
+						"file_container": "file"
+					}
+				]
+			}
+		],
+
+		"queries": [
+			{
+				"name": "gallery",
+				"collection": "gallery",
+				"filter": "{}",
+				"options": "{}"
+			},
+			{
+				"name": "gallery_empty",
+				"collection": "gallery",
+				"filter": "{ \"_id\": null }",
+				"options": "{}",
+				"find_one": true
+			}
+		],
+
+		"free_zone": {
+			"pages": [
+				{
+					"name": "home",
+					"components": [
+						{
+							"name": "gallery",
+							"title": "Example Gallery",
+							"type": "custom_component",
+							"custom_template": "files/gallery",
+							"query_name": "gallery"
+						}
+					],
+
+					"pages": [
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "form",
+									"title": "Add new file",
+									"type": "form",
+									"mode": "insert",
+									"query_name": "gallery_empty",
+									"submit_route": "home",
+									"cancel_route": "home"
+								}
+							]
+						}
+					],
+
+					"imports": [
+						"import {ConfirmationDialog} from \"CLIENT_COMPONENTS_DIR/confirmation_dialog/confirmation_dialog.jsx\";"
+					]
+				}
+			],
+
+			"components": [
+				{
+					"name": "main_menu",
+					"type": "menu",
+					"class": "nav navbar-nav",
+					"items": [
+						{ "title": "Example gallery", "route": "home", "icon_class": "fa fa-home" }
+					]
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,50 @@
+<template name="DocsGui">
+	<div class="gui-content">
+		<div class="ui pointing menu sub-nav gui-menu">
+			{{> DocsGuiMenu}}
+		</div>
+
+		<div id="content" class="page-container gui-container">
+			{{> yield region='GuiSubcontent'}}
+		</div>
+	</div>
+</template>
+
+<template name="DocsGuiMenu">
+	<div class="ui container">
+		<a href="{{pathFor 'docs.gui.about'}}" class="item {{menuItemClass 'docs.gui.about'}}">
+			About GUI
+		</a>
+		<a href="{{pathFor 'docs.gui.videos'}}" class="item {{menuItemClass 'docs.gui.videos'}}">
+			Video Tutorials
+		</a>
+	</div>
+</template>
+
+<!--
+<template name="DocsGui">
+	<div id="content" class="page-container ui container">
+		<h1 id="page_title" class="ui header page-header">
+			Kitchen GUI
+		</h1>
+
+		<h3>This page is under construction</h3>
+
+		<p>
+			<b>Please see <a href="{{pathFor 'docs.cli'}}">kitchen-CLI</a> docs:</b>
+			<ul>
+				<li><a href="{{pathFor 'docs.cli.getting_started'}}">Getting Started</a></li>
+				<li><a href="{{pathFor 'docs.cli.api_reference'}}">API Reference</a></li>
+				<li><a href="{{pathFor 'docs.cli.videos'}}">Video Tutorials</a></li>
+				<li><a href="{{pathFor 'docs.cli.examples'}}">Example Applications</a></li>
+			</ul>
+		</p>
+
+		<p><b>GUI docs:</b> the best we have at the moment is this video:</p>
+
+		<div class="ui embed" data-source="youtube" data-id="NBtFs1c4qhQ"></div>
+
+	</div>
+</template>
+-->
+

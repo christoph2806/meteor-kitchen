@@ -1,0 +1,129 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "container page-container"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "account-form"
+								}
+							],
+							"children": [
+								{
+									"type": "condition",
+									"condition": "errorMessage",
+									"children": [
+										{
+											"type": "condition-true",
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "alert alert-warning"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "{{errorMessage}}"
+														}
+													]
+												},
+												{
+													"type": "html",
+													"element": "button",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "btn btn-lg btn-primary btn-block go-home"
+														},
+														{
+															"name": "type",
+															"value": "button"
+														},
+														{
+															"name": "data-loading-text",
+															"value": "Please wait..."
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "OK"
+														}
+													],
+													"events": [
+														{
+															"type": "event",
+															"event": "onclick",
+															"handler": "onClickGoHome"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "condition-false",
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [
+				{
+					"type": "helper",
+					"name": "errorMessage",
+					"arguments": [],
+					"code": "\n    return pageSession.get(\"errorMessage\");\n  "
+				}
+			],
+			"handlers": [
+				{
+					"type": "handler",
+					"name": "onClickGoHome",
+					"code": "\n    Router.go(\"/\");\n  "
+				}
+			]
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

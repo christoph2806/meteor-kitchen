@@ -1,0 +1,2 @@
+- Both Blaze and React app works with `Meteor 1.3-rc.11`
+- Markdown component implemented for React (and now React version of `example-subpages` can be built)

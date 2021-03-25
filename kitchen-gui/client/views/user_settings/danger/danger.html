@@ -1,0 +1,36 @@
+<template name="UserSettingsDanger">
+	<div id="content" class="ui container">
+
+		<h2 class="ui red header">
+			Danger zone
+		</h2>
+
+		<div class="ui basic segment">
+			<h4 class="ui dividing header">Delete account</h4>
+			<p>
+				Once you delete your account, there is no going back. Please be certain.<br />
+				<i><b>Note:</b> All your projects will be deleted too.</i>
+				<button class="ui right floated red colored button delete-button">Delete account</button>
+			</p>
+		</div>
+	</div>
+
+	<div class="ui small modal delete">
+		<div class="header">
+			Delete account
+		</div>
+		<div class="image content">
+			<div class="description">
+				Are you sure you want to delete your user account and all your projects?
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+</template>

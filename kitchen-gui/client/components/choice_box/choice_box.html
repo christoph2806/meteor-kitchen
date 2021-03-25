@@ -1,0 +1,37 @@
+<template name="ChoiceBox">
+	<div id="{{boxId}}" class="ui small modal choice-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="grouped fields">
+					<label>{{message}}</label>
+					{{#each items}}
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="choice-item" value="{{value}}" {{itemChecked ../defaultValue}}>
+								<label>{{label}}</label>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

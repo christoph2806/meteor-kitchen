@@ -1,0 +1,26 @@
+certbot-auto certonly -a webroot --webroot-path=/usr/share/nginx/html \
+-d meteorfarm.com \
+-d www.meteorfarm.com \
+-d terminal-eye.meteorfarm.com \
+-d example-minimal.meteorfarm.com \
+-d example-dataview.meteorfarm.com \
+-d example-subpages.meteorfarm.com \
+-d example-plugins.meteorfarm.com \
+-d example-accounts.meteorfarm.com \
+-d example-onepage.meteorfarm.com \
+-d example-invoices.meteorfarm.com \
+-d example-markdowned.meteorfarm.com \
+-d example-photosharing.meteorfarm.com \
+-d example-upload.meteorfarm.com \
+-d example-iot.meteorfarm.com \
+-d example-geiger.meteorfarm.com \
+-d example-ide.meteorfarm.com \
+-d example-human.meteorfarm.com \
+-d example-human-iot.meteorfarm.com \
+-d example-human2machine.meteorfarm.com \
+-d example-semantic.meteorfarm.com \
+-d example-materialize.meteorfarm.com \
+-d example-cpu.meteorfarm.com \
+-d example-starwars.meteorfarm.com \
+-d example-aframe-iss.meteorfarm.com \
+-d gasoline-turbo.meteorfarm.com

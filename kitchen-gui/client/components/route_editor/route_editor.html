@@ -1,0 +1,91 @@
+<template name="RouteEditor">
+	{{#if object}}
+		{{#if showProperties}}
+			{{#each routeProperties}}
+				{{> RouteEditorItem property=this object=../object}}
+			{{/each}}
+		{{/if}}
+	{{/if}}
+</template>
+
+<template name="RouteEditorItem">
+	<div class="ui form route-editor-item">
+		<div class="field">
+			<h4>{{property.title}}</h4>
+			<select name="routeName" class="ui search selection dropdown route-name">
+				{{#each routeList}}
+					<option value="{{this}}" {{routeSelected this}}>{{this}}</option>
+				{{/each}}
+			</select>
+		</div>
+		{{#if routeParams}}
+			<div class="field">
+				<table class="ui very basic celled table">
+					<thead>
+						<tr>
+							<th class="collapsing">
+								Param name
+							</th>
+							<th>
+								Param value
+							</th>
+							<th>
+								Status
+							</th>
+							<th>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each routeParams}}
+							{{> RouteEditorItemParam}}
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="RouteEditorItemParam">
+	{{#if isUnknown}}
+		<tr class="object-table-row">
+			<td class="collapsing">
+				{{name}}
+			</td>
+			<td>
+				<div class="ui fluid input disabled">
+					<input type="text" value="{{value}}" disabled>
+				</div>
+			</td>
+			<td class="collapsing">
+				<i class="red icon fa fa-exclamation-circle"></i>&nbsp;{{status}}
+			</td>
+			<td class="collapsing">
+				<div class="object-table-row-controls">
+					<i class="icon fa fa-trash remove-param"></i>
+				</div>
+			</td>
+		</tr>
+	{{else}}
+		<tr class="object-table-row">
+			<td class="collapsing">
+				{{name}}
+			</td>
+			<td>
+				<div class="ui fluid input">
+					<input type="text" class="param-value" value="{{value}}">
+				</div>
+			</td>
+			<td class="collapsing">
+				{{#if warning}}
+					<i class="yellow icon fa fa-exclamation-triangle"></i>&nbsp;{{status}}
+				{{else}}
+					<i class="green icon fa fa-check-circle"></i>&nbsp;{{status}}
+				{{/if}}
+			</td>
+			<td class="collapsing">
+			</td>
+		</tr>
+	{{/if}}
+</template>

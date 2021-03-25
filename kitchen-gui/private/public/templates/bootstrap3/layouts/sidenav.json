@@ -1,0 +1,146 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "row-offcanvas row-offcanvas-left"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "menu"
+								},
+								{
+									"name": "class",
+									"value": "sidebar sidebar-offcanvas"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "h2",
+									"attributes": [],
+									"children": []
+								}
+							]
+						},
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "main"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "content"
+										},
+										{
+											"name": "class",
+											"value": "col-md-12"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "p",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "visible-xs"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "button",
+													"attributes": [
+														{
+															"name": "type",
+															"value": "button"
+														},
+														{
+															"name": "class",
+															"value": "btn btn-primary btn-xs"
+														},
+														{
+															"name": "data-toggle",
+															"value": "offcanvas"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "i",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "glyphicon glyphicon-chevron-left"
+																}
+															],
+															"children": []
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "inclusion",
+											"template": "yield",
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [],
+			"handlers": [
+				{
+					"type": "handler",
+					"name": "onClickDataToggleOffcanvas",
+					"code": "\n\t\tt.$(\".row-offcanvas\").toggleClass(\"active\");\n\t"
+				}
+			]
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

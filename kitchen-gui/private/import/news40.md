@@ -1,0 +1,2 @@
+- Started refactoring GUI
+- GUI: added popover help to object editor

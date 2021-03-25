@@ -1,0 +1,69 @@
+{
+	"packages": {
+		"meteor": [
+			"blaze-html-templates",
+			"kadira:flow-router",
+			"react-meteor-data",
+			"reactive-dict",
+			"meteorhacks:picker",
+			"check",
+			"random",
+			"http",
+			"email",
+			"spiderable",
+			"ejson",
+			"session",
+			"underscore",
+			"fortawesome:fontawesome",
+			"matb33:collection-hooks"
+		],
+		"npm": [
+			"react",
+			"react-dom",
+			"react-mounter",
+			"react-addons-pure-render-mixin",
+			"prop-types",
+			"bcrypt",
+			"moment"
+		],
+		"mrt": []
+	},
+	"copy_files": [
+		{ "source": "TEMPLATE_CODE_DIR/client_root.js", "dest": "CLIENT_DIR/main.js" },
+		{ "source": "TEMPLATE_CODE_DIR/client_styles_root.less", "dest": "CLIENT_DIR/main.less" },
+		{ "source": "TEMPLATE_CODE_DIR/server_root.js", "dest": "SERVER_DIR/main.js" },
+		{ "source": "TEMPLATE_CODE_DIR/string_utils.js", "dest": "BOTH_LIB_DIR/string_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/case_utils.js", "dest": "BOTH_LIB_DIR/case_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/object_utils.js", "dest": "BOTH_LIB_DIR/object_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/date_utils.js", "dest": "BOTH_LIB_DIR/date_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/database_utils.js", "dest": "BOTH_LIB_DIR/database_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/adjacency_list_utils.js", "dest": "BOTH_LIB_DIR/adjacency_list_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/api_utils.js", "dest": "BOTH_LIB_DIR/api_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/client_init.js",   "dest": "CLIENT_GLOBALS_DIR/init.js" },
+		{ "source": "TEMPLATE_CODE_DIR/http_utils.js",   "dest": "CLIENT_LIB_DIR/http_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/router_utils.js",   "dest": "CLIENT_LIB_DIR/router_utils.js" },
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/confirmation_dialog.jsx", "dest": "CLIENT_COMPONENTS_DIR/confirmation_dialog/"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/input_dialog.jsx", "dest": "CLIENT_COMPONENTS_DIR/input_dialog/"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/choice_dialog.jsx", "dest": "CLIENT_COMPONENTS_DIR/choice_dialog/"}
+	],
+	"import_files": {
+		"client": [
+			"CLIENT_GLOBALS_DIR",
+			"BOTH_COLLECTIONS_DIR",
+			"BOTH_JOINS_DIR",
+			"CLIENT_ROUTER_DIR",
+			"CLIENT_STYLES_DEFAULT_DIR",
+			"CLIENT_STYLES_DIR"
+		],
+
+		"server": [
+			"BOTH_COLLECTIONS_DIR",
+			"BOTH_JOINS_DIR",
+			"SERVER_COLLECTIONS_DIR",
+			"SERVER_COLLECTIONS_RULES_DIR",
+			"SERVER_PUBLISH_DIR",
+			"SERVER_METHODS_DIR",
+			"SERVER_CONTROLLERS_DIR"
+		]
+	}
+}

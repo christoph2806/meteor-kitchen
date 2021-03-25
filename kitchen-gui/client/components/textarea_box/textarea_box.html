@@ -1,0 +1,30 @@
+<template name="TextareaBox">
+	<div id="{{boxId}}" class="ui small modal textarea-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="field">
+					<label>{{message}}</label>
+					<textarea class="textarea-editor">{{defaultValue}}</textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

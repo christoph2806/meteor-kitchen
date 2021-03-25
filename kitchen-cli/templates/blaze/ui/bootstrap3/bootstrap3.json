@@ -1,0 +1,12 @@
+{
+	"packages": {
+		"meteor": ["less"],
+		"mrt"   : []
+	},
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/bootstrap3/js/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/bootstrap3/js/" },
+		{ "source": "TEMPLATE_UI_DIR/bootstrap3/less/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/bootstrap3/less/" },
+		{ "source": "TEMPLATE_UI_DIR/bootstrap3/fonts/", "dest": "PUBLIC_FONTS_DIR/" },
+		{ "source": "TEMPLATE_UI_DIR/bootstrap3-plugins/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/bootstrap3-plugins/" }
+	]
+}

@@ -1,0 +1,45 @@
+<template name="HomePrivateEditBuildConsole">
+	<div class="page-container ui container height-max">
+		<div class="display-table height-max">
+			<div class="display-tr">
+				<h1>
+					Build
+					<div class="ui right floated no-padding no-margin basic segment">
+						<div class="ui large blue button build-options"><span class="icon fa fa-gear"></span> Build Options</div>
+					</div>
+				</h1>
+				{{#if projectNotSaved}}
+					<div class="ui warning message">
+						<div class="content">
+							<div class="header">Unsaved changes</div>
+							<p>Don't forget to save changes to project before executing build.</p>
+						</div>
+					</div>
+				{{/if}}
+
+
+				{{#if showBuildLocallyInfo}}
+					<div class="ui icon message build-locally-info">
+						<i class="bordered inverted terminal icon"></i>
+						<i class="close icon"></i>
+						<div class="content">
+							<div class="header">Build Locally</div>
+							<p>To build and run this application on your local computer, open terminal and type:</p>
+							<pre><code>meteor-kitchen {{urlFor 'api.getapp.json' applicationId=params.applicationId}} {{kitchenArgs}}</code></pre>
+						</div>
+					</div>
+				{{/if}}
+
+				<div class="button-toolbar">
+					<div class="ui red button {{terminalButtonsDisabledClass}} build-remotely"><span class="icon fa fa-gears"></span> Verify</div>
+					<div class="ui blue button {{terminalButtonsDisabledClass}} download-source"><span class="icon fa fa-download"></span> Download Source</div>
+					<div class="ui green button {{terminalButtonsDisabledClass}} download-android"><span class="icon fa fa-android"></span> Download Android .apk</div>
+					<div class="ui black button build-locally"><span class="icon fa fa-terminal"></span> Build Locally</div>
+				</div>
+			</div>
+			<div class="display-tr height-max">
+				<div class="display-tc height-max terminal-container"><pre id="terminal-window" class="terminal-window height-max">{{#each terminal}}{{message}}<br />{{/each}}{{#if terminalBusy}}<span class="fa fa-circle-o-notch fa-spin"></span>{{/if}}<br /></pre></div>
+			</div>
+		</div>
+	</div>
+</template>

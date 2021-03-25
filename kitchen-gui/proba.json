@@ -1,0 +1,5573 @@
+{
+	"version": 119,
+	"classList": [
+		{
+			"objectType": "root",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "application",
+					"title": "Application",
+					"type": "application",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "object",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "field",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "string",
+					"required": true,
+					"input": "select",
+					"choice_items": [
+						"string",
+						"integer",
+						"float",
+						"date",
+						"time",
+						"bool",
+						"array",
+						"object",
+						"email"
+					]
+				},
+				{
+					"name": "default",
+					"title": "Default value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "min",
+					"title": "Min. value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "max",
+					"title": "Max. value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "required",
+					"title": "Required",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "format",
+					"title": "Format",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "searchable",
+					"title": "Searchable",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "sortable",
+					"title": "Sortable",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "exportable",
+					"title": "Exportable",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "input",
+					"title": "Input",
+					"type": "string",
+					"subType": "",
+					"default": "text",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"text",
+						"password",
+						"datepicker",
+						"read-only",
+						"textarea",
+						"radio",
+						"checkbox",
+						"select",
+						"select-multiple",
+						"tags",
+						"crud",
+						"file",
+						"custom"
+					]
+				},
+				{
+					"name": "input_template",
+					"title": "Input template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "input_template_code",
+					"title": "Input template code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "input_group_class",
+					"title": "Input group class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "input_control_class",
+					"title": "Input control class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "input_items",
+					"title": "Input items",
+					"type": "array",
+					"subType": "input_item",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "lookup_query_name",
+					"title": "Lookup query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "lookup_query_params",
+					"title": "Lookup query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "lookup_key",
+					"title": "Lookup value field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "lookup_field",
+					"title": "Lookup title field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "display_helper",
+					"title": "Display helper",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "array_item_type",
+					"title": "Array item type",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"string",
+						"integer",
+						"float",
+						"date",
+						"time",
+						"bool",
+						"object",
+						"email"
+					]
+				},
+				{
+					"name": "crud_fields",
+					"title": "CRUD input fields",
+					"type": "array",
+					"subType": "field",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "crud_insert_title",
+					"title": "CRUD insert title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "file_collection",
+					"title": "File collection",
+					"type": "string",
+					"subType": "collection_name",
+					"default": "",
+					"required": false,
+					"input": "select_collection"
+				},
+				{
+					"name": "file_container",
+					"title": "File container field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "join_collection",
+					"title": "Join collection",
+					"type": "string",
+					"subType": "collection_name",
+					"default": "",
+					"required": false,
+					"input": "select_collection"
+				},
+				{
+					"name": "join_collection_field",
+					"title": "Join collection field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "join_container",
+					"title": "Join container field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "join_fields",
+					"title": "Join fields",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "show_in_dataview",
+					"title": "Show in dataviews",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "show_in_insert_form",
+					"title": "Show in insert forms",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "show_in_update_form",
+					"title": "Show in update forms",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "show_in_read_only_form",
+					"title": "Show in read-only forms",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "role_in_blog",
+					"title": "Role in Blog",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"title",
+						"subtitle",
+						"text",
+						"date"
+					]
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "hidden_field",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "value",
+					"title": "Value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "input_item",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "value",
+					"title": "Value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "collection",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "collection",
+					"required": true,
+					"input": "select",
+					"choice_items": [
+						"collection",
+						"file_collection",
+						"bigchaindb"
+					]
+				},
+				{
+					"name": "storage_adapters",
+					"title": "Storage adapters",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist",
+					"choice_items": [
+						"gridfs",
+						"filesystem",
+						"s3",
+						"dropbox"
+					]
+				},
+				{
+					"name": "storage_adapter_options",
+					"title": "Storage adapter options",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "json"
+				},
+				{
+					"name": "fields",
+					"title": "Fields",
+					"type": "array",
+					"subType": "field",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "owner_field",
+					"title": "Owner field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "roles_allowed_to_read",
+					"title": "Roles allowed to Read",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "roles_allowed_to_insert",
+					"title": "Roles allowed to Insert",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "roles_allowed_to_update",
+					"title": "Roles allowed to Update",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "roles_allowed_to_delete",
+					"title": "Roles allowed to Delete",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "roles_allowed_to_download",
+					"title": "Roles allowed to Download",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "update_rule",
+					"title": "Update rule",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "delete_rule",
+					"title": "Delete rule",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "before_insert_code",
+					"title": "Before insert code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "before_update_code",
+					"title": "Before update code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "before_remove_code",
+					"title": "Before remove code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "after_insert_code",
+					"title": "After insert code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "after_update_code",
+					"title": "After update code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "after_remove_code",
+					"title": "After remove code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "before_insert_source_file",
+					"title": "Before insert source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "before_update_source_file",
+					"title": "Before update source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "before_remove_source_file",
+					"title": "Before remove source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "after_insert_source_file",
+					"title": "After insert source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "after_update_source_file",
+					"title": "After update source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "after_remove_source_file",
+					"title": "After remove source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "query",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "collection",
+					"title": "Collection name",
+					"type": "string",
+					"subType": "collection_name",
+					"default": "",
+					"required": true,
+					"input": "select_collection"
+				},
+				{
+					"name": "find_one",
+					"title": "FindOne",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "filter",
+					"title": "Filter",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "json"
+				},
+				{
+					"name": "options",
+					"title": "Options",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "json"
+				},
+				{
+					"name": "related_queries",
+					"title": "Related queries",
+					"type": "array",
+					"subType": "subscription",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "variables",
+					"title": "Variables",
+					"type": "array",
+					"subType": "variable",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "subscription",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Publication name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "params",
+					"title": "Params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "component",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "component",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "custom_template",
+					"title": "Custom template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+				"page"
+			],
+			"hideThis": true
+		},
+		{
+			"objectType": "param",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "value",
+					"title": "Value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "variable",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "value",
+					"title": "Value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "action",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "icon_class",
+					"title": "Icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "route",
+					"title": "Route name",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "route_params",
+					"title": "Route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "action_code",
+					"title": "Action Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "rule",
+					"title": "Rule",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "server_side_route",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "route_params",
+					"title": "Route params",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "path",
+					"title": "Path",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "source_file",
+					"title": "Source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "source_content",
+					"title": "Source content",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "page",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "page",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "template",
+					"title": "Template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"page_empty",
+						"page_subcontent_sidenav",
+						"page_subcontent_sidenav_collapse",
+						"page_subcontent_tabnav",
+						"page_subcontent_tabnav_2col",
+						"page_subcontent_navbar",
+						"page_subcontent_navbar_top",
+						"change_pass",
+						"create_password",
+						"forgot_password",
+						"login",
+						"logout",
+						"register",
+						"reset_password",
+						"verify_email"
+					]
+				},
+				{
+					"name": "custom_template",
+					"title": "Custom template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "html",
+					"title": "HTML code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "html"
+				},
+				{
+					"name": "js",
+					"title": "JS code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "jsx",
+					"title": "JSX code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "gasoline",
+					"title": "Generic Template",
+					"type": "gasoline",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "use_gasoline",
+					"title": "Use visual designer",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "user_defined_template",
+					"title": "User defined template",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "meta_description",
+					"title": "Meta Description",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "meta_title",
+					"title": "Meta Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "text",
+					"title": "Text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				},
+				{
+					"name": "background_image",
+					"title": "Background Image URL",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "container_class",
+					"title": "Container class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "route_params",
+					"title": "Route params",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "close_route",
+					"title": "Close button route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "close_route_params",
+					"title": "Close button route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "back_route",
+					"title": "Back button route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "back_route_params",
+					"title": "Back button route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "roles",
+					"title": "Roles",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "pages",
+					"title": "Subpages",
+					"type": "array",
+					"subType": "page",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "related_queries",
+					"title": "Related queries",
+					"type": "array",
+					"subType": "subscription",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "force_yield_subpages",
+					"title": "Force yield subpages",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "render_subpages",
+					"title": "Render subpages",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"auto",
+						"never",
+						"always"
+					]
+				},
+				{
+					"name": "zoneless",
+					"title": "Zoneless",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "parent_layout",
+					"title": "Parent layout",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "layout_template",
+					"title": "Layout template name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "controller_before_action",
+					"title": "Controller onBeforeAction",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "controller_after_action",
+					"title": "Controller onAfterAction",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+				"zone"
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "zone",
+			"derivedFrom": [
+				"page"
+			],
+			"members": [
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "zone",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "html",
+					"title": "HTML code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "html"
+				},
+				{
+					"name": "js",
+					"title": "JS code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "jsx",
+					"title": "JSX code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "gasoline",
+					"title": "Generic Template",
+					"type": "gasoline",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "use_gasoline",
+					"title": "Use visual designer",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "user_defined_template",
+					"title": "User defined template",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "background_image",
+					"title": "Background Image URL",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "container_class",
+					"title": "Container class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "pages",
+					"title": "Subpages",
+					"type": "array",
+					"subType": "page",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "related_queries",
+					"title": "Related queries",
+					"type": "array",
+					"subType": "subscription",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "render_subpages",
+					"title": "Render subpages",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"auto",
+						"never",
+						"always"
+					]
+				},
+				{
+					"name": "layout_template",
+					"title": "Layout template name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "layout",
+					"title": "Layout",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"navbar",
+						"sidenav",
+						"landing",
+						"admin",
+						"sticky_footer",
+						"empty"
+					]
+				},
+				{
+					"name": "default_route",
+					"title": "Default route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "navbar_class",
+					"title": "Navbar Class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "footer_class",
+					"title": "Footer Class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "file_pair",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "source",
+					"title": "Source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "source_content",
+					"title": "Source content",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				},
+				{
+					"name": "dest",
+					"title": "Destination file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "packages",
+			"derivedFrom": [
+			],
+			"members": [
+				{
+					"name": "meteor",
+					"title": "Meteor",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "npm",
+					"title": "NPM",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "mrt",
+					"title": "Meteorite",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "application",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "meta_description",
+					"title": "Meta Description",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "meta_title",
+					"title": "Meta Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "templating",
+					"title": "Templating framework",
+					"type": "string",
+					"subType": "",
+					"default": "blaze",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"blaze",
+						"react"
+					]
+				},
+				{
+					"name": "frontend",
+					"title": "Frontend",
+					"type": "string",
+					"subType": "",
+					"default": "bootstrap3",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"bootstrap3",
+						"semantic-ui",
+						"materialize",
+						"aframe"
+					]
+				},
+				{
+					"name": "theme",
+					"title": "Theme",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text",
+					"choice_items": [
+						"bootswatch-amelia",
+						"bootswatch-cerulean",
+						"bootswatch-cosmo",
+						"bootswatch-cyborg",
+						"bootswatch-cyborg-darkly",
+						"bootswatch-darkly",
+						"bootswatch-flatly",
+						"bootswatch-journal",
+						"bootswatch-lumen",
+						"bootswatch-paper",
+						"bootswatch-readable",
+						"bootswatch-sandstone",
+						"bootswatch-simplex",
+						"bootswatch-slate",
+						"bootswatch-solar",
+						"bootswatch-spacelab",
+						"bootswatch-superhero",
+						"bootswatch-united",
+						"bootswatch-yeti",
+						"flat-ui"
+					]
+				},
+				{
+					"name": "animate",
+					"title": "Animate",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "footer_text",
+					"title": "Footer text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "roles",
+					"title": "User roles",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "default_role",
+					"title": "Default role for new users",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "use_collection2",
+					"title": "Use Collection2",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "collections",
+					"title": "Collections",
+					"type": "array",
+					"subType": "collection",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "queries",
+					"title": "Queries",
+					"type": "array",
+					"subType": "query",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "free_zone",
+					"title": "Free zone",
+					"type": "zone",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "public_zone",
+					"title": "Public zone",
+					"type": "zone",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "private_zone",
+					"title": "Private zone",
+					"type": "zone",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "login_with_password",
+					"title": "Login with password",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "send_verification_email",
+					"title": "Send verification e-mail",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_google",
+					"title": "Login with Google",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_github",
+					"title": "Login with GitHub",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_linkedin",
+					"title": "Login with LinkedIn",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_facebook",
+					"title": "Login with Facebook",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_twitter",
+					"title": "Login with Twitter",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_meteor",
+					"title": "Login with Meteor",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "login_with_auth0",
+					"title": "Login with Auth0",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "server_startup_code",
+					"title": "Server startup code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "client_startup_code",
+					"title": "Client startup code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "on_user_created_code",
+					"title": "On user created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "on_user_logged_code",
+					"title": "On user logged code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "global_on_rendered_code",
+					"title": "Global onRendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "server_startup_source_file",
+					"title": "Server startup source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "client_startup_source_file",
+					"title": "Client startup source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "on_user_created_source_file",
+					"title": "On user created source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "on_user_logged_source_file",
+					"title": "On user logged source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "server_startup_imports",
+					"title": "Import modules to server startup",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "client_startup_imports",
+					"title": "Import modules to client startup",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "mobile_config",
+					"title": "mobile-config.js",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "stylesheet",
+					"title": "CSS/LESS stylesheet",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "css"
+				},
+				{
+					"name": "server_side_routes",
+					"title": "Server side routes",
+					"type": "array",
+					"subType": "server_side_route",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "copy_files",
+					"title": "Copy files",
+					"type": "array",
+					"subType": "file_pair",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "packages",
+					"title": "Packages",
+					"type": "packages",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "router_config",
+					"title": "Router configuration",
+					"type": "object",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "json"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "custom_component",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "custom_component",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "custom_template",
+					"title": "Custom template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "html",
+					"title": "HTML code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "html"
+				},
+				{
+					"name": "js",
+					"title": "JS code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "jsx",
+					"title": "JSX code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "gasoline",
+					"title": "Generic Template",
+					"type": "gasoline",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "use_gasoline",
+					"title": "Use visual designer",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "menu_item",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "route",
+					"title": "Route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "route_params",
+					"title": "Route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "url",
+					"title": "URL",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "target",
+					"title": "Set HTML target attr value",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "class",
+					"title": "Class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "items_container_class",
+					"title": "Items container class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "icon_class",
+					"title": "Icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "items",
+					"title": "Sub items",
+					"type": "array",
+					"subType": "menu_item",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "menu",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "menu",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "template",
+					"title": "Template",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"menu",
+						"menu_buttons"
+					]
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "items",
+					"title": "Sub items",
+					"type": "array",
+					"subType": "menu_item",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "items_container_class",
+					"title": "Items container class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "scroll_spy_selector",
+					"title": "ScrollSpy selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "jumbotron",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "jumbotron",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text",
+					"title": "Text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				},
+				{
+					"name": "image_url",
+					"title": "Image URL",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "button_title",
+					"title": "Button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "button_route",
+					"title": "Button route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "button_route_params",
+					"title": "Button route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "button_class",
+					"title": "Button CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "form",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "form",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "mode",
+					"title": "Mode",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "select",
+					"choice_items": [
+						"insert",
+						"update",
+						"read_only"
+					]
+				},
+				{
+					"name": "layout",
+					"title": "Form layout",
+					"type": "string",
+					"subType": "",
+					"default": "default",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"default",
+						"horizontal",
+						"inline"
+					]
+				},
+				{
+					"name": "autofocus",
+					"title": "Autofocus",
+					"type": "bool",
+					"subType": "",
+					"default": "true",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "submit_route",
+					"title": "Submit route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "cancel_route",
+					"title": "Cancel route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "close_route",
+					"title": "Close route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "back_route",
+					"title": "Back route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "submit_code",
+					"title": "Submit code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "cancel_code",
+					"title": "Cancel code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "submit_button_title",
+					"title": "Submit button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "cancel_button_title",
+					"title": "Cancel button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "close_button_title",
+					"title": "Close button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "submit_route_params",
+					"title": "Submit route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "cancel_route_params",
+					"title": "Cancel route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "close_route_params",
+					"title": "Close route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "back_route_params",
+					"title": "Back route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "fields",
+					"title": "Fields",
+					"type": "array",
+					"subType": "field",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "hidden_fields",
+					"title": "Hidden fields",
+					"type": "array",
+					"subType": "hidden_field",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "data_view",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "data_view",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text_if_empty",
+					"title": "Text if empty",
+					"type": "string",
+					"subType": "",
+					"default": "No data here",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "text_if_not_found",
+					"title": "Text if not found",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "delete_confirmation_message",
+					"title": "Delete confirmation message",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "page_size",
+					"title": "Page size",
+					"type": "string",
+					"subType": "",
+					"default": "0",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "insert_route",
+					"title": "Insert route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "details_route",
+					"title": "Details route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "edit_route",
+					"title": "Edit route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "delete_route",
+					"title": "Delete route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "insert_route_params",
+					"title": "Insert route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "details_route_params",
+					"title": "Details route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "edit_route_params",
+					"title": "Edit route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "delete_route_params",
+					"title": "Delete route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "item_actions",
+					"title": "Custom Item Actions",
+					"type": "array",
+					"subType": "action",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "insert_button_title",
+					"title": "Insert button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "details_button_title",
+					"title": "Details button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "update_button_title",
+					"title": "Update button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "delete_button_title",
+					"title": "Delete button title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "on_item_clicked_code",
+					"title": "OnItemClicked code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "views",
+					"title": "View styles",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist",
+					"choice_items": [
+						"table",
+						"blog",
+						"list",
+						"cards"
+					]
+				},
+				{
+					"name": "search_engine_style",
+					"title": "Search engine style",
+					"type": "bool",
+					"subType": "",
+					"default": "false",
+					"required": false,
+					"input": "checkbox"
+				},
+				{
+					"name": "fields",
+					"title": "Fields",
+					"type": "array",
+					"subType": "field",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "tree_view",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "tree_view",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title",
+					"title": "Title",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "title_icon_class",
+					"title": "Title icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "events_code",
+					"title": "Events",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "helpers_code",
+					"title": "Helpers",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_created_code",
+					"title": "Template created code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_rendered_code",
+					"title": "Template rendered code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "template_destroyed_code",
+					"title": "Template destroyed code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "item_name_field",
+					"title": "Item name field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "item_type_field",
+					"title": "Item type field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "collapsed_icon_class",
+					"title": "Collapsed icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "expanded_icon_class",
+					"title": "Expanded icon class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "item_route",
+					"title": "Item route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "item_route_params",
+					"title": "Item route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "folder_route",
+					"title": "Folder route",
+					"type": "string",
+					"subType": "route_name",
+					"default": "",
+					"required": false,
+					"input": "select_route"
+				},
+				{
+					"name": "folder_route_params",
+					"title": "Folder route params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "markdown",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "markdown",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "source",
+					"title": "Source",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "markdown"
+				},
+				{
+					"name": "source_file",
+					"title": "Markdown source file",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "div",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "div",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text",
+					"title": "Text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "section",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "section",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text",
+					"title": "Text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "editable_content",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "editable_content",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text_if_empty",
+					"title": "Text if empty",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "cms_content",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "cms_content",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "text_if_empty",
+					"title": "Text if empty",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "plugin",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "properties",
+					"title": "Properties",
+					"type": "object",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "json"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "chart",
+			"derivedFrom": [
+				"component"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Type",
+					"type": "string",
+					"subType": "",
+					"default": "chart",
+					"required": false,
+					"input": "static"
+				},
+				{
+					"name": "imports",
+					"title": "Import modules",
+					"type": "array",
+					"subType": "string",
+					"default": "",
+					"required": false,
+					"input": "stringlist"
+				},
+				{
+					"name": "dest_selector",
+					"title": "Dest. selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "dest_position",
+					"title": "Dest. position",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "select",
+					"choice_items": [
+						"",
+						"top",
+						"bottom",
+						"before",
+						"after"
+					]
+				},
+				{
+					"name": "class",
+					"title": "CSS class",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "query_name",
+					"title": "Query name",
+					"type": "string",
+					"subType": "query_name",
+					"default": "",
+					"required": false,
+					"input": "select_query"
+				},
+				{
+					"name": "query_params",
+					"title": "Query params",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "before_subscription_code",
+					"title": "Before Subscription Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "custom_data_code",
+					"title": "Custom Data Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "components",
+					"title": "Components",
+					"type": "array",
+					"subType": "component",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "show_condition",
+					"title": "Show Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				},
+				{
+					"name": "chart_type",
+					"title": "Chart Type",
+					"type": "string",
+					"subType": "",
+					"default": "line",
+					"required": true,
+					"input": "select",
+					"choice_items": [
+						"line",
+						"spline",
+						"step",
+						"area",
+						"area-spline",
+						"area-step",
+						"bar",
+						"scatter",
+						"pie",
+						"donut",
+						"gauge"
+					]
+				},
+				{
+					"name": "value_field",
+					"title": "Value field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "category_field",
+					"title": "Category field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "time_series_field",
+					"title": "Time series field",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "date_format",
+					"title": "Date format",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gasoline",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "gasoline",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "templates",
+					"title": "Templates",
+					"type": "array",
+					"subType": "gas_template",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_event",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "event",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "event",
+					"title": "Event name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "handler",
+					"title": "Handler name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_node",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_text",
+			"derivedFrom": [
+				"gas_node"
+			],
+			"members": [
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "text",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "text",
+					"title": "Text",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "textarea"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_element",
+			"derivedFrom": [
+				"gas_node"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_handler",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "handler",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "code",
+					"title": "Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_helper",
+			"derivedFrom": [
+				"object"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "helper",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "code",
+					"title": "Code",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "javascript"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_template",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "name",
+					"title": "Name",
+					"type": "string",
+					"subType": "object_name",
+					"default": "",
+					"required": true,
+					"input": "text"
+				},
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "template",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "handlers",
+					"title": "Event handlers",
+					"type": "array",
+					"subType": "gas_handler",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "helpers",
+					"title": "Helpers",
+					"type": "array",
+					"subType": "gas_helper",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_html",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "html",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "element",
+					"title": "Element",
+					"type": "string",
+					"subType": "",
+					"default": "div",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "selector",
+					"title": "Selector",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				},
+				{
+					"name": "attributes",
+					"title": "Attributes",
+					"type": "array",
+					"subType": "param",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "events",
+					"title": "Events",
+					"type": "array",
+					"subType": "gas_event",
+					"default": "",
+					"required": false,
+					"input": ""
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_loop",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "loop",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "dataset",
+					"title": "Dataset",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_condition",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "condition",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "condition",
+					"title": "Condition",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_condition_true",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "condition-true",
+					"required": true,
+					"input": "static"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_condition_false",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "condition-false",
+					"required": true,
+					"input": "static"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		},
+		{
+			"objectType": "gas_inclusion",
+			"derivedFrom": [
+				"gas_element"
+			],
+			"members": [
+				{
+					"name": "children",
+					"title": "Children",
+					"type": "array",
+					"subType": "gas_node",
+					"default": "",
+					"required": false,
+					"input": ""
+				},
+				{
+					"name": "type",
+					"title": "Gasoline Type",
+					"type": "string",
+					"subType": "",
+					"default": "inclusion",
+					"required": true,
+					"input": "static"
+				},
+				{
+					"name": "template",
+					"title": "Template name",
+					"type": "string",
+					"subType": "",
+					"default": "",
+					"required": false,
+					"input": "text"
+				}
+			],
+			"hideDerivedClasses": [
+			],
+			"hideThis": false
+		}
+	]
+}

@@ -1,0 +1,2 @@
+- Field object now have `min` and `max` property. Useful in form validations.
+- Removed control-label from single checkbox form fields

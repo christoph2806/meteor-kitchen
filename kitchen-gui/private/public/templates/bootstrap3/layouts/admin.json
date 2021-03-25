@@ -1,0 +1,240 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "overlay"
+						}
+					],
+					"children": []
+				},
+				{
+					"type": "html",
+					"element": "header",
+					"attributes": [],
+					"children": [
+						{
+							"type": "html",
+							"element": "nav",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "navbar"
+								},
+								{
+									"name": "class",
+									"value": "navbar main-nav"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "navbar-container"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "navbar-header"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "button",
+													"attributes": [
+														{
+															"name": "type",
+															"value": "button"
+														},
+														{
+															"name": "class",
+															"value": "navbar-btn navbar-toggle collapsed"
+														},
+														{
+															"name": "id",
+															"value": "sidebar-collapse"
+														},
+														{
+															"name": "data-toggle",
+															"value": "collapse"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "sr-only"
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "\n                            Toggle navigation\n                        "
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "icon-bar"
+																}
+															],
+															"children": []
+														},
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "icon-bar"
+																}
+															],
+															"children": []
+														},
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "icon-bar"
+																}
+															],
+															"children": []
+														}
+													]
+												},
+												{
+													"type": "html",
+													"element": "a",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "navbar-brand"
+														},
+														{
+															"name": "href",
+															"value": "/"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "\n                        APP_TITLE\n                    "
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "id",
+													"value": "menu"
+												},
+												{
+													"name": "class",
+													"value": "navbar-collapse collapse"
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "admin-layout-row"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "nav",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "sidebar"
+								},
+								{
+									"name": "class",
+									"value": "admin-layout-sidebar sidebar"
+								}
+							],
+							"children": []
+						},
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "admin-layout-col"
+								}
+							],
+							"children": [
+								{
+									"type": "inclusion",
+									"template": "yield",
+									"children": []
+								},
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "background-image"
+										},
+										{
+											"name": "style",
+											"value": "background-image: url(BACKGROUND_IMAGE)"
+										}
+									],
+									"children": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

@@ -1,0 +1,1 @@
+- Generated react app will work with `Meteor 1.3-rc.11`

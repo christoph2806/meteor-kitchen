@@ -1,0 +1,20 @@
+<template name="TEMPLATE_NAME">
+	<div class="row-offcanvas row-offcanvas-left">
+		<div id="menu" class="sidebar sidebar-offcanvas">
+			<h2>
+			</h2>
+		</div>
+
+		<div id="main">
+			<div id="content" class="col-md-12">
+				<p class="visible-xs">
+					<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+				</p>
+				{{> yield}}
+			</div>
+		</div>
+	</div>
+
+	<div id="background-image" style="background-image: url(BACKGROUND_IMAGE);">
+	</div>
+</template>

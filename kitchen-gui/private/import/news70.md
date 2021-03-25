@@ -1,0 +1,1 @@
+- Both Blaze and React app works with `Meteor 1.3`

@@ -1,0 +1,7 @@
+<template name="FixedLayout">
+	{{#if currentUser}}
+		{{> PrivateLayout}}
+	{{else}}
+		{{> PublicLayout}}
+	{{/if}}
+</template>

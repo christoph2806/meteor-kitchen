@@ -1,0 +1,256 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "container"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "form",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "change_pass_form"
+								},
+								{
+									"name": "class",
+									"value": "account-form"
+								},
+								{
+									"name": "role",
+									"value": "form"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "h2",
+									"attributes": [],
+									"children": [
+										{
+											"type": "text",
+											"text": "Change password"
+										}
+									]
+								},
+								{
+									"type": "condition",
+									"condition": "errorMessage",
+									"children": [
+										{
+											"type": "condition-true",
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "alert alert-warning"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "{{errorMessage}}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "condition-false",
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "alert alert-success"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "{{infoMessage}}"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "input",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "old_password"
+										},
+										{
+											"name": "type",
+											"value": "password"
+										},
+										{
+											"name": "class",
+											"value": "form-control"
+										},
+										{
+											"name": "placeholder",
+											"value": "Your old password"
+										},
+										{
+											"name": "required",
+											"value": "required"
+										},
+										{
+											"name": "autofocus",
+											"value": "autofocus"
+										}
+									],
+									"children": []
+								},
+								{
+									"type": "html",
+									"element": "input",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "new_password"
+										},
+										{
+											"name": "type",
+											"value": "password"
+										},
+										{
+											"name": "class",
+											"value": "form-control"
+										},
+										{
+											"name": "placeholder",
+											"value": "New password"
+										},
+										{
+											"name": "required",
+											"value": "required"
+										}
+									],
+									"children": []
+								},
+								{
+									"type": "html",
+									"element": "input",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "confirm_pass"
+										},
+										{
+											"name": "type",
+											"value": "password"
+										},
+										{
+											"name": "class",
+											"value": "form-control"
+										},
+										{
+											"name": "placeholder",
+											"value": "Repeat new password"
+										},
+										{
+											"name": "required",
+											"value": "required"
+										}
+									],
+									"children": []
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "btn btn-lg btn-primary btn-block"
+										},
+										{
+											"name": "type",
+											"value": "submit"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "text",
+											"text": "OK"
+										}
+									]
+								}
+							],
+							"events": [
+								{
+									"type": "event",
+									"event": "onsubmit",
+									"handler": "onSubmitChangePassForm"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [
+				{
+					"type": "helper",
+					"name": "errorMessage",
+					"arguments": [],
+					"code": "\n\t\treturn pageSession.get(\"errorMessage\");\n\t"
+				},
+				{
+					"type": "helper",
+					"name": "infoMessage",
+					"arguments": [],
+					"code": "\n\t\treturn pageSession.get(\"infoMessage\");\n\t"
+				}
+			],
+			"handlers": [
+				{
+					"type": "handler",
+					"name": "onSubmitChangePassForm",
+					"code": "\n\t\te.preventDefault();\n\n\t\tpageSession.set(\"errorMessage\", \"\");\n\t\tpageSession.set(\"infoMessage\", \"\");\n\n\t\tvar submit_button = $(t.find(\":submit\"));\n\n\t\tvar old_password = t.find('#old_password').value;\n\t\tvar new_password = t.find('#new_password').value;\n\t\tvar confirm_pass = t.find('#confirm_pass').value;\n\n\t\tif(old_password == \"\")\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter your old password.\");\n\t\t\tt.find('#old_password').focus();\n\t\t\treturn false;\n\t\t}\n\t\tif(new_password == \"\")\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter your new password.\");\n\t\t\tt.find('#new_password').focus();\n\t\t\treturn false;\n\t\t}\n\t\tif(confirm_pass == \"\")\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please confirm your new password.\");\n\t\t\tt.find('#confirm_pass').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\t// check new password\n\t\tif(new_password != confirm_pass)\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Your new password and confirm password doesn't match.\");\n\t\t\tt.find('#new_password').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\tsubmit_button.button(\"loading\");\n\t\tAccounts.changePassword(old_password, new_password, function(err) {\n\t\t\tsubmit_button.button(\"reset\");\n\t\t\tif (err) {\n\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\treturn false;\n\t\t\t} else {\n\t\t\t\tpageSession.set(\"errorMessage\", \"\");\n\t\t\t\tpageSession.set(\"infoMessage\", \"Your new password is set.\");\n\t\t\t\tt.find('#old_password').value = \"\";\n\t\t\t\tt.find('#new_password').value = \"\";\n\t\t\t\tt.find('#confirm_pass').value = \"\";\n\t\t\t\tt.find('#old_password').focus();\n\t\t\t}\n\t\t});\n\t\treturn false; \n\t"
+				}
+			]
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

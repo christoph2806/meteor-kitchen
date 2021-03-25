@@ -1,0 +1,13 @@
+prefix="C:/meteor-kitchen/libgit2/output"
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libgit2
+Description: The git library, take 2
+Version: 0.26.0
+
+Libs: -L${libdir} -lgit2
+Libs.private: -lwinhttp -lrpcrt4 -lcrypt32 -lole32
+Requires.private: 
+
+Cflags: -I${includedir}

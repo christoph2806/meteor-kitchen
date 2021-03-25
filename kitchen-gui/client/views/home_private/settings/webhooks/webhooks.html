@@ -1,0 +1,58 @@
+<template name="HomePrivateSettingsWebhooks">
+	<div id="content" class="ui container">
+		{{> HomePrivateSettingsWebhooksForm}}
+	</div>
+</template>
+
+<template name="HomePrivateSettingsWebhooksForm">
+	<h2 class="ui header">
+		Webhooks
+	</h2>
+	<div id="home-private-settings-webhooks-form" class="ui basic segment">
+		<form class="ui form" role="form">
+			{{#if errorMessage}}
+			<div class="ui visible warning message">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="ui visible positive message">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group field-on-save-url">
+				<div class="field">
+					<h5>OnSave</h5>
+					<p>
+						URL will be called whenever you save changes to the project.
+					</p>
+					<label for="webhooks.onSave.url">
+						URL
+					</label>
+					<input placeholder="" type="text" name="webhooks.onSave.url" value="{{application.webhooks.onSave.url}}" class="form-control" autofocus="autofocus" data-type="url">
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-name-error">
+					</div>
+					{{#if application.webhooks.onSave.url}}
+						<p></p>
+						<p>
+							Last response: {{#if application.webhooks.onSave.statusCode}}<b>{{application.webhooks.onSave.statusCode}}</b> at {{application.webhooks.onSave.time}}{{else}}(none){{/if}}
+						</p>
+					{{/if}}
+				</div>
+			</div>
+
+			<div class="field">
+			</div>
+
+			<div class="submit-div">
+				<button id="form-submit-button" class="ui green icon button" type="submit">
+					<span class="fa fa-check">
+					</span>
+					Save
+				</button>
+			</div>
+		</form>
+	</div>
+</template>
+

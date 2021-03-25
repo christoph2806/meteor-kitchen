@@ -1,0 +1,78 @@
+<template name="HomePrivateSettingsDanger">
+	<div id="content" class="ui container">
+
+		<h2 class="ui red header">
+			Danger zone
+		</h2>
+
+		<div class="ui basic segment">
+			{{#if application.public}}
+				<h4 class="ui dividing header">Make this project private</h4>
+				<p>
+					Hide this project from the public.
+					<button class="ui right floated red colored button toggle-public-button">Make private</button>
+				</p>
+			{{else}}
+				<h4 class="ui dividing header">Make this project public</h4>
+				<p>
+					Make this project visible to anyone.
+					<button class="ui right floated red colored button toggle-public-button">Make public</button>
+				</p>
+			{{/if}}
+		</div>
+
+		<div class="ui basic segment">
+			<h4 class="ui dividing header">Delete project</h4>
+			<p>
+				Once you delete a project, there is no going back. Please be certain.
+				<button class="ui right floated red colored button delete-button">Delete project</button>
+			</p>
+		</div>
+	</div>
+
+	<div class="ui small modal delete">
+		<div class="header">
+			Delete project
+		</div>
+		<div class="image content">
+			<div class="description">
+				Are you sure you want to delete project "{{application.name}}"?
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+
+	<div class="ui small modal toggle-public">
+		<div class="header">
+		{{#if application.public}}
+			Make private
+		{{else}}
+			Make public
+		{{/if}}
+		</div>
+		<div class="image content">
+			<div class="description">
+				{{#if application.public}}
+					Hide this project from the public?
+				{{else}}
+					Make this project visible to anyone?
+				{{/if}}
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+</template>

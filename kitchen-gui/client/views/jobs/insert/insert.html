@@ -1,0 +1,152 @@
+<template name="JobsInsert">
+	<div class="ui container page-container">
+		<form id="insert_job_form" class="ui form" role="form">
+			<h2>
+				Post a job
+			</h2>
+			{{#if errorMessage}}
+			<div class="ui visible warning message">
+				{{errorMessage}}
+			</div>
+			{{/if}}			
+		
+			{{#if infoMessage}}
+			<div class="ui visible positive message">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+
+
+			<div class="ui stackable two column grid">
+				<div class="ui column">
+
+					<div class="field">
+						<label>Title</label>
+						<input id="name" name="name" type="text" placeholder="Job title" required autofocus>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-name-error">
+						</div>
+					</div>
+
+					<div class="field">
+						<label>Company</label>
+						<input id="company" name="company" type="text" placeholder="Name of the hiring company">
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-company-error">
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="two fields">
+							<div class="field">
+								<label>Country</label>
+								<div class="ui fluid search selection dropdown">
+									<input type="hidden" name="country" value="{{current_user_data.profile.country}}">
+									<i class="dropdown icon"></i>
+									<div class="default text">Select Country</div>
+									<div class="menu">
+										{{#each countries}}
+											<div class="item" data-value="{{code}}">{{name}}</div>
+										{{/each}}
+									</div>
+								</div>
+								<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-country-error">
+								</div>
+							</div>
+							<div class="field">
+								<label>City</label>
+								<input id="city" name="city" type="text" placeholder="City">
+								<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-city-error">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="inline field">
+						<div class="ui checkbox">
+							<input name="remote" type="checkbox" class="hidden">
+							<label>This is remote position</label>
+						</div>
+					</div>
+
+   					<div class="field">
+						<label for="description">
+							Job Description
+						</label>
+						<textarea name="description"></textarea>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden error-text field-description-error">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="ui column">
+
+					<div class="grouped fields">
+						<label>Preferring individual developer or a team?</label>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="team" value="false" data-type="bool" checked="checked">
+								<label>Individual</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input type="radio" name="team" value="true" data-type="bool">
+								<label>Team</label>
+							</div>
+						</div>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="grouped fields">
+						<label>Preferring frontend or backend developer?</label>
+						{{#each stack}}
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input type="radio" name="stack" value="{{value}}" {{itemIsChecked "both" value}}>
+									<label>{{title}}</label>
+								</div>
+							</div>
+						{{/each}}
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="field">
+						<label>Project category</label>
+						<select name="devType" multiple="" class="ui fluid dropdown">
+							{{#each devType}}
+								<option value="{{value}}">{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="field">
+						<label>UI frameworks required for the project</label>
+						<select name="uiFrameworks" multiple="" value="" class="ui fluid dropdown">
+							{{#each uiFrameworks}}
+								<option value="{{value}}">{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="">
+						<div class="submit-div">
+							<button id="form-submit-button" class="ui green icon button" type="submit">
+								<span class="fa fa-check">
+								</span>
+								Post
+							</button>
+
+							<button id="form-cancel-button" class="ui basic button" type="button">
+								Cancel
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+</template>

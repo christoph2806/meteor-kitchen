@@ -1,0 +1,19 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : ["marked"],
+		"mrt"   : []
+	},
+	"imports": [
+		"import {EditableContent} from \"CLIENT_COMPONENTS_DIR/editable_content/editable_content.jsx\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_client.jsx", "dest": "CLIENT_COMPONENTS_DIR/editable_content/editable_content.jsx"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_client.less", "dest": "CLIENT_COMPONENTS_DIR/editable_content/editable_content.less"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_both_collections.js", "dest": "BOTH_COLLECTIONS_DIR/editable_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_server_collections.js", "dest": "SERVER_COLLECTIONS_DIR/editable_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_server_methods.js", "dest": "SERVER_METHODS_DIR/editable_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/editable_content_server_publish.js", "dest": "SERVER_PUBLISH_DIR/editable_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/markdown.jsx", "dest": "CLIENT_COMPONENTS_DIR/markdown/markdown.jsx"}
+	]
+}

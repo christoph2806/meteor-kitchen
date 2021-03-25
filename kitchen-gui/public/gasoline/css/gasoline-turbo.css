@@ -1,0 +1,79 @@
+body {
+	padding: 2px;
+
+/*
+    -ms-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+*/
+}
+
+.gas-template {
+	position: relative;
+}
+
+.gas-element {
+	pointer-events: none;
+}
+
+div.gas-element {
+	padding: 5px;
+}
+
+.gasoline-turbo {
+	position: absolute;
+}
+
+div.gas-control {
+	display: inline-block;
+	padding: 5px;
+}
+
+.gasoline-turbo {
+	pointer-events: auto;
+	border: 1px dotted silver;
+}
+
+.gasoline-turbo-hover {
+	border-style: solid;
+}
+
+.gasoline-turbo-selected {
+	border-color: blue;
+	border-style: solid;
+	z-index: 1;
+}
+
+.gasoline-turbo-drop {
+	border-color: lime;
+	border-style: solid;
+}
+
+.gasoline-turbo-forbid {
+	border-color: red;
+	border-style: solid;
+}
+
+.gasoline-turbo-insert-left {
+	border-left: 1px solid lime;
+}
+
+.gasoline-turbo-insert-right {
+	border-right: 1px solid lime;
+}
+
+.gasoline-turbo-insert-top {
+	border-top: 1px solid lime;
+}
+
+.gasoline-turbo-insert-bottom {
+	border-bottom: 1px solid lime;
+}

@@ -1,0 +1,2 @@
+- GUI: in form for editing collection fields, radio buttons with large number of choices are changed to "select"
+- GUI: in form for editing queries, "collection" input is now dropdown - list of existing collections

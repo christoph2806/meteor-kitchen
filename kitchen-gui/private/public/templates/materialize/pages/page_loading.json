@@ -1,0 +1,120 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "loading",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "col s12 center"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "preloader-wrapper big active"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "spinner-layer spinner-blue-only"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "circle-clipper left"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "circle"
+														}
+													],
+													"children": []
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "gap-patch"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "circle"
+														}
+													],
+													"children": []
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "circle-clipper right"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "circle"
+														}
+													],
+													"children": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

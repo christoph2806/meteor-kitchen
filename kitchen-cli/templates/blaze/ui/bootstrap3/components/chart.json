@@ -1,0 +1,11 @@
+{
+	"packages": {
+		"meteor": ["perak:c3"],
+		"npm": [],
+		"mrt": []
+	},
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.html", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.html"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.js", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.js"}
+	]
+}

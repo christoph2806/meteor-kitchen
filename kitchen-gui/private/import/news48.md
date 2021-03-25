@@ -1,0 +1,2 @@
+#### New features
+- **Upload**: at last! Using <a href="https://github.com/CollectionFS/Meteor-CollectionFS" target="_blank">CollectionFS</a>. See <a href="http://example-upload.meteorfarm.com" target="_blank">live example</a>, source is <a href="https://github.com/perak/kitchen-examples/tree/master/example-upload" target="_blank">here</a>. See [getting started](/getting_started#file-uploads) for more info.

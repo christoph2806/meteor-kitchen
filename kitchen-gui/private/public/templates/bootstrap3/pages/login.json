@@ -1,0 +1,651 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "container"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "form",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "login_form"
+								},
+								{
+									"name": "class",
+									"value": "account-form"
+								},
+								{
+									"name": "role",
+									"value": "form"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "h2",
+									"attributes": [],
+									"children": [
+										{
+											"type": "text",
+											"text": "Please sign in"
+										}
+									]
+								},
+								{
+									"type": "condition",
+									"condition": "errorMessage",
+									"children": [
+										{
+											"type": "condition-true",
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "alert alert-warning"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "{{errorMessage}}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "condition-false",
+											"children": []
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-google"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-google-plus-square"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with Google"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithGoogle"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-github"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-github"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with GitHub"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithGithub"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-facebook"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-facebook-official"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with Facebook"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithFacebook"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-twitter"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-twitter"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with Twitter"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithTwitter"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-linkedin"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-linkedin-square"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with LinkedIn"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithLinkedin"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-meteor"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-meteor"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with Meteor"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithMeteor"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "button",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-auth0"
+										},
+										{
+											"name": "type",
+											"value": "button"
+										},
+										{
+											"name": "class",
+											"value": "btn btn-default btn-block"
+										},
+										{
+											"name": "data-loading-text",
+											"value": "Please wait..."
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "span",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "fa fa-star"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "text",
+											"text": "&nbsp;Sign in with Auth0"
+										}
+									],
+									"events": [
+										{
+											"type": "event",
+											"event": "onclick",
+											"handler": "onClickLoginWithAuth0"
+										}
+									]
+								},
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "id",
+											"value": "login-with-password"
+										},
+										{
+											"name": "style",
+											"value": "padding-top: 10px;"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "input",
+											"attributes": [
+												{
+													"name": "id",
+													"value": "login_email"
+												},
+												{
+													"name": "type",
+													"value": "text"
+												},
+												{
+													"name": "class",
+													"value": "form-control"
+												},
+												{
+													"name": "placeholder",
+													"value": "Email address"
+												},
+												{
+													"name": "required",
+													"value": "required"
+												},
+												{
+													"name": "autofocus",
+													"value": "autofocus"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "html",
+											"element": "input",
+											"attributes": [
+												{
+													"name": "id",
+													"value": "login_password"
+												},
+												{
+													"name": "type",
+													"value": "password"
+												},
+												{
+													"name": "class",
+													"value": "form-control"
+												},
+												{
+													"name": "placeholder",
+													"value": "Password"
+												},
+												{
+													"name": "required",
+													"value": "required"
+												}
+											],
+											"children": []
+										},
+										{
+											"type": "html",
+											"element": "button",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "btn btn-lg btn-primary btn-block"
+												},
+												{
+													"name": "type",
+													"value": "submit"
+												},
+												{
+													"name": "data-loading-text",
+													"value": "Please wait..."
+												}
+											],
+											"children": [
+												{
+													"type": "text",
+													"text": "Sign in"
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "p",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "account-form-text-after"
+												},
+												{
+													"name": "id",
+													"value": "register-link"
+												}
+											],
+											"children": [
+												{
+													"type": "text",
+													"text": "Not a member? "
+												},
+												{
+													"type": "html",
+													"element": "a",
+													"attributes": [
+														{
+															"name": "href",
+															"value": "{{pathFor 'register'}}"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "Sign up here"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "p",
+											"attributes": [
+												{
+													"name": "class",
+													"value": "account-form-text-after"
+												},
+												{
+													"name": "id",
+													"value": "forgot-password-link"
+												}
+											],
+											"children": [
+												{
+													"type": "text",
+													"text": "Forgot password? "
+												},
+												{
+													"type": "html",
+													"element": "a",
+													"attributes": [
+														{
+															"name": "href",
+															"value": "{{pathFor 'forgot_password'}}"
+														}
+													],
+													"children": [
+														{
+															"type": "text",
+															"text": "Click here"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							],
+							"events": [
+								{
+									"type": "event",
+									"event": "onsubmit",
+									"handler": "onSubmitLoginForm"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [
+				{
+					"type": "helper",
+					"name": "errorMessage",
+					"arguments": [],
+					"code": "\n\t\treturn pageSession.get(\"errorMessage\");\n\t"
+				}
+			],
+			"handlers": [
+				{
+					"type": "handler",
+					"name": "onSubmitLoginForm",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar submit_button = $(t.find(\":submit\"));\n\n\t\tvar login_email = t.find('#login_email').value.trim();\n\t\tvar login_password = t.find('#login_password').value;\n\n\t\t// check email\n\t\tif(!isValidEmail(login_email))\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter your e-mail address.\");\n\t\t\tt.find('#login_email').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\t// check password\n\t\tif(login_password == \"\")\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter your password.\");\n\t\t\tt.find('#login_email').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\tsubmit_button.button(\"loading\");\n\t\tMeteor.loginWithPassword(login_email, login_password, function(err) {\n\t\t\tsubmit_button.button(\"reset\");\n\t\t\tif (err)\n\t\t\t{\n\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\treturn false;\n\t\t\t}\n\t\t});\n\t\treturn false; \n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithGoogle",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithGoogle(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithGithub",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithGithub(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"public_repo\", \"user:email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithLinkedin",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithLinkedin(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"r_basicprofile\", \"r_emailaddress\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithFacebook",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithFacebook(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithTwitter",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithTwitter(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithMeteor",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithMeteorDeveloperAccount(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickLoginWithAuth0",
+					"code": "\n\t\te.preventDefault();\n\t\tpageSession.set(\"errorMessage\", \"\");\n\n\t\tvar button = $(e.currentTarget);\n\t\tbutton.button(\"loading\");\n\n\t\tMeteor.loginWithAuth0(\n\t\t\t{\n\t\t\t\trequestPermissions: [\"openid\", \"profile\", \"email\"]\n\t\t\t},\n\t\t\tfunction(err) {\n\t\t\t\tbutton.button(\"reset\");\n\t\t\t\tif (err)\n\t\t\t\t{\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\n\t\treturn false;\n\t"
+				}
+			]
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

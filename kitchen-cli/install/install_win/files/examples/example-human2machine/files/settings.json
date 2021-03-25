@@ -1,0 +1,8 @@
+{
+	"public": {
+		"terminalEyeURL": "wss://terminal-eye.meteorfarm.com",
+		"buildServerURL": "https://www.meteorfarm.com"
+	},
+	"env": {
+	}
+}

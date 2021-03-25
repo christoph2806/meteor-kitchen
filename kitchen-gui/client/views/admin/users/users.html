@@ -1,0 +1,146 @@
+<template name="AdminUsers">
+	<div id="content" class="ui container">
+		{{> AdminUsersView}}
+	</div>
+</template>
+
+<template name="AdminUsersView">
+	<div id="admin-users-view" class="">
+		<h2 class="ui header">
+			Users
+		</h2>
+		<form class="ui form">
+			<div id="dataview-controls" class="ui secondary menu">
+				<div id="dataview-controls-search" class="item">
+					{{#if isNotEmpty}}
+						<div class="ui fluid action input">
+							<input id="dataview-search-input" type="text" placeholder="Search...">
+							<div id="dataview-search-button" class="ui icon button">
+								<i class="search icon">
+								</i>
+							</div>
+						</div>
+					{{/if}}
+				</div>
+				<div id="dataview-controls-export" class="item">
+					{{#if isNotEmpty}}				
+						{{#if isFound}}
+							<div>
+							</div>
+						{{else}}
+							<div class="ui buttons">
+								<div id="dataview-export-csv" class="ui button">
+									Export
+								</div>
+								<div class="ui floating dropdown icon button">
+									<i class="dropdown icon">
+									</i>
+									<div class="menu">
+										<div id="dataview-export-csv" class="item">
+											Export to CSV
+										</div>
+										<div id="dataview-export-tsv" class="item">
+											Export to TSV
+										</div>
+										<div id="dataview-export-json" class="item">
+											Export to JSON
+										</div>
+									</div>
+								</div>
+							</div>
+						{{/if}}				
+					{{/if}}
+				</div>
+			</div>
+		</form>
+
+		{{#if isNotEmpty}}	
+			{{#if isNotFound}}
+				<div class="ui active warning message">
+					"{{searchString}}" not found.
+				</div>
+			{{else}}
+				<div id="dataview-data">
+					{{#if viewAsTable}} {{> AdminUsersViewTable}} {{/if}}
+				</div>
+			{{/if}}	
+		{{else}}
+			<div class="ui active info message">
+				No users yet
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="AdminUsersViewTable">
+	<table id="dataview-table" class="ui very basic unstackable table selectable">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="profile.username">
+					Username
+				</th>
+				<th class="th-sortable" data-sort="profile.email">
+					E-mail
+				</th>
+				<th class="th-sortable" data-sort="profile.name">
+					Name
+				</th>
+				<th class="th-sortable" data-sort="roles">
+					Role
+				</th>
+				<th class="th-sortable" data-sort="stats.loginCount">
+					Login Count
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> AdminUsersViewTableItems}} {{/each}}
+		</tbody>
+	</table>
+	<div class="ui small modal delete">
+		<div class="header">
+			Delete
+		</div>
+		<div class="image content">
+			<div class="description">
+				Delete? Are you sure?
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="AdminUsersViewTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{profile.username}}
+		</td>
+		<td>
+			{{profile.name}}
+		</td>
+		<td>
+			{{profile.email}}
+		</td>
+		<td>
+			{{roles}}
+		</td>
+		<td>
+			{{stats.loginCount}}
+		</td>
+		<td class="collapsing td-icon">
+			<i id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
+			</i>
+		</td>
+	</tr>
+</template>
+

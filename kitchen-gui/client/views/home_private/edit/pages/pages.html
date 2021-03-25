@@ -1,0 +1,1534 @@
+<template name="HomePrivateEditPages">
+	<div class="ui three column padded grid editor-grid">
+		<div class="four wide column editor-column">
+			{{> HomePrivateEditPagesLeftColumn}}
+		</div>
+
+		<div class="eight wide column editor-column main-column">
+			{{> HomePrivateEditPagesMainColumn}}
+		</div>
+
+		<div class="four wide column editor-column properties-column">
+			{{> HomePrivateEditPagesPropertiesColumn}}
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesLeftColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr height-max">
+			<div class="display-tc bordered">
+
+				<div class="display-table {{treeHeightClass}}">
+					<div class="display-tr">
+						<div class="display-tc editor-content title">
+							<b>Pages</b>
+						</div>
+					</div>
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area {{treeScrollHeightClass}}">
+								<div class="editor-content">
+									{{> HomePrivateEditPagesPageTree root=application}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{{#if showDesignerUI}}
+					<div class="display-table height-half">
+						<div class="display-tr">
+							<div class="display-tc editor-content title">
+								<b>Palette</b>
+							</div>
+						</div>
+						<div class="display-tr height-max">
+							<div class="display-tc contains-scrollable">
+								<div class="scrollable-area">
+									<div class="editor-content">
+										{{> HomePrivateEditPagesGasolinePalette}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesGasolinePalette">
+	{{#each gasolinePaletteGroups}}
+		<ul class="tree-node">
+			<li class="{{paletteGroupItemClass}}">
+				<a href="#" class="tree-link">
+					<div class="float-left">
+						<span class="fa {{caretClass}} tree-node-caret">
+						</span>
+
+						<span class="tree-node-title">
+							<span class="fa {{iconClass}} tree-node-icon"></span>
+							{{title}}
+						</span>
+					</div>
+					<div class="float-right">
+						<span class="tree-node-controls">
+							{{#if canInsert}}
+								<span class="fa fa-plus tree-node-control add-object" title="Add">
+								</span>
+							{{/if}}
+						</span>
+					</div>
+				</a>
+				{{#if isExpanded}}
+					{{> HomePrivateEditPagesGasolinePaletteItems groupId=_id custom=custom community=community}}
+				{{/if}}
+			</li>
+		</ul>
+	{{/each}}
+</template>
+
+<template name="HomePrivateEditPagesGasolinePaletteItems">
+	<ul class="tree-node">
+
+		{{#each gasolinePaletteItems}}
+			<li class="gasoline-palette-item" data-id="{{_id}}" draggable="true">
+				<a href="#" class="tree-link">
+					<div class="float-left">
+						<span class="fa tree-node-caret">
+						</span>
+
+						<span class="tree-node-title">
+							<span class="fa fa-code tree-node-icon"></span>
+							{{title}}
+						</span>
+					</div>
+					<div class="float-right">
+						<span class="tree-node-controls">
+							{{#if canEdit}}
+								<span class="fa fa-pencil tree-node-control edit-item" title="Edit Code">
+								</span>
+								<span class="fa fa-cog tree-node-control item-properties" title="Edit Properties">
+								</span>
+							{{/if}}
+							{{#if canRemove}}
+								<span class="fa fa-trash tree-node-control remove-item" title="Delete">
+								</span>
+							{{/if}}
+						</span>
+					</div>
+				</a>
+			</li>
+		{{/each}}
+
+		{{#if custom}}
+			<li class="gasoline-palette-info-item">
+				<a href="#" class="tree-link">
+					<div class="float-left">
+						<span class="fa tree-node-caret">
+						</span>
+
+						<span class="tree-node-title">
+							<span class="fa tree-node-icon"></span>
+							<i>Drag here to add</i>
+						</span>
+					</div>
+				</a>
+			</li>
+		{{/if}}
+
+		{{#if community}}
+			<li class="gasoline-palette-info-item import-from-community">
+				<a href="#" class="tree-link">
+					<div class="float-left">
+						<span class="fa tree-node-caret">
+						</span>
+
+						<span class="tree-node-title">
+							<span class="fa tree-node-icon"></span>
+							<i>Click here to add</i>
+						</span>
+					</div>
+				</a>
+			</li>
+		{{/if}}
+	</ul>
+</template>
+
+<template name="HomePrivateEditPagesPageTree">
+	{{#each gasolineObjects}}
+		<ul class="tree-node">
+			{{> HomePrivateEditPagesPageTreeItem}}
+		</ul>
+	{{/each}}
+	{{#each gasTemplateList}}
+		<ul class="tree-node">
+			{{> HomePrivateEditPagesPageTreeItem}}
+		</ul>
+	{{/each}}
+	{{#each gasNodes}}
+		<ul class="tree-node">
+			{{> HomePrivateEditPagesPageTreeItem}}
+		</ul>
+	{{/each}}
+	{{#each componentList}}
+		<ul class="tree-node">
+			{{> HomePrivateEditPagesPageTreeItem}}
+		</ul>
+	{{/each}}
+	{{#each pageList}}
+		<ul class="tree-node">
+			{{> HomePrivateEditPagesPageTreeItem}}
+		</ul>
+	{{/each}}
+</template>
+
+<template name="HomePrivateEditPagesPageTreeItem">
+	<li>
+		<a href="#" class="tree-link {{treeLinkClass}}">
+			<div class="float-left">
+				<span class="fa {{caretClass}} tree-node-caret">
+				</span>
+
+				<span class="tree-node-title">
+					<span class="fa {{iconClass}} tree-node-icon"></span>
+					{{displayName}}
+				</span>
+			</div>
+			<div class="float-right">
+				<span class="tree-node-controls">
+					{{#if canInsert}}
+						<span class="fa fa-plus tree-node-control add-object" title="Add">
+						</span>
+					{{/if}}
+					{{#if canRemove}}
+						<span class="fa fa-trash tree-node-control remove-object" title="Delete">
+						</span>
+					{{/if}}
+				</span>
+			</div>
+		</a>
+		{{#if isExpanded}}
+			{{> HomePrivateEditPagesPageTree root=this}}
+		{{/if}}
+	</li>
+</template>
+
+
+
+
+
+<template name="HomePrivateEditPagesPageListView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Pages
+					<button class="ui right floated small green button add-page">
+						<i class="plus icon"></i>
+						Add Page
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditPagesPageList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesPageList">
+	{{#if pageList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Page name
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each pageList}}
+					{{> HomePrivateEditPagesPageListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No pages.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditPagesPageListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td>
+			<span class="fa fa-code icon object-table-caret"></span>{{name}}
+		</td>
+
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+<template name="HomePrivateEditPagesComponentListView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Components
+					<button class="ui right floated small green button add-component">
+						<i class="plus icon"></i>
+						Add Component
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditPagesComponentList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesComponentList">
+	{{#if componentList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Component name
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each componentList}}
+					{{> HomePrivateEditPagesComponentListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No components.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditPagesComponentListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td>
+			<span class="fa fa-code icon object-table-caret"></span>{{name}}
+		</td>
+
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+
+
+<template name="HomePrivateEditPagesMainColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr">
+			<div class="display-tc editor-content title">
+				<b>{{selectedObjectDisplayName}}</b>&nbsp;
+			</div>
+		</div>
+
+		<div class="display-tr">
+			<div class="display-tc">
+				<div class="ui pointing secondary menu no-margin">
+					{{#each mainViewMenuItems}}
+						<a class="item {{class}}" id="{{id}}">{{title}}</a>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				{{> Template.dynamic template=mainViewTemplate}}
+			</div>
+		</div>
+
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesNoSelectionView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content">
+				Please select object in the tree
+			</div>
+		</div>
+	</div>
+</template>
+
+
+
+
+
+<template name="HomePrivateEditPagesGasolineView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Templates
+					<button class="ui right floated small green button add-template">
+						<i class="plus icon"></i>
+						Add Template
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditPagesGasolineTemplateList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesGasolineTemplateList">
+	{{#if templateList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Template name
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each templateList}}
+					{{> HomePrivateEditPagesGasolineTemplateListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No templates.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditPagesGasolineTemplateListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td>
+			<span class="fa fa-code icon object-table-caret"></span>{{name}}
+		</td>
+
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+
+
+
+
+<template name="HomePrivateEditPagesToggleDesignerView">
+	{{> HomePrivateEditPagesToggleDesigner}}
+</template>
+
+
+<template name="HomePrivateEditPagesDesignerView">
+	{{> HomePrivateEditPagesDesigner}}
+</template>
+
+
+<template name="HomePrivateEditPagesPreviewHTML">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">HTML</h2>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				<div class="editor-content-text code-readonly">
+					{{> CodeMirror id="preview-html-input" options=previewHTMLInputOptions reactiveVar=previewHTMLkey}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesPreviewJS">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">JS</h2>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				<div class="editor-content-text code-readonly">
+					{{> CodeMirror id="preview-js-input" options=previewJSInputOptions reactiveVar=previewJSkey}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesPreviewJSX">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">JSX</h2>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				<div class="editor-content-text code-readonly">
+					{{> CodeMirror id="preview-jsx-input" options=previewJSXInputOptions reactiveVar=previewJSXkey}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesPropertiesColumn">
+	<div class="display-table {{tableHeightClass}}">
+		<div class="display-tr">
+			<div class="display-tc bordered editor-content title">
+				<b>{{propertiesTitle}}</b>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc bordered contains-scrollable">
+				<div class="scrollable-area {{tableScrollHeightClass}}">
+					<div class="editor-content">
+						{{> HomePrivateEditPagesProperties}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{#if showDesignerUI}}
+		<div class="display-table height-quarter">
+			<div class="display-tr">
+				<div class="display-tc bordered editor-content title">
+					<b>Event handlers</b>
+					<div class="float-right controls">
+						<span class="fa fa-plus icon add-handler" title="Add handler">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="display-tr height-max">
+				<div class="display-tc bordered contains-scrollable">
+					<div class="scrollable-area height-half">
+						<div class="editor-content">
+
+							<table class="ui very basic small compact selectable table">
+								<tbody>
+									{{#if eventHandlers}}
+										<tr>
+											<td><i>Name</i></td>
+											<td><i>Code</i></td>
+											<td class="collapsing"></td>
+										</tr>
+										{{#each eventHandlers}}
+											{{> HomePrivateEditPagesHandlerRow handler=this}}
+										{{/each}}
+									{{else}}
+										<tr class="property-editor-row">
+											<td colspan="3">
+												<i>No event handlers</i>
+											</td>
+										</tr>
+									{{/if}}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="display-table height-quarter">
+			<div class="display-tr">
+				<div class="display-tc bordered editor-content title">
+					<b>Helpers</b>
+					<div class="float-right controls">
+						<span class="fa fa-plus icon add-helper" title="Add helper">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="display-tr height-max">
+				<div class="display-tc bordered contains-scrollable">
+					<div class="scrollable-area height-max">
+						<div class="editor-content">
+
+							<table class="ui very basic small compact selectable table">
+								<tbody>
+									{{#if helpers}}
+										<tr>
+											<td><i>Name</i></td>
+											<td><i>Code</i></td>
+											<td class="collapsing"></td>
+										</tr>
+										{{#each helpers}}
+											{{> HomePrivateEditPagesHelperRow helper=this}}
+										{{/each}}
+									{{else}}
+										<tr class="property-editor-row">
+											<td colspan="3">
+												<i>No helpers</i>
+											</td>
+										</tr>
+									{{/if}}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{{/if}}
+
+</template>
+
+<template name="HomePrivateEditPagesHandlerRow">
+	<tr class="handler-editor-row">
+		{{#if editingHandler}}
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{handler._id}} class="edit-handler-name" value="{{handler.name}}">
+				</div>
+			</td>
+			<td class="no-padding-vertical">
+				<i><a href="#" class="edit-handler-code">Edit code</a></i>
+			</td>
+		{{else}}
+			<td>
+				{{handler.name}}
+			</td>
+
+			<td>
+				<i><a href="#" class="edit-handler-code">Edit code</a></i>
+			</td>
+		{{/if}}
+
+		<td class="collapsing">
+			<span class="fa fa-trash icon remove-handler" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditPagesHelperRow">
+	<tr class="helper-editor-row">
+		{{#if editingHelper}}
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{helper._id}} class="edit-helper-name" value="{{helper.name}}">
+				</div>
+			</td>
+			<td class="no-padding-vertical">
+				<i><a href="#" class="edit-helper-code">Edit code</a></i>
+			</td>
+		{{else}}
+			<td>
+				{{helper.name}}
+			</td>
+
+			<td>
+				<i><a href="#" class="edit-helper-code">Edit code</a></i>
+			</td>
+		{{/if}}
+
+		<td class="collapsing">
+			<span class="fa fa-trash icon remove-helper" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditPagesProperties">
+	{{> PropertyEditor object=focusedObject}}
+</template>
+
+<template name="HomePrivateEditPagesToggleDesigner">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Visual UI Designer
+				</h2>
+
+				{{#if useGasoline}}
+					<h4 class="ui dividing header">Designer is On</h4>
+					<p>
+						You can turn visual ui designer off for this component and edit the code manually, but if you later decide to switch back to designer then your manual edits will be lost.<br />
+
+						<button class="ui right floated basic blue button toggle-designer-button">
+							Turn designer off
+						</button>
+
+						<button type="button" class="ui right floated blue button goto-designer-button">
+							Open designer
+						</button>
+					</p>
+				{{else}}
+					<h4 class="ui dividing header">Designer is Off</h4>
+					<p>
+						If you turn visual UI designer on for this component then your manual edits will be lost.
+						<button class="ui right floated basic blue button toggle-designer-button">Turn designer on</button>
+					</p>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesDesigner">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				{{> GasolineDesigner}}
+			</div>
+		</div>
+	</div>
+</template>
+
+
+
+<template name="HomePrivateEditPagesRolesView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Access Rights
+					<button class="ui right floated small green button add-role">
+						<i class="plus icon"></i>
+						Add Role
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<table class="ui very basic collapsing celled table">
+							<thead>
+								<tr>
+									<th>Role name</th>
+									<th>Access</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each pageRoles}}
+									{{> HomePrivateEditPagesRolesViewRow}}
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesRolesViewRow">
+	<tr class="object-table-row">
+		<td>
+			<b>{{roleTitle}}</b>
+		</td>
+		<td>
+			<span class="lock-item"><i class="icon {{iconClass}}"></i> {{access}}</span>
+		</td>
+		<td>
+			<span class="object-table-row-controls">
+				{{#if canDelete}}
+					<span class="fa fa-trash icon delete-icon" title="Delete"></span>
+				{{else}}
+					<span class="fa fa-fw icon"></span>
+				{{/if}}
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditPagesLayoutView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Layout
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+
+				{{#if userDefinedTemplate}}
+					<h4 class="ui dividing header">Manual editing is on</h4>
+					<p>
+						You can turn off editing and use predefined layout but then your manual edits will be lost.
+						<button class="ui right floated basic blue button toggle-editing-button">Use predefined layout</button>
+					</p>
+
+
+					{{#if useGasoline}}
+						<h4 class="ui dividing header">Designer is On</h4>
+						<p>
+							You can turn visual ui designer off for this component and edit the code manually, but if you later decide to switch back to designer then your manual edits will be lost.<br />
+
+							<button class="ui right floated basic blue button toggle-designer-button">
+								Turn designer off
+							</button>
+
+							<button type="button" class="ui right floated blue button goto-designer-button">
+								Open designer
+							</button>
+						</p>
+					{{else}}
+						<h4 class="ui dividing header">Designer is Off</h4>
+						<p>
+							If you turn visual UI designer on for this component then your manual edits will be lost.
+							<button class="ui right floated basic blue button toggle-designer-button">Turn designer on</button>
+						</p>
+					{{/if}}
+
+				{{else}}
+					{{> HomePrivateEditPagesLayoutViewSelector}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesLayoutViewSelector">
+	<h4 class="ui dividing header">Using predefined layout</h4>
+	<p>
+		You can turn off predefined layout and edit the code manually, but if you later decide to switch back to predefined layout then your manual edits will be lost.
+		<button class="ui right floated basic blue button toggle-editing-button">Turn editing on</button>
+	</p>
+
+	<div class="ui form">
+		<div class="field">
+			<h4>Predefined Layout</h4>
+			<select name="layout" class="ui search selection dropdown">
+				{{#each layoutList}}
+					<option value="{{name}}" {{layoutSelected name}}>{{title}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesTemplateView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Template
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+
+				{{#if userDefinedTemplate}}
+					<h4 class="ui dividing header">Manual editing is on</h4>
+					<p>
+						You can turn off editing and use predefined template but then your manual edits will be lost.
+						<button class="ui right floated basic blue button toggle-editing-button">
+							Use predefined template
+						</button>
+					</p>
+
+					{{#if useGasoline}}
+						<h4 class="ui dividing header">Designer is On</h4>
+						<p>
+							You can turn visual ui designer off for this component and edit the code manually, but if you later decide to switch back to designer then your manual edits will be lost.<br />
+
+							<button class="ui right floated basic blue button toggle-designer-button">
+								Turn designer off
+							</button>
+
+							<button type="button" class="ui right floated blue button goto-designer-button">
+								Open designer
+							</button>
+						</p>
+					{{else}}
+						<h4 class="ui dividing header">Designer is Off</h4>
+						<p>
+							If you turn visual UI designer on for this component then your manual edits will be lost.
+							<button class="ui right floated basic blue button toggle-designer-button">Turn designer on</button>
+						</p>
+					{{/if}}
+
+				{{else}}
+					{{> HomePrivateEditPagesTemplateViewSelector}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesTemplateViewSelector">
+	<h4 class="ui dividing header">Using predefined template</h4>
+	<p>
+		You can turn off predefined template and edit the code manually, but if you later decide to switch back to predefined template then your manual edits will be lost.
+		<button class="ui right floated basic blue button toggle-editing-button">Turn editing on</button>
+	</p>
+
+	<div class="ui form">
+		<div class="field">
+			<h4>Predefined Template</h4>
+			<select name="template" class="ui search selection dropdown">
+				{{#each templateList}}
+					<option value="{{name}}" {{templateSelected name}}>{{title}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesDataView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">Data Source</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+				<div class="ui form">
+					<div class="field">
+						<h4>Query Name</h4>
+						<select name="query_name" class="ui search selection dropdown">
+							{{#each queryList}}
+								<option value="{{this}}" {{querySelected this}}>{{this}}</option>
+							{{/each}}
+						</select>
+					</div>
+
+					{{#if queryParams}}
+						<div class="field">
+							<table class="ui very basic celled table">
+								<thead>
+									<tr>
+										<th class="collapsing">
+											Param name
+										</th>
+										<th>
+											Param value
+										</th>
+										<th>
+											Status
+										</th>
+										<th>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#each queryParams}}
+										{{> HomePrivateEditPagesDataViewParam}}
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesDataViewParam">
+	{{#if isUnknown}}
+		<tr class="object-table-row">
+			<td class="collapsing">
+				{{name}}
+			</td>
+			<td>
+				<div class="ui fluid input disabled">
+					<input type="text" value="{{value}}" disabled>
+				</div>
+			</td>
+			<td class="collapsing">
+				<i class="red icon fa fa-exclamation-circle"></i>&nbsp;{{status}}
+			</td>
+			<td class="collapsing">
+				<div class="object-table-row-controls">
+					<i class="icon fa fa-trash remove-param"></i>
+				</div>
+			</td>
+		</tr>
+	{{else}}
+		{{#if isFromRoute}}
+			<tr class="object-table-row">
+				<td class="collapsing">
+					{{name}}
+				</td>
+				<td>
+					<i>Reads value from URL (route param)</i>
+				</td>
+				<td class="collapsing">
+					<i class="green icon fa fa-check-circle"></i>&nbsp;{{status}}
+				</td>
+				<td class="collapsing">
+				</td>
+			</tr>
+		{{else}}
+			<tr class="object-table-row">
+				<td class="collapsing">
+					{{name}}
+				</td>
+				<td>
+					<div class="ui fluid input">
+						<input type="text" class="param-value" value="{{value}}">
+					</div>
+				</td>
+				<td class="collapsing">
+					{{#if warning}}
+						<i class="yellow icon fa fa-exclamation-triangle"></i>&nbsp;{{status}}
+					{{else}}
+						<i class="green icon fa fa-check-circle"></i>&nbsp;{{status}}
+					{{/if}}
+				</td>
+				<td class="collapsing">
+				</td>
+			</tr>
+		{{/if}}
+	{{/if}}
+</template>
+
+
+
+<template name="HomePrivateEditPagesRouteView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<h2 class="header">Route</h2>
+
+						<div class="ui form">
+							<div class="field">
+								<h4>Route Name</h4>
+								<input type="text" class="disabled" disabled value="{{routeName}}">
+							</div>
+
+							<div class="field">
+								<h4>URL</h4>
+								<input type="text" class="disabled" disabled value="{{routeURL}}">
+							</div>
+
+							<div class="field">
+								<h3 class="list-label">
+									Route Params
+									<button class="ui right floated small green button add-param">
+										<i class="plus icon"></i>
+										Add Param
+									</button>
+								</h3>
+								{{#if routeParams}}
+									<table class="ui very basic celled table">
+										<tbody>
+											{{#each routeParams}}
+												{{> HomePrivateEditPagesRouteViewParam}}
+											{{/each}}
+										</tbody>
+									</table>
+								{{else}}
+									<div class="ui info message">No params.</div>
+								{{/if}}
+							</div>
+						</div>
+
+						<h3>
+							Route hooks
+						</h3>
+
+						<div class="toggler {{controllerBeforeClass}}" data-session="routeHideControllerBefore">
+							<div class="title">
+								<i class="fa fa-fw {{controllerBeforeIconClass}}"></i>
+								Before
+							</div>
+							<div class="content">
+								{{> CodeMirror id="controller-before-input" name="controller-before-input" options=controllerBeforeInputOptions reactiveVar="controllerBeforeInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{controllerAfterClass}}" data-session="routeHideControllerAfter">
+							<div class="title">
+								<i class="fa fa-fw {{controllerAfterIconClass}}"></i>
+								After
+							</div>
+							<div class="content">
+								{{> CodeMirror id="controller-after-input" name="controller-after-input" options=controllerAfterInputOptions reactiveVar="controllerAfterInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesRouteViewParam">
+	<tr class="object-table-row">
+		<td>
+			<div class="ui fluid input">
+				<input type="text" name="param-name" data-value="{{name}}" value="{{name}}">
+			</div>
+		</td>
+		<td class="collapsing">
+			<div class="object-table-row-controls">
+				<i class="fa fa-trash remove-param"></i>
+			</div>
+		</td>
+	</tr>	
+</template>
+
+
+<template name="HomePrivateEditPagesCustomHTMLView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">HTML</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+				{{> CodeMirror id="custom-html-input" options=customHTMLInputOptions reactiveVar="customHTMLInputText"}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesCustomJSView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">JS</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+				{{> CodeMirror id="custom-js-input" options=customJSInputOptions reactiveVar="customJSInputText"}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesCustomJSXView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">JSX</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+				{{> CodeMirror id="custom-jsx-input" options=customJSXInputOptions reactiveVar="customJSXInputText"}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesMenuItemsView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Menu Items
+					<button class="ui right floated small green button add-item">
+						<i class="plus icon"></i>
+						Add Item
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+							{{#if object.items}}
+								<table class="ui very basic single line table object-table">
+									<thead>
+										<tr>
+											<th>
+												Title
+											</th>
+											<th>
+												Route or URL
+											</th>
+											<th>
+											</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{{> HomePrivateEditPagesMenuItemsViewList root=object}}
+									</tbody>
+								</table>
+							{{else}}
+								<div class="ui info message">No items in this menu yet.</div>
+							{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesMenuItemsViewList">
+	{{#each root.items}}
+		{{> HomePrivateEditPagesMenuItemsViewListItem}}
+
+		{{#if itemIsExpanded}}
+			{{> HomePrivateEditPagesMenuItemsViewList root=this}}
+		{{/if}}
+	{{/each}}
+</template>
+
+<template name="HomePrivateEditPagesMenuItemsViewListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			{{#each parentItems}}
+				<i class="fa fa-fw"></i>
+			{{/each}}
+			<i class="fa {{caretClass}} object-table-caret"></i> {{displayName}}
+		</td>
+		<td>
+			{{routeOrURL}}
+		</td>
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-plus tree-node-control add-item" title="Add Item"></span>
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control remove-item" title="Delete Item"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditPagesMarkdownView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">Markdown</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc editor-content-text">
+				{{> CodeMirror id="markdown-input" options=markdownInputOptions reactiveVar="markdownInputText"}}
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesLinksView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Links
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> RouteEditor object=selectedObject}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+
+
+<template name="HomePrivateEditPagesFieldsView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="ui header">
+					Fields
+					{{#if fieldsAreInherited}}
+						<button class="ui right floated small blue button override-fields">
+							<i class="fa fa-pencil icon"></i>
+							Edit fields
+						</button>
+						<div class="sub header"><i>Fields are inherited from collection</i></div>
+					{{else}}
+						<button class="ui right floated small green button add-field">
+							<i class="plus icon"></i>
+							Add Field
+						</button>
+						<div class="sub header"><i>Manually defined fields</i></div>
+					{{/if}}
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditPagesFieldList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesFieldList">
+	{{#if fieldList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Field name
+					</th>
+					<th>
+						Title (Label)
+					</th>
+					<th>
+						Data type
+					</th>
+					<th>
+						Required
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each fieldList}}
+					{{> HomePrivateEditPagesFieldListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No fields.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditPagesFieldListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			<span class="fa fa-file-o icon object-table-caret"></span>{{name}}
+		</td>
+		<td>
+			{{title}}
+		</td>
+		<td class="collapsing">
+			{{displayType}}
+		</td>
+		<td class="collapsing">
+			<i class="{{requiredIconClass}} required-icon"></i>
+		</td>
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				{{#if fieldsAreInherited}}
+				{{else}}
+					<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+					<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+					<span class="fa fa-trash icon delete-icon" title="Delete"></span>
+				{{/if}}
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditPagesFormActionsView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<h2 class="header">
+							Actions
+						</h2>
+
+						<div class="toggler {{onSubmitClass}}" data-session="formActionsHideOnSubmit">
+							<div class="title">
+								<i class="fa fa-fw {{onSubmitIconClass}}"></i>
+								On Submit
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-submit-input" name="on-submit-input" options=onSubmitInputOptions reactiveVar="onSubmitInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{onCancelClass}}" data-session="formActionsHideOnCancel">
+							<div class="title">
+								<i class="fa fa-fw {{onCancelIconClass}}"></i>
+								On Cancel
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-cancel-input" name="on-cancel-input" options=onCancelInputOptions reactiveVar="onCancelInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesDataViewActionsView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<h2 class="header">
+							Actions
+						</h2>
+
+						<div class="toggler {{onItemClickedClass}}" data-session="formActionsHideOnItemClicked">
+							<div class="title">
+								<i class="fa fa-fw {{onItemClickedIconClass}}"></i>
+								On Item Clicked
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-item-clicked-input" name="on-item-clicked-input" options=onItemClickedInputOptions reactiveVar="onItemClickedInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditPagesHelpersEventsView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<h2 class="header">
+							Code
+						</h2>
+
+						<div class="toggler {{onRenderedClass}}" data-session="helpersEventsHideOnRendered">
+							<div class="title">
+								<i class="fa fa-fw {{onRenderedIconClass}}"></i>
+								On Rendered
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-rendered-input" name="on-rendered-input" options=onRenderedInputOptions reactiveVar="onRenderedInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{helpersClass}}" data-session="helpersEventsHideHelpers">
+							<div class="title">
+								<i class="fa fa-fw {{helpersIconClass}}"></i>
+								Helpers
+							</div>
+							<div class="content">
+								{{> CodeMirror id="helpers-input" name="helpers-input" options=helpersInputOptions reactiveVar="helpersInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{eventsClass}}" data-session="helpersEventsHideEvents">
+							<div class="title">
+								<i class="fa fa-fw {{eventsIconClass}}"></i>
+								Events
+							</div>
+							<div class="content">
+								{{> CodeMirror id="events-input" name="events-input" options=eventsInputOptions reactiveVar="eventsInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditPagesCustomActionsView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					{{#each actionProperties}}
+						{{> CustomActionsEditor object=selectedObject property=this}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,189 @@
+<template name="AdminNewsletters">
+	<div id="content" class="ui container">
+		{{> AdminNewslettersView}}
+
+		{{> AdminNewslettersGetMailingList}}
+	</div>
+</template>
+
+
+<template name="AdminNewslettersView">
+	<div id="admin-newsletters-view" class="">
+		<h2 class="ui header">
+			Newsletters
+		</h2>
+		<form class="ui form">
+			<div id="dataview-controls" class="ui secondary menu">
+				<div id="dataview-controls-insert" class="item">
+					<button type="submit" id="dataview-insert-button" class="ui green button">
+						<span class="fa fa-plus">
+						</span>
+						Add new
+					</button>
+				</div>
+
+				<div id="dataview-controls-search" class="item">
+					{{#if isNotEmpty}}
+					<div class="ui fluid action input">
+						<input id="dataview-search-input" type="text" placeholder="Search...">
+						<div id="dataview-search-button" class="ui icon button">
+							<i class="search icon">
+							</i>
+						</div>
+					</div>
+					{{/if}}
+				</div>
+				<div id="dataview-controls-export" class="item">
+					{{#if isNotEmpty}}				
+		{{#if isFound}}
+					<div>
+					</div>
+					{{else}}
+					<div class="ui buttons">
+						<div id="dataview-export-csv" class="ui button">
+							Export
+						</div>
+						<div class="ui floating dropdown icon button">
+							<i class="dropdown icon">
+							</i>
+							<div class="menu">
+								<div id="dataview-export-csv" class="item">
+									Export to CSV
+								</div>
+								<div id="dataview-export-tsv" class="item">
+									Export to TSV
+								</div>
+								<div id="dataview-export-json" class="item">
+									Export to JSON
+								</div>
+							</div>
+						</div>
+					</div>
+					{{/if}}				
+	{{/if}}
+				</div>
+			</div>
+		</form>
+		{{#if isNotEmpty}}	
+			{{#if isNotFound}}
+		<div class="ui active warning message">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> AdminNewslettersViewTable}} {{/if}}
+		</div>
+		{{/if}}	
+		{{else}}
+		<div class="ui active info message">
+			No newsletters yet
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="AdminNewslettersViewTable">
+	<table id="dataview-table" class="ui very basic unstackable table selectable">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="email">
+					Group
+				</th>
+				<th class="th-sortable" data-sort="subject">
+					Subject
+				</th>
+				<th class="th-sortable" data-sort="createdAt">
+					Date created
+				</th>
+				<th class="th-sortable" data-sort="status">
+					Status
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> AdminNewslettersViewTableItems}} {{/each}}
+		</tbody>
+	</table>
+	<div class="ui small modal delete">
+		<div class="header">
+			Delete
+		</div>
+		<div class="image content">
+			<div class="description">
+				Delete? Are you sure?
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+
+	<div class="ui small modal send">
+		<div class="header">
+			Send
+		</div>
+		<div class="image content">
+			<div class="description">
+				Send newsletter now?
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok button">
+				Yes
+			</div>
+			<div class="ui basic cancel button">
+				No
+			</div>
+		</div>
+	</div>
+
+
+</template>
+
+<template name="AdminNewslettersViewTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{email}}
+		</td>
+		<td>
+			{{subject}}
+		</td>
+		<td>
+			{{createdAt}}
+		</td>
+		<td>
+			{{status}}
+		</td>
+		<td class="collapsing td-icon">
+			<i id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
+			</i>
+
+			<i id="delete-button" class="fa fa-trash {{deleteButtonClass}}" title="Delete">
+			</i>
+
+			<i id="send-button" class="fa fa-paper-plane {{sendButtonClass}}" title="Send">
+			</i>
+		</td>
+	</tr>
+</template>
+
+
+<template name="AdminNewslettersGetMailingList">
+	<h2 class="ui header">
+		Download mailing list
+	</h2>
+	<div class="ui basic fluid segment">
+		<button type="button" class="ui red button" id="download-mailing-list">
+			<i class="ui download icon"></i> 
+			Download
+		</button>
+	</div>
+</template>

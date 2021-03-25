@@ -1,0 +1,3 @@
+- GUI: Fixed bug - sometimes multiple editors for single field appeared
+- GUI: Added javascript hints in editor
+- CLI: Fixed bugs in HTML to JADE converter

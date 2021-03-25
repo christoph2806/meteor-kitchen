@@ -1,0 +1,44 @@
+{
+	"application": {
+		"title": "Semantic UI - Example",
+
+		"frontend": "semantic-ui",
+
+		"free_zone": {
+
+			"layout": "navbar",
+
+			"container_class": "",
+
+			"footer_class": "",
+
+			"pages": [
+				{ "name": "home", "title": "Hello semantic-ui!", "text": "This application is built with <a href=\"http://www.meteorkitchen.com\" target=\"_blank\">Meteor Kitchen</a> - source code generator for <a href=\"https://www.meteor.com/\" target=\"_blank\">Meteor.js</a>. Stay tuned, it will be fully supported in next few days." },
+				{ "name": "about", "title": "About", "text": "This example application is built with <a href=\"http://www.meteorkitchen.com\" target=\"_blank\">Meteor Kitchen</a> - source code generator for Meteor.js. Source code (input file for generator) is <a href=\"https://github.com/perak/kitchen-examples/tree/master/example-semantic\" target=\"_blank\">here</a>." }
+			],
+
+			"components": [
+				{
+					"name": "main_menu",
+					"type": "menu",
+					"items": [
+						{ "title": "Home", "route": "home" },
+						{ "title": "About", "route": "about" }
+					]
+				},
+				{
+					"name": "footer_menu",
+					"type": "menu",
+					"dest_selector": "#footer",
+					"class": "",
+					"items_container_class": "ui horizontal inverted small divided link list",
+					"items": [
+						{ "title": "Meteor Kitchen", "url": "http://www.meteorkitchen.com", "target": "_blank" },
+						{ "title": "Meteor", "url": "https://www.meteor.com", "target": "_blank" },
+						{ "title": "Semantic UI", "url": "http://semantic-ui.com", "target": "_blank" }
+					]
+				}
+			]
+		}
+	}
+}

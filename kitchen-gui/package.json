@@ -1,0 +1,16 @@
+{
+  "name": "kitchen-gui",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "bcrypt": "^1.0.3",
+    "blaze2gasoline": "^0.2.4",
+    "gasoline-turbo": "^0.3.5",
+    "meteor-node-stubs": "~0.2.4",
+    "prerender-node": "^3.2.1",
+    "showdown": "^1.7.1"
+  }
+}

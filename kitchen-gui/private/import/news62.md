@@ -1,0 +1,2 @@
+- Windows XP & 7: you don't need "where.exe" anymore.
+- Fixed few small bugs.

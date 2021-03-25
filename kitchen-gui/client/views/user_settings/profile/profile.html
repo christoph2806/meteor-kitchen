@@ -1,0 +1,298 @@
+<template name="UserSettingsProfile">
+	<div id="content" class="ui stackable two column grid">
+		{{> UserSettingsProfileBasic}}
+		{{> UserSettingsProfileSkill}}
+	</div>
+</template>
+
+<template name="UserSettingsProfileBasic">
+	<div class="column">
+		<div id="user-settings-profile-edit-form" class="ui basic segment">
+			<form class="ui form" role="form">
+				<div class="ui clearing no-padding basic segment">
+					<h2 class="ui left floated header">
+						Basic info
+					</h2>
+					<div class="ui right floated no-padding no-margin basic segment">
+						<button id="form-submit-button" class="ui green icon button" type="submit">
+							<span class="fa fa-check">
+							</span>
+							Save
+						</button>
+					</div>
+				</div>
+
+				{{#if errorMessage}}
+				<div class="ui visible warning message">
+					{{errorMessage}}
+				</div>
+				{{/if}}		
+			
+				{{#if infoMessage}}
+				<div class="ui visible positive message">
+					{{infoMessage}}
+				</div>
+				{{/if}}
+
+				<div class="form-group read-only-field  field-profile-username">
+					<div class="fields">
+						<div class="four wide field">
+							<label for="profile.username">
+								Username
+							</label>
+						</div>
+						<div class="twelve wide field">
+							<p>
+								{{current_user_data.profile.username}}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group read-only-field  field-profile-email">
+					<div class="fields">
+						<div class="four wide field">
+							<label for="profile.email">
+								E-mail
+							</label>
+						</div>
+						<div class="twelve wide field">
+							<p>
+								{{current_user_data.profile.email}}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group  field-profile-name">
+					<div class="field">
+						<label for="profile.name">
+							Full Name
+						</label>
+						<input placeholder="Name" type="text" name="profile.name" value="{{current_user_data.profile.name}}" class="form-control" autofocus="autofocus" required="required">
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden">
+						</div>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+				</div>
+
+
+				<div class="form-group field-profile-country">
+					<div class="field">
+						<label for="profile.country">
+							Country
+						</label>
+
+						<div class="ui fluid search selection dropdown">
+							<input type="hidden" name="profile.country" value="{{current_user_data.profile.country}}">
+							<i class="dropdown icon"></i>
+							<div class="default text">Select Country</div>
+							<div class="menu">
+								{{#each countries}}
+									<div class="item" data-value="{{code}}">{{name}}</div>
+								{{/each}}
+							</div>
+						</div>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+				</div>
+
+				<div class="form-group field-profile-about">
+					<div class="field">
+						<label for="profile.about">
+							About me (short bio)
+						</label>
+						<textarea name="profile.about" class="form-control">{{current_user_data.profile.about}}</textarea>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden">
+						</div>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+				</div>
+
+				<button id="form-submit-button" class="ui green icon button" type="submit">
+					<span class="fa fa-check">
+					</span>
+					Save
+				</button>
+
+			</form>
+		</div>
+	</div>
+</template>
+
+<template name="UserSettingsProfileSkill">
+	<div class="column">
+		<div id="user-settings-profile-edit-form" class="ui basic segment">
+			<form class="ui form" role="form">
+				<div class="ui clearing no-padding basic segment">
+					<h2 class="ui left floated header">
+						Developer profile
+					</h2>
+					<div class="ui right floated no-padding no-margin basic segment">
+						<button id="form-submit-button" class="ui green icon button" type="submit">
+							<span class="fa fa-check">
+							</span>
+							Save
+						</button>
+					</div>
+				</div>
+
+				{{#if errorMessage}}
+				<div class="ui visible warning message">
+					{{errorMessage}}
+				</div>
+				{{/if}}		
+			
+				{{#if infoMessage}}
+				<div class="ui visible positive message">
+					{{infoMessage}}
+				</div>
+				{{/if}}
+
+				<div class="field">
+					<div class="ui toggle checkbox">
+						<input type="checkbox" name="profile.availableForHire" {{itemIsChecked current_user_data.profile.availableForHire true}}>
+						<label for="available-for-hire">
+							I am available for hire
+						</label>
+					</div>
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+
+				{{#if availableForHire}}
+					<div class="field">
+						<label for="profile.devProfile.cvURL">
+							Resume/CV URL <span class="muted">(optional)</span>
+						</label>
+						<input placeholder="Resume URL" type="text" name="profile.devProfile.cvURL" value="{{current_user_data.profile.devProfile.cvURL}}" class="form-control">
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					{{> UserSettingsProfileSkillTeam}}
+
+					<div class="field">
+						<label>What type of software development do you do?</label>
+						<select name="profile.devProfile.devType" multiple="" class="ui fluid dropdown">
+							{{#each devType}}
+								<option value="{{value}}" {{optionIsSelected ../current_user_data.profile.devProfile.devType value}}>{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="grouped fields">
+						<label>How you would rate your Meteor experience and skill level?</label>
+						{{#each selfRating}}
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input type="radio" name="profile.devProfile.selfRating" value="{{value}}" {{itemIsChecked ../current_user_data.profile.devProfile.selfRating value}}>
+									<label>{{title}}</label>
+								</div>
+							</div>
+						{{/each}}
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="field">
+						<label>Which UI frameworks you are familiar with?</label>
+						<select name="profile.devProfile.uiFrameworks" multiple="" value="{{current_user_data.profile.devProfile.uiFrameworks}}" class="ui fluid dropdown">
+							{{#each uiFrameworks}}
+								<option value="{{value}}" {{optionIsSelected ../current_user_data.profile.devProfile.uiFrameworks value}}>{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="grouped fields">
+						<label>Do you have more experience with frontend or with backend?</label>
+						{{#each stack}}
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input type="radio" name="profile.devProfile.stack" value="{{value}}" {{itemIsChecked ../current_user_data.profile.devProfile.stack value}}>
+									<label>{{title}}</label>
+								</div>
+							</div>
+						{{/each}}
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="field">
+						<label>Which programming languages do you know?</label>
+						<select name="profile.devProfile.progLangs" value="{{current_user_data.profile.devProfile.progLangs}}" multiple="" class="ui fluid dropdown">
+							{{#each progLangs}}
+								<option value="{{value}}" {{optionIsSelected ../current_user_data.profile.devProfile.progLangs value}}>{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<div class="field">
+						<label>Which desktop operating systems are you familiar with?</label>
+						<select name="profile.devProfile.os" multiple="" value="{{current_user_data.profile.devProfile.os}}" class="ui fluid dropdown">
+							{{#each osList}}
+								<option value="{{value}}" {{optionIsSelected ../current_user_data.profile.devProfile.os value}}>{{title}}</option>
+							{{/each}}
+						</select>
+						<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+					</div>
+
+					<button id="form-submit-button" class="ui green icon button" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+
+				{{else}}
+					<p>
+						<b>Are you searching for a job?</b>
+						<br /><br />
+						Please turn on "I am available for hire" switch and enter more details about your skills. Your profile will appear in "Developers available for hire" page and companies will be able to contact you.
+						<br /><br />
+						Good luck! :)
+					</p>
+				{{/if}}
+
+			</form>
+
+		</div>
+	</div>
+</template>
+
+<template name="UserSettingsProfileSkillTeam">
+	<div class="grouped fields">
+		<label>Are you individual or a team?</label>
+		<div class="field">
+			<div class="ui radio checkbox">
+				<input type="radio" name="profile.devProfile.team" value="false" data-type="bool" {{itemIsChecked current_user_data.profile.devProfile.team false}}>
+				<label>Individual</label>
+			</div>
+		</div>
+		<div class="field">
+			<div class="ui radio checkbox">
+				<input type="radio" name="profile.devProfile.team" value="true" data-type="bool" {{itemIsChecked current_user_data.profile.devProfile.team true}}>
+				<label>Team</label>
+			</div>
+		</div>
+	</div>
+
+	{{#if team}}
+		<div class="field">
+			<label for="profile.devProfile.teamSize">
+				How many members you have in your team?
+			</label>
+			<input placeholder="Team Size" type="text" name="profile.devProfile.teamSize" data-type="integer" data-min="2" data-max="100" value="{{current_user_data.profile.devProfile.teamSize}}" class="form-control" required="required">
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+
+		<div class="field">
+			<label for="profile.devProfile.teamName">
+				Team (or company) name
+			</label>
+			<input placeholder="Team Name" type="text" name="profile.devProfile.teamName" value="{{current_user_data.profile.devProfile.teamName}}" class="form-control">
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+	{{/if}}
+</template>

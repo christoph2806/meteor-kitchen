@@ -1,0 +1,112 @@
+<template name="DevGalery">
+	<div class="dev-galery">
+		{{#if title}}
+			<div class="ui clearing no-padding basic segment">
+				<div class="ui right floated no-padding no-margin basic segment">
+					{{#if searchTextVariable}}
+						<div class="ui buttons">
+							<button class="ui button {{filterAllButtonClass}} filter-all-button">All developers</button>
+							<button class="ui button {{filterForHireButtonClass}} filter-for-hire-button"><i class="ui orange flag icon"></i>Available for Hire</button>
+						</div>
+
+						<div class="ui action left icon input">
+						    <i class="search icon"></i>
+						  	<input type="text" class="search-input" placeholder="Search..." value="{{searchText}}">
+							<button class="ui primary button search-button">
+								Search
+							</button>
+						</div>
+					{{/if}}
+				</div>
+
+				<h1 class="ui left floated header">
+					{{title}}
+					{{#if totalCountVariable}}
+						<div class="sub header">
+							{{#if isFiltered}}
+								<strong>Filtered:</strong>
+							{{/if}}
+							<span class="{{totalCountDisplayClass}}">
+								{{totalCount}}
+							</span>
+							developers
+							{{#if isFiltered}}
+								<a href="#" class="filter-off">Show All</a>
+							{{/if}}
+						</div>
+					{{/if}}
+				</h1>
+			</div>
+		{{/if}}
+
+		{{#if gotUsers}}
+			<div class="ui special cards">
+				{{#each users}}
+					{{> DevGaleryCard}}
+				{{/each}}
+			</div>
+
+			<div class="ui center aligned basic segment">
+				{{#if isPaged}}
+					{{#if gotPrevPage}}
+						<button class="ui left labeled blue icon button page-prev">
+							<i class="left arrow icon"></i>
+							Previous
+						</button>
+					{{/if}}
+
+					{{#if gotNextPage}}
+						<button class="ui right labeled blue icon button page-next">
+							<i class="right arrow icon"></i>
+							Next
+						</button>
+					{{/if}}
+				{{/if}}
+			</div>
+		{{else}}
+			<div class="ui info message">
+				{{#if searchText}}
+					<p>"{{searchText}}" not found.</p>
+				{{else}}
+					<p>{{emptyText}}</p>
+				{{/if}}
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="DevGaleryCard">
+	<div class="card">
+		<div class="content">
+			<a class="header details-link">{{profile.name}}</a>
+			<div class="meta">
+				<p>{{profile.username}}</p>
+			</div>
+		</div>
+
+		<div class="blurring dimmable image">
+			{{#if ../detailsRoute}}
+				<div class="ui inverted dimmer">
+					<div class="content">
+						<div class="center">
+							<div class="ui primary button details-link">{{../detailsButtonTitle}}</div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+			<img src="{{userAvatarURL _id 250}}">
+		</div>
+
+		<div class="extra content">
+			{{#if profile.availableForHire}}
+				<div class="ui orange label details-link clickable">Hire Me</div>
+			{{/if}}
+			<span class="right floated">
+				<a class="projects-link">
+					<i class="cube icon projects-icon"></i>
+					{{profile.publicProjectCount}} public projects
+				</a>
+			</span>
+		</div>
+	</div>
+</template>

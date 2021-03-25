@@ -1,0 +1,125 @@
+<template name="HomePublic">
+
+	<div class="ui inverted vertical masthead center aligned segment coverr">
+		<div class="ui text container">
+			<img src="/images/kitchen-logo-2.svg" class="landing-logo">
+			<h2>Build Web &amp; Mobile Applications. Visually.</h2>
+			<h3>
+				<a href="{{pathFor 'developers'}}">
+					<span class="count-link {{userCountDisplayClass}}">
+						{{#if gotUserCount}}
+							{{userCount}}
+						{{/if}}
+					</span>
+					developers
+				</a> built
+
+				<a href="{{pathFor 'discover'}}">
+					<span class="count-link {{totalAppCountDisplayClass}}">
+						{{#if gotTotalAppCount}}
+							{{totalAppCount}}
+						{{/if}}
+					</span>
+					applications
+				</a>
+			</h3>
+			<a href="{{pathFor 'register'}}" class="ui huge primary button">Join Us</a> <a href="#intro-section" class="ui huge basic secondary inverted button">Learn more</a> 
+		</div>
+
+    	<div class="video-container">
+	        <div class="filter"></div>
+	        <video autoplay muted playsinline loop>
+	            <source src="{{coverr 'Mock-up' 'mp4'}}" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+	        </video>
+	    </div>
+	</div>
+
+	<div class="ui center aligned vertical stripe segment">
+		<p>Our sponsors:</p>
+		<a href="https://www.integrationalpha.com" target="_blank"><img class="ui centered image" src="/images/ia-logo-color.svg"></a>
+	</div>
+
+
+	<div id="intro-section" class="ui text container home-section intro-section">
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">What is "Meteor Kitchen"?</h1>
+			<p>
+				"Meteor Kitchen" is source code generator for <a href="https://www.meteor.com" target="_blank">Meteor</a> - javascript based platform for web, mobile, and desktop. Your job is to <b>describe</b> the application and Meteor Kitchen is here to write the code for you.
+			</p>
+		</div>
+
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">For web, mobile and desktop</h1>
+			<p>
+				Generated source code is fully functional <a href="https://www.meteor.com" target="_blank">Meteor</a> application and can run as Web, Mobile (<a href="https://www.android.com/" target="_blank">Android</a> or <a href="http://www.apple.com/ios/" target="_blank">iOS</a>) or desktop application (<a href="http://electron.atom.io/" target="_blank">Electron</a>).
+			</p>
+		</div>
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">How It works?</h1>
+			<p>
+			Application description is <a href="http://www.json.org/" target="_blank">JSON</a> file and can be written manually or you can use <a href="{{pathFor 'register'}}">Kitchen GUI</a> (visual IDE). Description file is input for <a href="{{pathFor 'docs.cli'}}">Kitchen CLI</a> - command line tool which generates the application.
+			</p>
+		</div>
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">React or Blaze?</h1>
+
+			<div class="ui grid">
+				<div class="four wide column">
+				</div>
+				<div class="four wide column">
+					<a href="https://reactjs.org/" target="_blank"><img alt="" src="/images/react_logo_simple.svg" style="width: 100%; height: auto;" /></a>
+				</div>
+				<div class="four wide column">
+					<a href="http://blazejs.org/" target="_blank"><img alt="" src="/images/blaze_logo_simple.svg" style="width: 100%; height: auto;" /></a>	
+				</div>
+				<div class="four wide column">
+				</div>
+			</div>
+
+			<p>
+				You can build both Meteor+React or Meteor+Blaze application from the same source (from the same input file).
+			</p>
+		</div>
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">Why Meteor Kitchen?</h1>
+
+			<p>
+				Build application in minutes instead of hours. Or in hours instead of days.
+			</p>
+		</div>
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">Join the community</h1>
+			<p>
+				You can share your projects with others or use any of <b><span class="{{publicAppCountDisplayClass}}">{{#if gotPublicAppCount}}{{publicAppCount}}{{/if}}</span></b> shared projects built by <b><span class="{{userCountDisplayClass}}">{{#if gotUserCount}}{{userCount}}{{/if}}</span></b> members.
+			</p>
+
+			<a href="{{pathFor 'register'}}" class="ui huge primary button">Sign Up Now</a>
+			<p><br />OR</p>
+			<a href="{{pathFor 'docs'}}" class="ui huge basic button">Learn More</a>
+		</div>
+
+		<div class="ui center aligned vertical stripe segment">
+			<h1 class="ui header">And don't forget</h1>
+			<p>To follow, like, subscribe, share... and love <i class="ui red heart icon"></i> Meteor Kitchen!</p>
+			<p>
+				<a href="https://twitter.com/MeteorKitchen" target="_blank"><span class="ui large black icon fa fa-twitter"></span>&nbsp;Twitter</a>
+				&nbsp;&nbsp;&nbsp;
+				<a href="https://www.youtube.com/channel/UC-Oa30wsgeKtK4UU8g8UllA/videos" target="_blank"><span class="ui large black icon fa fa-youtube-play"></span>&nbsp;Youtube</a>
+				&nbsp;&nbsp;&nbsp;
+				<a href="https://github.com/perak/kitchen-site" target="_blank"><span class="ui large black icon fa fa-github"></span>&nbsp;GitHub</a>
+			</p>
+			<p>
+				<a href="https://gitter.im/perak/kitchen-site?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" target="_blank">
+					<img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/perak/kitchen-site" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width:100%;">
+				</a>
+			</p>
+		</div>
+	</div>
+</template>
+

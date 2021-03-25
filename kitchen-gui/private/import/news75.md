@@ -1,0 +1,1 @@
+- Compatible with Meteor 1.4

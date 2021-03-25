@@ -1,0 +1,110 @@
+<template name="HomePrivateEditGlobalConfigAccounts">
+		<h1>Login options</h1>
+
+		<div class="ui form">
+
+			<div class="grouped fields">
+				<label>Login with password</label>
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_password" {{itemIsChecked appData.login_with_password true}}>
+						<label>Login with password</label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox {{sendVerificationEmailDisabled}}">
+						<input type="checkbox" class="login-option" name="send_verification_email" {{itemIsChecked appData.send_verification_email true}} {{sendVerificationEmailDisabled}}>
+						<label>Send verification e-mail</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="grouped fields">
+				<label>OAuth login</label>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_google" {{itemIsChecked appData.login_with_google true}}>
+						<label>Login with <b>Google</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_github" {{itemIsChecked appData.login_with_github true}}>
+						<label>Login with <b>GitHub</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_linkedin" {{itemIsChecked appData.login_with_linkedin true}}>
+						<label>Login with <b>LinkedIn</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_facebook" {{itemIsChecked appData.login_with_facebook true}}>
+						<label>Login with <b>Facebook</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_twitter" {{itemIsChecked appData.login_with_twitter true}}>
+						<label>Login with <b>Twitter</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_meteor" {{itemIsChecked appData.login_with_meteor true}}>
+						<label>Login with <b>Meteor</b></label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui checkbox">
+						<input type="checkbox" class="login-option" name="login_with_auth0" {{itemIsChecked appData.login_with_auth0 true}}>
+						<label>Login with <b>Auth0</b></label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="display-table height-max">
+			<div class="display-tr height-max">
+				<div class="display-tc">
+					<div class="editor-content-text">
+						<h2 class="ui header">
+							Account events
+							<div class="sub header">(server-side)</div>
+						</h2>
+
+						<div class="toggler {{onUserCreatedClass}}" data-session="loginOptionsHideOnUserCreated">
+							<div class="title">
+								<i class="fa fa-fw {{onUserCreatedIconClass}}"></i>
+								On User Created
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-user-created-input" name="on-user-created-input" options=onUserCreatedInputOptions reactiveVar="onUserCreatedInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{onUserLoggedClass}}" data-session="loginOptionsHideOnUserLogged">
+							<div class="title">
+								<i class="fa fa-fw {{onUserLoggedIconClass}}"></i>
+								On User Logged
+							</div>
+							<div class="content">
+								{{> CodeMirror id="on-user-logged-input" name="on-user-logged-input" options=onUserLoggedInputOptions reactiveVar="onUserLoggedInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</template>

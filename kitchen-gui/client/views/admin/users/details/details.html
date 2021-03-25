@@ -1,0 +1,123 @@
+<template name="AdminUsersDetails">
+	<div id="content" class="ui container">
+		{{> AdminUsersDetailsDetailsForm}}
+	</div>
+</template>
+
+<template name="AdminUsersDetailsDetailsForm">
+	<div id="admin-users-details-details-form" class="">
+		<div id="form-back-button" class="ui basic button">
+			<i class="chevron left icon">
+			</i>
+			Back
+		</div>
+		<h2 class="ui header">
+			User details
+		</h2>
+		<form class="ui form" role="form">
+			{{#if errorMessage}}
+			<div class="ui visible warning message">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="ui visible positive message">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group read-only-field  field-profile-username">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="profile.username">
+							Username
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.profile.username}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group read-only-field  field-profile-email">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="profile.email">
+							E-mail
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.profile.email}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group read-only-field  field-profile-name">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="profile.name">
+							Name
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.profile.name}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group read-only-field  field-roles">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="roles">
+							Role
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.roles}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group read-only-field  field-login-count">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="roles">
+							Login Count
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.stats.loginCount}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group read-only-field  field-last-login">
+				<div class="fields">
+					<div class="four wide field">
+						<label for="roles">
+							Last Login
+						</label>
+					</div>
+					<div class="twelve wide field">
+						<p>
+							{{admin_user.stats.lastLogin}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="">
+				<div class="submit-div">
+					<a href="#" id="form-close-button" class="ui blue button">
+						OK
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

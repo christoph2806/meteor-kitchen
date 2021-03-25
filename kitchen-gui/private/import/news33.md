@@ -1,0 +1,4 @@
+- Changes related to page layout:
+    - Now you can set `simple` or `navbar` layout (`zone` object, property `layout`). `simple` layout doesn't have navbar (but still can have menu - it is wrapped into simple container). Default layout (if not specified) is `navbar`.
+    - If your layout have navbar then you can define class to be added to main navbar (`zone` object, property `navbar_class`). For example "navbar-inverse" (or anything else).
+- Fixed small html parser issue: in some circumstances generated html code indentation was incorrect.

@@ -1,0 +1,2 @@
+Template.Docs.rendered = function() {
+};

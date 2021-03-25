@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+	<head>
+		<link id="css-framework" rel="stylesheet" type="text/css" href="">
+
+		<link rel="stylesheet" type="text/css" href="/gasoline/css/bootstrap.css?x">
+		<link rel="stylesheet" type="text/css" href="/gasoline/css/gasoline-turbo.css">
+		<link rel="stylesheet" type="text/css" href="/gasoline/css/font-awesome.css">
+	</head>
+
+	<body>
+	</body>
+
+	<script 
+		src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+		crossorigin="anonymous">
+	</script>
+
+	<script type="text/javascript">
+		gasoline = parent.gasoline;
+		Session = parent.Session;
+		Tracker = parent.Tracker;
+		App = parent.App;
+
+		var getOriginalGasolineObj = function(objectId) {
+			var kitchen = App.project.get();
+			if(!kitchen) {
+				return null;
+			}
+
+			return kitchen.findObjectById(objectId);
+		};
+
+		var gasolineOverlay = function() {
+			$("div.gas-element").each(function() {
+				var setMargins = false;
+
+				var marginLeft = parseInt($(this).css("margin-left"));
+				if(!isNaN(marginLeft) && marginLeft < 0) {
+					marginLeft = 0;
+					setMargins = true;
+				}
+
+				var marginRight = parseInt($(this).css("margin-right"));
+				if(!isNaN(marginRight) && marginRight < 0) {
+					marginRight = 0;
+					setMargins = true;
+				}
+
+				if(setMargins) {
+					$(this).css({ marginLeft: marginLeft + "px", marginRight: marginRight + "px" });
+				}
+			});
+
+			$(".gasoline-turbo").each(function() { 
+
+				var el = $(".gas-element[data-id='" + $(this).attr("data-id") + "']");
+				if(!el.length) {
+					return;
+				}
+				var mom = el.parent();
+
+				var top = (el.offset().top - mom.offset().top) - 1;
+				var left = (el.offset().left - mom.offset().left) - 1;
+
+				var height = el.outerHeight() + 1;
+				var width = el.outerWidth() + 1;
+
+				var css = {
+					left: left + "px", 
+					top: top + "px", 
+					width: width + "px", 
+					height: height + "px" 
+				};
+				$(this).css(css); 
+			});
+
+		};
+
+
+		Tracker.autorun(function() {
+			var input = Session.get("gasolineObject");
+			var templateName = Session.get("gasTemplateName");
+			var selectedObjectId = Session.get("pageEditorSelectedObject");
+
+			var wireframe = "";
+			if(input && templateName) {
+				if(selectedObjectId) {
+					gasoline.selectObject(input, selectedObjectId);
+				}
+				wireframe = gasoline.getWireframe(input, templateName);
+			}
+
+			document.body.innerHTML = wireframe;
+
+			gasolineOverlay();
+
+			var selectObject = function(objectId) {
+				gasoline.selectObject(input, objectId);
+
+				var expandedNodes = Session.get("pageEditorExpandedNodes") || [];
+
+				var parent = gasoline.findParentObject(input, objectId);
+				while(parent) {
+					if(expandedNodes.indexOf(parent._id) < 0) {
+						expandedNodes.push(parent._id);
+					}
+					parent = gasoline.findParentObject(input, parent._id);
+				}
+
+				Session.set("pageEditorExpandedNodes", expandedNodes);
+				Session.set("pageEditorSelectedObject", objectId);
+				Session.set("pageEditorFocusedObject", objectId);
+			};
+
+			var getUniqueTemplateName = function(object, name) {
+				if(!object.templates) {
+					return name;
+				}
+
+				var uniqueName = name;
+				var counter = 0;
+				while(object.templates.find(function(tt) { 
+					return tt.name == uniqueName; 
+				})) {
+					counter++;
+					uniqueName = name + (!!counter ? counter : ""); 
+				};
+				return uniqueName;
+			}
+
+			$(".gasoline-turbo").on("click", function(e) {
+				e.stopPropagation();
+				selectObject(e.currentTarget.getAttribute("data-id"));
+			});
+
+			$(".gasoline-turbo").on("mousemove", function(e, t) {
+				var x = e.clientX;
+				var y = e.clientY;
+				var elementMouseIsOver = $(document.elementFromPoint(x, y));
+				if(!elementMouseIsOver.hasClass("gasoline-turbo")) {
+					return;
+				}
+
+				$(".gasoline-turbo-hover").removeClass("gasoline-turbo-hover");
+				$(".gasoline-turbo-drop").removeClass("gasoline-turbo-drop");
+				$(".gasoline-turbo-forbid").removeClass("gasoline-turbo-forbid");
+
+				$(elementMouseIsOver).addClass("gasoline-turbo-hover");
+			});
+
+			$(".gasoline-turbo").on("mouseleave", function(e, t) {
+				$(".gasoline-turbo-hover").removeClass("gasoline-turbo-hover");
+			});
+
+			$(".gasoline-turbo").on("dragstart", function(e, t) {
+				e.stopPropagation();
+				e.originalEvent.dataTransfer.setData("text", JSON.stringify({ source: "gasoline-designer", id: $(e.currentTarget).attr("data-id") }) );
+			});
+
+			$(".gasoline-turbo").on("dragenter", function(e, t) {
+				e.stopPropagation();
+
+			});
+
+			$(".gasoline-turbo").on("dragover", function(e, t) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				var elementMouseIsOver = $(e.currentTarget);
+				var parentElement = null;
+
+				// find target object
+				var targetObjectId = elementMouseIsOver.attr("data-id");
+				var targetObject = gasoline.findObject(input, targetObjectId);
+				if(!targetObject) {
+					return;
+				}
+
+				var top = false;
+				var bottom = false;
+				var centerVertical = true;
+
+				var left = false;
+				var right = false;
+				var centerHorizontal = true;
+				var parentObject = gasoline.findParentObject(input, targetObjectId);
+				if(parentObject && gasoline.acceptChildren(parentObject)) {
+					var w = elementMouseIsOver.outerWidth();
+					var h = elementMouseIsOver.outerHeight();
+
+					top = e.offsetY < (h / 4);
+					bottom = e.offsetY > (3 * (h / 4));
+					centerVertical = !top && !bottom;
+
+					left = e.offsetX < (w / 4);
+					right = e.offsetX > (3 * (w / 4));
+					centerHorizontal = !left && !right;
+
+					parentElement = $(".gasoline-turbo[data-id='" + parentObject._id + "']");
+				}
+
+				$(".gasoline-turbo-drop").removeClass("gasoline-turbo-drop");
+				$(".gasoline-turbo-forbid").removeClass("gasoline-turbo-forbid");
+				$(".gasoline-turbo-insert-left").removeClass("gasoline-turbo-insert-left");
+				$(".gasoline-turbo-insert-right").removeClass("gasoline-turbo-insert-right");
+				$(".gasoline-turbo-insert-top").removeClass("gasoline-turbo-insert-top");
+				$(".gasoline-turbo-insert-bottom").removeClass("gasoline-turbo-insert-bottom");
+
+				if(centerHorizontal && centerVertical) {
+					if(gasoline.acceptChildren(targetObject)) {
+						elementMouseIsOver.addClass("gasoline-turbo-drop");
+					} else {
+						elementMouseIsOver.addClass("gasoline-turbo-forbid");
+					}
+				} else {
+					parentElement.addClass("gasoline-turbo-drop");			
+
+					if(left) {
+						elementMouseIsOver.addClass("gasoline-turbo-insert-left");
+					}
+					if(right) {
+						elementMouseIsOver.addClass("gasoline-turbo-insert-right");
+					}
+					if(top) {
+						elementMouseIsOver.addClass("gasoline-turbo-insert-top");
+					}
+					if(bottom) {
+						elementMouseIsOver.addClass("gasoline-turbo-insert-bottom");
+					}
+				}
+
+			});
+
+
+			$(".gasoline-turbo").on("drop", function(e, t) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				var elementMouseIsOver = $(e.currentTarget);
+
+				// find target object
+				var targetObjectId = elementMouseIsOver.attr("data-id");
+				var targetObject = gasoline.findObject(input, targetObjectId);
+				if(!targetObject) {
+					return;
+				}
+				if(!gasoline.acceptChildren(targetObject)) {
+					return;
+				}
+
+				// parse transfer
+				var transfer = e.originalEvent.dataTransfer.getData("text");
+				if(!transfer) {
+					return;
+				}
+				var data = null;
+				try {
+					data = JSON.parse(transfer);
+				} catch(err) {
+					return;
+				}
+
+				// cannot drop into itself
+				if(data.id == targetObjectId) {
+					return;
+				}
+
+				// create new object
+				var source = data.source;
+				var newObject = null;
+				switch(source) {
+
+					case "gasoline-palette": {
+						if(!data.data) {
+							return;
+						}
+
+						newObject = JSON.parse(JSON.stringify(data.data));
+						delete newObject._id;
+					}; break;
+
+					case "gasoline-designer": {
+						var designerItemId = data.id;
+						var designerItem = gasoline.findObject(input, designerItemId);
+						if(!designerItem) {
+							return;
+						}
+
+						if(gasoline.findObject(designerItem, targetObjectId)) {
+							// cannot insert parent into child
+							return;
+						}
+
+						newObject = JSON.parse(JSON.stringify(designerItem));
+						delete newObject._id;
+					}; break;
+				}
+
+				if(!newObject) {
+					return;
+				}
+
+				if(newObject.templates) {
+					if(!input.templates) {
+						return;
+					}
+
+					var tmp = JSON.parse(JSON.stringify(newObject));
+
+					newObject = null;
+					if(tmp.templates.length) {
+						tmp.templates[0].name = getUniqueTemplateName(input, tmp.templates[0].name);
+
+						newObject = {
+							type: "inclusion",
+							template: tmp.templates[0].name
+						};
+					}
+
+					input.templates.concat(tmp.templates);
+				}
+
+				if(newObject.type == "template") {
+					if(!input.templates) {
+						return;
+					}
+
+					var tmp = JSON.parse(JSON.stringify(newObject));
+
+					tmp.name = getUniqueTemplateName(input, tmp.name || "NONAME");
+
+					newObject = null;
+					newObject = {
+						type: "inclusion",
+						template: tmp.name
+					};
+
+					input.templates.push(tmp);
+				}
+
+				if(!newObject) {
+					return;
+				}
+
+				// add new object
+				var addedObject = gasoline.addObject(input, targetObjectId, newObject);
+
+				if(addedObject) {
+					selectObject(addedObject._id);
+
+					if(source == "gasoline-designer") {
+						gasoline.removeObject(input, data.id);
+					}
+
+					var gas = getOriginalGasolineObj(input._id);
+					if(gas) {
+						gas.load(input, true);
+						App.setModified();
+					}
+				}
+			});
+
+		});
+	</script>
+
+</html>

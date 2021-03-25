@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="kitchen-cli" Database="" Version="10.0.0">
+  <Project Name="kitchen-cli" Path="kitchen-cli.project" Active="Yes"/>
+  <Project Name="kitchen-docs" Path="../kitchen-docs/kitchen-docs.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
+      <Project Name="kitchen-cli" ConfigName="Debug"/>
+      <Project Name="kitchen-docs" ConfigName="Debug"/>
+      <Project Name="gittest" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="kitchen-cli" ConfigName="Release"/>
+      <Project Name="kitchen-docs" ConfigName="Release"/>
+      <Project Name="gittest" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

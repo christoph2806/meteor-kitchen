@@ -1,0 +1,222 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "page-container"
+						},
+						{
+							"name": "id",
+							"value": "content"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "row"
+								},
+								{
+									"name": "id",
+									"value": "title_row"
+								}
+							],
+							"children": [
+								{
+									"type": "html",
+									"element": "div",
+									"attributes": [
+										{
+											"name": "class",
+											"value": "col-md-12"
+										}
+									],
+									"children": [
+										{
+											"type": "html",
+											"element": "h2",
+											"attributes": [
+												{
+													"name": "id",
+													"value": "page_title"
+												},
+												{
+													"name": "class",
+													"value": "pull-left"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "a",
+													"attributes": [
+														{
+															"name": "href",
+															"value": "#"
+														},
+														{
+															"name": "id",
+															"value": "page-back-button"
+														},
+														{
+															"name": "class",
+															"value": "btn btn-default"
+														},
+														{
+															"name": "title",
+															"value": "back"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "fa fa-chevron-left"
+																}
+															],
+															"children": []
+														}
+													]
+												},
+												{
+													"type": "html",
+													"element": "span",
+													"attributes": [
+														{
+															"name": "id",
+															"value": "page-title-icon"
+														},
+														{
+															"name": "class",
+															"value": "PAGE_TITLE_ICON_CLASS"
+														}
+													],
+													"children": []
+												},
+												{
+													"type": "text",
+													"text": "\n\t\t\t\t\tPAGE_TITLE\n\t\t\t\t"
+												}
+											]
+										},
+										{
+											"type": "html",
+											"element": "div",
+											"attributes": [
+												{
+													"name": "id",
+													"value": "page_menu"
+												},
+												{
+													"name": "class",
+													"value": "pull-right"
+												}
+											],
+											"children": [
+												{
+													"type": "html",
+													"element": "a",
+													"attributes": [
+														{
+															"name": "href",
+															"value": "#"
+														},
+														{
+															"name": "id",
+															"value": "page-close-button"
+														},
+														{
+															"name": "class",
+															"value": "btn btn-default pull-right"
+														},
+														{
+															"name": "title",
+															"value": "Close"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "span",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "fa fa-times"
+																}
+															],
+															"children": []
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "html",
+							"element": "p",
+							"attributes": [
+								{
+									"name": "id",
+									"value": "page_text"
+								}
+							],
+							"children": [
+								{
+									"type": "text",
+									"text": "\n\t\t\tPAGE_TEXT\n\t\t"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "subcontent"
+						}
+					],
+					"children": []
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [],
+			"handlers": []
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

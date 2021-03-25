@@ -1,0 +1,164 @@
+<template name="CMSContent">
+	<div class="{{containerClass}}">
+		{{#if dataReady}}
+			{{#if gotItems}}
+				{{#each cmsItems}}
+					{{> CMSItem}}
+				{{/each}}
+			{{else}}
+				{{#if textIfEmpty}}
+					<div class="alert alert-info">{{textIfEmpty}}</div>
+				{{/if}}
+			{{/if}}
+
+			{{#if userCanInsert}}
+				{{#if insertMode}}
+					{{> CMSInsertForm data=this}}
+				{{else}}
+					<div class="row">
+						<div class="col-md-12">
+							<button type="button" class="add-block btn btn-danger btn-sm">
+								<i class="fa fa-plus"></i>&nbsp;Add Block
+							</button>
+						</div>
+					</div>
+				{{/if}}
+			{{/if}}
+
+		{{else}}
+			<div class="loading">
+				<i class="fa fa-circle-o-notch fa-2x fa-spin"></i>
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="CMSInsertForm">
+	<form>
+		<h3>Add content block</h3>
+
+		{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+		{{/if}}
+
+		<div class="form-group">
+			<label for="type">Block Type</label>
+
+
+			<div class="radio">
+				<label>
+					<input type="radio" name="type" value="markdown" checked>
+					Markdown
+				</label>
+			</div>
+
+			<div class="radio">
+				<label>
+					<input type="radio" name="type" value="html">
+					Raw HTML
+				</label>
+			</div>
+
+			<div class="radio">
+				<label>
+					<input type="radio" name="type" value="text">
+					Raw text
+				</label>
+			</div>
+
+		</div>
+		<button type="submit" class="btn btn-success">OK</button>
+		<button type="button" class="btn cancel-insert btn-default">Cancel</button>
+	</form>
+</template>
+
+<template name="CMSItem">
+	<div class="{{classString}}">
+		{{#if userCanUpdate}}
+			<div class="cms-content-controls">
+				<button type="button" class="cms-content-control edit-button btn btn-danger btn-sm">
+					Edit
+				</button>
+				&nbsp;
+				<button type="button" class="cms-content-control remove-button btn btn-default btn-sm">
+					Delete
+				</button>
+			</div>
+		{{/if}}
+
+		{{> Template.dynamic template=itemTemplate data=itemData}}
+	</div>
+</template>
+
+<template name="CMSUpdateFormSimple">
+	<form>
+		{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+		{{/if}}
+
+		<div class="form-group">
+			<label>{{title}}</label>
+			<textarea class="form-control" name="content">{{data.data.content}}</textarea>
+		</div>
+		<button type="submit" class="btn btn-success">Save</button>
+		<button type="button" class="btn cancel-update btn-default">Cancel</button>
+	</form>
+</template>
+
+
+<template name="CMSItemMarkdown">
+	{{#if editing}}
+		{{> CMSUpdateFormSimple data=this}}
+	{{else}}
+		{{#if data.content}}
+			{{#markdown}}{{data.content}}{{/markdown}}
+		{{else}}
+			&nbsp;
+		{{/if}}
+	{{/if}}
+</template>
+
+<template name="CMSItemHTML">
+	{{#if editing}}
+		{{> CMSUpdateFormSimple data=this}}
+	{{else}}
+		{{#if data.content}}
+			{{{data.content}}}
+		{{else}}
+			&nbsp;
+		{{/if}}
+	{{/if}}
+</template>
+
+<template name="CMSItemText">
+	{{#if editing}}
+		{{> CMSUpdateFormSimple data=this}}
+	{{else}}
+		{{#if data.content}}
+			<p class="raw-text">{{data.content}}</p>
+		{{else}}
+			&nbsp;
+		{{/if}}
+	{{/if}}
+</template>
+
+
+<template name="CMSInputFile">
+	<div class="form-group">
+		<label>
+			{{label}}
+		</label>
+		<div class="input-group">
+			<input type="text" name={{name}} value={{value}} class="form-control" />
+			<span class="input-group-btn">
+				<label class="btn btn-primary cms-upload-btn" title="Upload">
+					<span class="fa fa-cloud-upload"></span><input type="file" hidden multiple="false" />
+				</label>
+			</span>
+		</div>
+	</div>
+</template>

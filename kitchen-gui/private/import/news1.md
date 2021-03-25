@@ -1,0 +1,3 @@
+- Added built-in **change password form**. Now along with "login", "logout", "register" and "forgot_password" pre-built templates, there is also "change_pass". See accounts example <a href="http://example-accounts.meteorfarm.com" target="_blank">here</a> (login and go to profile settings).
+- Markup for dropdown menu item (menu item with sub-items) is now properly generated.
+- DataView now can search fields that have dot inside name (for example "profile.name").

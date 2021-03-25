@@ -1,0 +1,148 @@
+<template name="DesignerLayout">
+	{{> DesignerLayoutSideNav}}
+
+	<div id="design-content" class="pusher fill-viewport">
+		<div id="menu" class="ui inverted borderless small menu no-border-radius no-margin designer-navbar">
+			{{> DesignerLayoutMenu}}
+		</div>
+
+		<div id="content" class="design-container">
+			{{> yield}}
+		</div>
+	</div>
+</template>
+
+<template name="DesignerLayoutMenu">
+	<a class="toc item">
+		<i class="sidebar icon"></i>
+	</a>
+
+	<a href="{{pathFor 'home'}}" class="icon item" title="Back to Dashboard">
+		<img src="/images/kitchen-logo-cake-light.svg">
+	</a>
+
+	<a class="ui {{saveItemClass}} item file-save">
+		<i class="fa fa-save icon"></i>
+		Save
+	</a>
+
+	<a class="ui {{undoItemClass}} icon item file-undo" title="Undo">
+		<i class="fa fa-undo icon"></i>
+	</a>
+	<a class="ui {{redoItemClass}} icon item file-redo" title="Redo">
+		<i class="fa fa-repeat icon"></i>
+	</a>
+
+	<a href="{{pathFor 'home.edit.pages' applicationId=params.applicationId}}" title="Page Designer" class="item {{menuItemClass 'home.edit.pages'}}">
+		<i class="fa fa-file icon"></i>
+		Pages
+	</a>
+
+	<a href="{{pathFor 'home.edit.database' applicationId=params.applicationId}}" title="Database Designer" class="item {{menuItemClass 'home.edit.database'}}">
+		<i class="fa fa-database icon"></i>
+		Database
+	</a>
+
+	<a href="{{pathFor 'home.edit.files' applicationId=params.applicationId}}" title="External Files" class="item {{menuItemClass 'home.edit.files'}}">
+		<i class="fa fa-folder icon"></i>
+		Files
+	</a>
+
+	<a href="{{pathFor 'home.edit.server_config' applicationId=params.applicationId}}" title="Server Configuration" class="item {{menuItemClass 'home.edit.server_config'}}">
+		<i class="fa fa-server icon"></i>
+		Server
+	</a>
+
+	<a href="{{pathFor 'home.edit.client_config' applicationId=params.applicationId}}" title="Client Configuration" class="item {{menuItemClass 'home.edit.client_config'}}">
+		<i class="fa fa-desktop icon"></i>
+		Client
+	</a>
+
+	<a href="{{pathFor 'home.edit.global_config' applicationId=params.applicationId}}" title="Global Configuration" class="item {{menuItemClass 'home.edit.global_config'}}">
+		<i class="fa fa-cog icon"></i>
+		Global
+	</a>
+
+	<a href="{{pathFor 'home.edit.source' applicationId=params.applicationId}}" title="JSON Editor" class="item {{menuItemClass 'home.edit.source'}}">
+		<i class="fa fa-code icon"></i>
+		Edit source
+	</a>
+
+	<a href="{{pathFor 'home.edit.build' applicationId=params.applicationId}}" title="Build" class="item {{menuItemClass 'home.edit.build'}}">
+		<i class="fa fa-cogs icon"></i>
+		Build
+	</a>
+
+	<a href="{{pathFor 'home.edit.deploy' applicationId=params.applicationId}}" title="Deploy" class="item {{menuItemClass 'home.edit.deploy'}}">
+		<i class="fa fa-rocket icon"></i>
+		Deploy
+	</a>
+
+</template>
+
+<template name="DesignerLayoutSideNav">
+	<div class="ui vertical inverted sidebar menu designer-sidenav">
+		<a href="{{pathFor 'home'}}" class="item {{menuItemClass 'home'}}">
+			Back to dashboard
+		</a>
+
+		<a class="ui {{saveItemClass}} item file-save">
+			<i class="fa fa-save icon"></i>
+			Save
+		</a>
+
+		<a class="ui {{undoItemClass}} item file-undo" title="Undo">
+			<i class="fa fa-undo icon"></i>
+			Undo
+		</a>
+		<a class="ui {{redoItemClass}} item file-redo" title="Redo">
+			<i class="fa fa-repeat icon"></i>
+			Redo
+		</a>
+
+		<a href="{{pathFor 'home.edit.pages' applicationId=params.applicationId}}" title="Page Designer" class="item {{menuItemClass 'home.edit.pages'}}">
+			<i class="fa fa-file icon"></i>
+			Pages
+		</a>
+
+		<a href="{{pathFor 'home.edit.database' applicationId=params.applicationId}}" title="Database Designer" class="item {{menuItemClass 'home.edit.database'}}">
+			<i class="fa fa-database icon"></i>
+			Database
+		</a>
+
+		<a href="{{pathFor 'home.edit.files' applicationId=params.applicationId}}" title="External Files" class="item {{menuItemClass 'home.edit.files'}}">
+			<i class="fa fa-folder icon"></i>
+			Files
+		</a>
+
+		<a href="{{pathFor 'home.edit.server_config' applicationId=params.applicationId}}" title="Server Configuration" class="item {{menuItemClass 'home.edit.server_config'}}">
+			<i class="fa fa-server icon"></i>
+			Server
+		</a>
+
+		<a href="{{pathFor 'home.edit.client_config' applicationId=params.applicationId}}" title="Client Configuration" class="item {{menuItemClass 'home.edit.client_config'}}">
+			<i class="fa fa-desktop icon"></i>
+			Client
+		</a>
+
+		<a href="{{pathFor 'home.edit.global_config' applicationId=params.applicationId}}" title="Global Configuration" class="item {{menuItemClass 'home.edit.global_config'}}">
+			<i class="fa fa-cog icon"></i>
+			Global
+		</a>
+
+		<a href="{{pathFor 'home.edit.source' applicationId=params.applicationId}}" title="JSON Editor" class="item {{menuItemClass 'home.edit.source'}}">
+			<i class="fa fa-code icon"></i>
+			Edit source
+		</a>
+
+		<a href="{{pathFor 'home.edit.build' applicationId=params.applicationId}}" title="Build" class="item {{menuItemClass 'home.edit.build'}}">
+			<i class="fa fa-cogs icon"></i>
+			Build
+		</a>
+
+		<a href="{{pathFor 'home.edit.deploy' applicationId=params.applicationId}}" title="Deploy" class="item {{menuItemClass 'home.edit.deploy'}}">
+			<i class="fa fa-rocket icon"></i>
+			Deploy
+		</a>
+	</div>
+</template>

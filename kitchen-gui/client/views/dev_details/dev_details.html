@@ -1,0 +1,56 @@
+<template name="DevDetails">
+	<div class="page-container ui container">
+		<div class="ui clearing no-padding basic segment">
+			<div class="row" id="title_row">
+				<div class="column">
+					<h1 class="ui left floated header">
+						{{user.profile.name}}
+					</h1>
+
+					<div class="ui right floated no-padding no-margin basic segment">
+						{{#if currentUser}}
+							{{#if canContactUser}}
+								<div class="ui blue button contact-me-button">
+									<i class="mail icon"></i> Contact Me
+								</div>
+							{{/if}}
+						{{else}}
+							<div class="ui blue button login-first-button">
+								<i class="mail icon"></i> Contact Me
+							</div>
+						{{/if}}
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="ui stackable padded grid">
+			<div id="menu" class="three wide column">
+				<img class="ui small image" src="{{userAvatarURL user._id 150}}">
+			</div>
+			<div id="subcontent" class="thirteen wide column">
+				{{> DevDetailsMenu .}}
+				{{> yield region='DevDetailsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="DevDetailsMenu">
+	<div id="menu-items" class="ui secondary pointing menu">
+		<a href="{{pathFor 'dev_details.profile' userId=params.userId}}" id="menu-item-simple" class="item {{menuItemClass 'dev_details.profile'}}">
+			<span class="item-title">
+				Profile
+			</span>
+		</a>
+		<a href="{{pathFor 'dev_details.projects' userId=params.userId}}" id="menu-item-simple" class="item {{menuItemClass 'dev_details.projects'}}">
+			<span class="item-title">
+				<span class="ui circular label">
+					{{user.profile.publicProjectCount}}
+				</span>
+				Projects
+			</span>
+		</a>
+	</div>
+</template>

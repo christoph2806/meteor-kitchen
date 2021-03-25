@@ -1,0 +1,597 @@
+<template name="HomePrivateEditDatabase">
+	<div class="ui three column padded grid editor-grid">
+		<div class="four wide column editor-column">
+			{{> HomePrivateEditDatabaseLeftColumn}}
+		</div>
+
+		<div class="eight wide column editor-column main-column">
+			{{> HomePrivateEditDatabaseMainColumn}}
+		</div>
+
+		<div class="four wide column editor-column">
+			{{> HomePrivateEditDatabasePropertiesColumn}}
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseLeftColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr height-max">
+			<div class="display-tc bordered">
+
+				<div class="display-table height-max">
+					<div class="display-tr">
+						<div class="display-tc editor-content title">
+							<b>Database</b>
+						</div>
+					</div>
+					<div class="display-tr height-max">
+						<div class="display-tc contains-scrollable">
+							<div class="scrollable-area">
+								<div class="editor-content">
+									{{> HomePrivateEditDatabaseCollectionTree root=application}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseCollectionTree">
+	{{#each collectionList}}
+		<ul class="tree-node">
+			{{> HomePrivateEditDatabaseCollectionTreeItem}}
+		</ul>
+	{{/each}}
+</template>
+
+<template name="HomePrivateEditDatabaseCollectionTreeItem">
+	<li>
+		<a href="#" class="tree-link {{treeLinkClass}}">
+			<div class="float-left">
+				<span class="fa {{caretClass}} tree-node-caret">
+				</span>
+
+				<span class="tree-node-title">
+					<span class="fa {{iconClass}} tree-node-icon"></span>
+					{{displayName}}
+				</span>
+			</div>
+			<div class="float-right">
+				<span class="tree-node-controls">
+					{{#if canInsert}}
+						<span class="fa fa-plus tree-node-control add-object" title="Add">
+						</span>
+					{{/if}}
+					{{#if canRemove}}
+						<span class="fa fa-trash tree-node-control remove-object" title="Delete">
+						</span>
+					{{/if}}
+				</span>
+			</div>
+		</a>
+		{{#if isExpanded}}
+			{{> HomePrivateEditDatabaseCollectionTree root=this}}
+		{{/if}}
+	</li>
+</template>
+
+
+<template name="HomePrivateEditDatabaseMainColumn">
+	<div class="display-table height-max">
+
+		<div class="display-tr">
+			<div class="display-tc editor-content title">
+				<b>{{selectedObjectDisplayName}}</b>
+			</div>
+		</div>
+
+		<div class="display-tr">
+			<div class="display-tc">
+				<div class="ui pointing secondary menu no-margin">
+					{{#each mainViewMenuItems}}
+						<a class="item {{class}}" id="{{id}}">{{title}}</a>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc">
+				{{> Template.dynamic template=mainViewTemplate}}
+			</div>
+		</div>
+
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseNoSelectionView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc">
+				Please select object in the tree
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseFieldsView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Fields
+					<button class="ui right floated small green button add-field">
+						<i class="plus icon"></i>
+						Add Field
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditDatabaseFieldList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseFieldList">
+	{{#if fieldList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Field name
+					</th>
+					<th>
+						Title (Label)
+					</th>
+					<th>
+						Data type
+					</th>
+					<th>
+						Required
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each fieldList}}
+					{{> HomePrivateEditDatabaseFieldListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No fields.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditDatabaseFieldListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			<span class="fa fa-file-o icon object-table-caret"></span>{{name}}
+		</td>
+		<td>
+			{{title}}
+		</td>
+		<td class="collapsing">
+			{{displayType}}
+		</td>
+		<td class="collapsing">
+			<i class="{{requiredIconClass}} required-icon"></i>
+		</td>
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+
+<template name="HomePrivateEditDatabaseCollectionsView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Collections
+					<div class="float-right">
+						{{#if gotCollections}}
+							{{> HomePrivateEditDatabaseCollectionsViewExportButton}}
+						{{/if}}
+
+						<button class="ui small green button add-collection">
+							<i class="plus icon"></i>
+							Add Collection
+						</button>
+					</div>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditDatabaseCollectionList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseCollectionsViewExportButton">
+	<div class="ui small buttons">
+		<div class="ui button export-sql">Export</div>
+		<div class="ui floating dropdown icon button">
+			<i class="dropdown icon"></i>
+			<div class="menu">
+				<div class="item export-sql">SQL script</div>
+				<div class="item export-gql">GraphQL schema</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseCollectionList">
+	{{#if collectionList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Collection name
+					</th>
+
+					<th>
+						Type
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each collectionList}}
+					{{> HomePrivateEditDatabaseCollectionListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No collections.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditDatabaseCollectionListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			<span class="fa fa-database icon object-table-caret"></span>{{name}}
+		</td>
+
+		<td>
+			{{type}}
+		</td>
+
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+
+
+
+<template name="HomePrivateEditDatabaseQueriesView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Queries
+					<button class="ui right floated small green button add-query">
+						<i class="plus icon"></i>
+						Add Query
+					</button>
+				</h2>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{> HomePrivateEditDatabaseQueryList}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseQueryList">
+	{{#if queryList}}
+		<table class="ui very basic single line table object-table">
+			<thead>
+				<tr>
+					<th>
+						Query name
+					</th>
+
+					<th>
+						Collection
+					</th>
+
+					<th>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each queryList}}
+					{{> HomePrivateEditDatabaseQueryListItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="ui info message">No queries.</div>
+	{{/if}}
+</template>
+
+<template name="HomePrivateEditDatabaseQueryListItem">
+	<tr class="object-table-row {{rowClass}}">
+		<td class="collapsing">
+			<span class="fa fa-filter icon object-table-caret"></span>{{name}}
+		</td>
+
+		<td>
+			{{collection}}
+		</td>
+
+		<td class="collapsing">
+			<span class="object-table-row-controls">
+				<span class="fa fa-arrow-up tree-node-control move-up {{moveItemUpClass}}" title="Move Up"></span>
+				<span class="fa fa-arrow-down tree-node-control move-down {{moveItemDownClass}}" title="Move Down"></span>
+				<span class="fa fa-trash tree-node-control delete-icon" title="Delete"></span>
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+
+
+<template name="HomePrivateEditDatabasePropertiesColumn">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc bordered editor-content title">
+				<b>{{propertiesTitle}}</b>
+			</div>
+		</div>
+		<div class="display-tr height-max">
+			<div class="display-tc bordered contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content">
+						{{> HomePrivateEditDatabaseProperties}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditDatabaseProperties">
+	{{> PropertyEditor object=focusedObject}}
+</template>
+
+
+<template name="HomePrivateEditDatabaseRolesView">
+	<div class="display-table height-max">
+		<div class="display-tr">
+			<div class="display-tc editor-content-text title">
+				<h2 class="header">
+					Access Rights
+					<button class="ui right floated small green button add-role">
+						<i class="plus icon"></i>
+						Add Role
+					</button>
+				</h2>
+			</div>
+		</div>
+
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						{{#if collectionRoles}}
+							<table class="ui very basic collapsing celled table">
+								<thead>
+									<tr>
+										<th>Role name</th>
+										<th>Read</th>
+										<th>Insert</th>
+										<th>Update</th>
+										<th>Remove</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#each collectionRoles}}
+										{{> HomePrivateEditDatabaseRolesViewRow}}
+									{{/each}}
+								</tbody>
+							</table>
+						{{else}}
+							<div class="ui info message">No roles.</div>
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditDatabaseRolesViewRow">
+	<tr class="object-table-row">
+		<td>
+			<b>{{roleTitle}}</b>
+		</td>
+		<td>
+			<span class="lock-item" data-action="read"><i class="icon {{readIconClass}}"></i> {{readAccess}}</span>
+		</td>
+
+		<td>
+			{{#if insertRoleApplicable}}
+				<span class="lock-item" data-action="insert"><i class="icon {{insertIconClass}}"></i> {{insertAccess}}</span>
+			{{else}}
+				<i>N/A</i>
+			{{/if}}
+		</td>
+
+		<td>
+			<span class="lock-item" data-action="update"><i class="icon {{updateIconClass}}"></i> {{updateAccess}}</span>
+		</td>
+
+		<td>
+			<span class="lock-item" data-action="remove"><i class="icon {{removeIconClass}}"></i> {{removeAccess}}</span>
+		</td>
+
+		<td>
+			<span class="object-table-row-controls">
+				{{#if canDelete}}
+					<span class="fa fa-trash icon delete-icon" title="Delete"></span>
+				{{else}}
+					<span class="fa fa-fw icon"></span>
+				{{/if}}
+			</span>
+		</td>
+	</tr>
+</template>
+
+
+<template name="HomePrivateEditDatabaseHooksView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+						<h2 class="header">
+							Hooks
+						</h2>
+
+						<div class="toggler {{beforeInsertClass}}" data-session="databaseEditorShowBeforeInsert">
+							<div class="title">
+								<i class="fa fa-fw {{beforeInsertIconClass}}"></i>
+								Before Insert
+							</div>
+							<div class="content">
+								{{> CodeMirror id="before-insert-input" name="before-insert-input" options=beforeInsertInputOptions reactiveVar="beforeInsertInputText"}}
+							</div>
+						</div>
+						<div class="toggler {{beforeUpdateClass}}" data-session="databaseEditorShowBeforeUpdate">
+							<div class="title">
+								<i class="fa fa-fw {{beforeUpdateIconClass}}"></i>
+								Before Update
+							</div>
+							<div class="content">
+								{{> CodeMirror id="before-update-input" name="before-update-input" options=beforeUpdateInputOptions reactiveVar="beforeUpdateInputText"}}
+							</div>
+						</div>
+						<div class="toggler {{beforeRemoveClass}}" data-session="databaseEditorShowBeforeRemove">
+							<div class="title">
+								<i class="fa fa-fw {{beforeRemoveIconClass}}"></i>
+								Before Remove
+							</div>
+							<div class="content">
+								{{> CodeMirror id="before-remove-input" name="before-remove-input" options=beforeRemoveInputOptions reactiveVar="beforeRemoveInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{afterInsertClass}}" data-session="databaseEditorShowAfterInsert">
+							<div class="title">
+								<i class="fa fa-fw  {{afterInsertIconClass}}"></i>
+								After Insert
+							</div>
+							<div class="content">
+								{{> CodeMirror id="after-insert-input" name="after-insert-input" options=afterInsertInputOptions reactiveVar="afterInsertInputText"}}
+							</div>
+						</div>
+						<div class="toggler {{afterUpdateClass}}" data-session="databaseEditorShowAfterUpdate">
+							<div class="title">
+								<i class="fa fa-fw {{afterUpdateIconClass}}"></i>
+								After Update
+							</div>
+							<div class="content">
+								{{> CodeMirror id="after-update-input" name="after-update-input" options=afterUpdateInputOptions reactiveVar="afterUpdateInputText"}}
+							</div>
+						</div>
+						<div class="toggler {{afterRemoveClass}}" data-session="databaseEditorShowAfterRemove">
+							<div class="title">
+								<i class="fa fa-fw {{afterRemoveIconClass}}"></i>
+								After Remove
+							</div>
+							<div class="content">
+								{{> CodeMirror id="after-remove-input" name="after-remove-input" options=afterRemoveInputOptions reactiveVar="afterRemoveInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="HomePrivateEditDatabaseQueryView">
+	<div class="display-table height-max">
+		<div class="display-tr height-max">
+			<div class="display-tc contains-scrollable">
+				<div class="scrollable-area">
+					<div class="editor-content-text">
+
+						<div class="toggler {{queryFilterClass}}" data-session="databaseEditorHideQueryFilter">
+							<div class="title">
+								<i class="fa fa-fw {{queryFilterIconClass}}"></i>
+								Filter
+							</div>
+							<div class="content">
+								{{> CodeMirror id="query-filter-input" name="query-filter-input" options=queryFilterInputOptions reactiveVar="queryFilterInputText"}}
+							</div>
+						</div>
+
+						<div class="toggler {{queryOptionsClass}}" data-session="databaseEditorHideQueryOptions">
+							<div class="title">
+								<i class="fa fa-fw {{queryOptionsIconClass}}"></i>
+								Options
+							</div>
+							<div class="content">
+								{{> CodeMirror id="query-options-input" name="query-options-input" options=queryOptionsInputOptions reactiveVar="queryOptionsInputText"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

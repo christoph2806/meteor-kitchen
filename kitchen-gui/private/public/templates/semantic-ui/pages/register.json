@@ -1,0 +1,404 @@
+{
+	"templates": [
+		{
+			"type": "template",
+			"name": "TEMPLATE_NAME",
+			"children": [
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "class",
+							"value": "ui middle aligned center aligned grid page-container"
+						}
+					],
+					"children": [
+						{
+							"type": "html",
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": "ui centered column account-form"
+								}
+							],
+							"children": [
+								{
+									"type": "condition",
+									"condition": "verificationEmailSent",
+									"children": [
+										{
+											"type": "condition-true",
+											"children": [
+												{
+													"type": "html",
+													"element": "div",
+													"attributes": [
+														{
+															"name": "class",
+															"value": "ui basic segment accounts-info-box"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "h2",
+															"attributes": [],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "Thanks for signing up!"
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "p",
+															"attributes": [],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "We've sent verification link to your e-mail address."
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "br",
+															"attributes": [],
+															"children": []
+														},
+														{
+															"type": "html",
+															"element": "button",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "ui primary button go-home"
+																},
+																{
+																	"name": "type",
+																	"value": "button"
+																},
+																{
+																	"name": "data-loading-text",
+																	"value": "Please wait..."
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "OK"
+																}
+															],
+															"events": [
+																{
+																	"type": "event",
+																	"event": "onclick",
+																	"handler": "onClickGoHome"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "condition-false",
+											"children": [
+												{
+													"type": "html",
+													"element": "form",
+													"attributes": [
+														{
+															"name": "id",
+															"value": "register_form"
+														},
+														{
+															"name": "class",
+															"value": "ui large form"
+														},
+														{
+															"name": "role",
+															"value": "form"
+														}
+													],
+													"children": [
+														{
+															"type": "html",
+															"element": "h2",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "ui header"
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "Please sign up"
+																}
+															]
+														},
+														{
+															"type": "condition",
+															"condition": "errorMessage",
+															"children": [
+																{
+																	"type": "condition-true",
+																	"children": [
+																		{
+																			"type": "html",
+																			"element": "div",
+																			"attributes": [
+																				{
+																					"name": "class",
+																					"value": "ui visible warning message"
+																				}
+																			],
+																			"children": [
+																				{
+																					"type": "text",
+																					"text": "{{errorMessage}}"
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"type": "condition-false",
+																	"children": []
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "div",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "field"
+																}
+															],
+															"children": [
+																{
+																	"type": "html",
+																	"element": "input",
+																	"attributes": [
+																		{
+																			"name": "id",
+																			"value": "register_name"
+																		},
+																		{
+																			"name": "type",
+																			"value": "text"
+																		},
+																		{
+																			"name": "placeholder",
+																			"value": "Your full name"
+																		},
+																		{
+																			"name": "required",
+																			"value": "required"
+																		},
+																		{
+																			"name": "autofocus",
+																			"value": "autofocus"
+																		}
+																	],
+																	"children": []
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "div",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "field"
+																}
+															],
+															"children": [
+																{
+																	"type": "html",
+																	"element": "input",
+																	"attributes": [
+																		{
+																			"name": "id",
+																			"value": "register_email"
+																		},
+																		{
+																			"name": "type",
+																			"value": "text"
+																		},
+																		{
+																			"name": "placeholder",
+																			"value": "Email address"
+																		},
+																		{
+																			"name": "required",
+																			"value": "required"
+																		}
+																	],
+																	"children": []
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "div",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "field"
+																}
+															],
+															"children": [
+																{
+																	"type": "html",
+																	"element": "input",
+																	"attributes": [
+																		{
+																			"name": "id",
+																			"value": "register_password"
+																		},
+																		{
+																			"name": "type",
+																			"value": "password"
+																		},
+																		{
+																			"name": "placeholder",
+																			"value": "Password"
+																		},
+																		{
+																			"name": "required",
+																			"value": "required"
+																		}
+																	],
+																	"children": []
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "button",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "fluid ui large primary button"
+																},
+																{
+																	"name": "type",
+																	"value": "submit"
+																},
+																{
+																	"name": "data-loading-text",
+																	"value": "Please wait..."
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "Sign up"
+																}
+															]
+														},
+														{
+															"type": "html",
+															"element": "p",
+															"attributes": [
+																{
+																	"name": "class",
+																	"value": "account-form-text-after"
+																}
+															],
+															"children": [
+																{
+																	"type": "text",
+																	"text": "Already a member? "
+																},
+																{
+																	"type": "html",
+																	"element": "a",
+																	"attributes": [
+																		{
+																			"name": "href",
+																			"value": "{{pathFor 'login'}}"
+																		}
+																	],
+																	"children": [
+																		{
+																			"type": "text",
+																			"text": "Sign in here"
+																		}
+																	]
+																}
+															]
+														}
+													],
+													"events": [
+														{
+															"type": "event",
+															"event": "onsubmit",
+															"handler": "onSubmitRegisterForm"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "html",
+					"element": "div",
+					"attributes": [
+						{
+							"name": "id",
+							"value": "background-image"
+						},
+						{
+							"name": "style",
+							"value": "background-image: url(BACKGROUND_IMAGE);"
+						}
+					],
+					"children": []
+				}
+			],
+			"helpers": [
+				{
+					"type": "helper",
+					"name": "errorMessage",
+					"arguments": [],
+					"code": "\n\t\treturn pageSession.get(\"errorMessage\");\n\t"
+				},
+				{
+					"type": "helper",
+					"name": "verificationEmailSent",
+					"arguments": [],
+					"code": "\n\t\treturn pageSession.get(\"verificationEmailSent\");\n\t"
+				}
+			],
+			"handlers": [
+				{
+					"type": "handler",
+					"name": "onSubmitRegisterForm",
+					"code": "\n\t\te.preventDefault();\n\n\t\tvar submit_button = $(t.find(\":submit\"));\n\n\t\tvar register_name = t.find('#register_name').value.trim();\n\t\tvar register_email = t.find('#register_email').value.trim();\n\t\tvar register_password = t.find('#register_password').value;\n\n\t\t// check name\n\t\tif(register_name == \"\")\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter your name.\");\n\t\t\tt.find('#register_name').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\t// check email\n\t\tif(!isValidEmail(register_email))\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Please enter valid e-mail address.\");\n\t\t\tt.find('#register_email').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\t// check password\n\t\tvar min_password_len = 6;\n\t\tif(!isValidPassword(register_password, min_password_len))\n\t\t{\n\t\t\tpageSession.set(\"errorMessage\", \"Your password must be at least \" + min_password_len + \" characters long.\");\n\t\t\tt.find('#register_password').focus();\n\t\t\treturn false;\n\t\t}\n\n\t\tsubmit_button.addClass('disabled loading');\n\t\tAccounts.createUser({email: register_email, password : register_password, profile: { name: register_name }}, function(err) {\n\t\t\tsubmit_button.removeClass('disabled loading');;\n\t\t\tif(err) {\n\t\t\t\tif(err.error === 499) {\n\t\t\t\t\tpageSession.set(\"verificationEmailSent\", true);\n\t\t\t\t} else {\n\t\t\t\t\tpageSession.set(\"errorMessage\", err.message);\n\t\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tpageSession.set(\"errorMessage\", \"\");\n\t\t\t\tpageSession.set(\"verificationEmailSent\", true);\n\t\t\t}\n\t\t});\n\t\treturn false;\n\t"
+				},
+				{
+					"type": "handler",
+					"name": "onClickGoHome",
+					"code": "\n\t\tRouter.go(\"/\");\n\t"
+				}
+			]
+		}
+	],
+	"naked": {
+		"children": []
+	}
+}

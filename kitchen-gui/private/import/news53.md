@@ -1,0 +1,1 @@
+- Now using <a href="https://www.npmjs.com/package/human2machine" target="_blank">human2machine</a> npm module to translate from everyday english to json. **Contributions are welcome!**

@@ -1,0 +1,50 @@
+.cms-content {
+	position: relative;
+}
+
+.cms-content.read-write {
+	border: 1px solid transparent;
+	min-height: 30px;
+	padding: 5px;
+	margin: 5px 0;
+	cursor: pointer;
+}
+
+.cms-content:hover.read-write {
+	border: 1px dashed silver;
+}
+
+.cms-content.read-write.empty-content {
+}
+
+.cms-content:hover.read-write.empty-content {
+}
+
+.cms-content.read-only {
+	padding: 1px;
+	margin: -1px;
+}
+
+.cms-content-controls {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+}
+
+.cms-content-controls-left {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cms-content:hover .cms-content-controls-left,
+.cms-content:hover .cms-content-controls {
+	display: block;
+}
+
+.cms-content .raw-text {
+	white-space: pre;
+}

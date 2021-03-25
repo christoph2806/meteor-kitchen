@@ -1,0 +1,91 @@
+<template name="MicroBlog">
+	<h1 class="ui header">
+		{{title}}
+
+		{{#if readMode}}
+			{{#if userCanInsert}}
+				<div class="ui right floated no-padding no-margin basic segment">
+					<div class="ui green button insert-button"><i class="icon fa fa-plus"></i> New Post</div>
+				</div>
+			{{/if}}
+		{{/if}}
+	</h1>
+
+
+	{{#if insertMode}}
+		{{> MicroBlogInsert}}
+	{{/if}}
+	<div class="micro-blog">
+		{{#each posts}}
+			{{#if editingPost}}
+				{{> MicroBlogUpdate}}
+			{{else}}
+				{{> MicroBlogPost}}
+			{{/if}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="MicroBlogInsert">
+	<form class="ui form">
+		<h2 class="ui header">
+			New post
+			<div class="ui right floated no-padding no-margin basic segment">
+				<div class="ui button cancel-button">Cancel</div>
+				<div class="ui green button submit-button"><i class="icon fa fa-check"></i> Save</div>
+			</div>
+		</h2>
+		<div class="field">
+			<label>Title</label>
+			<input type="text" name="title">
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+		<div class="field">
+			<label>Text</label>
+			{{> CodeMirror id="markdown-input" options=markdownInputOptions reactiveVar=reactiveVarName}}
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+	</form>
+</template>
+
+<template name="MicroBlogUpdate">
+	<form class="ui form">
+		<h2 class="ui header">
+			Edit post
+			<div class="ui right floated no-padding no-margin basic segment">
+				<div class="ui button cancel-button">Cancel</div>
+				<div class="ui green button submit-button"><i class="icon fa fa-check"></i> Save</div>
+			</div>
+		</h2>
+		<div class="field">
+			<label>Title</label>
+			<input type="text" name="title" value="{{title}}">
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+		<div class="field">
+			<label>Text</label>
+			{{> CodeMirror id="markdown-input" options=markdownInputOptions reactiveVar=reactiveVarName}}
+			<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+		</div>
+	</form>
+</template>
+
+<template name="MicroBlogPost">
+	<div class="micro-blog-post">
+		<h2 class="ui dividing header">
+			{{title}}
+		</h2>
+		<div class="meta-header">
+			<span class="muted">{{livestamp createdAt}}</span>
+			<span class="float-right blog-controls">
+				{{#if userCanRemove}}
+					<i class="fa fa-fw fa-trash delete-button" title="Delete post"></i>
+				{{/if}}
+				{{#if userCanUpdate}}
+					<i class="fa fa-fw fa-pencil edit-button" title="Edit post"></i>
+				{{/if}}
+			</span>
+		</div>
+		{{# markdown}}{{text}}{{/markdown}}
+	</div>
+</template>

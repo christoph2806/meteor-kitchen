@@ -1,0 +1,23 @@
+<template name="HomePrivateEditSource">
+	<div class="page-container ui container config-container height-max">
+		<div class="title-div">
+			<h1>
+				Edit JSON
+				<div class="pull-right">
+					<button class="ui blue button download-button"><span class="ui icon fa fa-download"></span>Download</button>
+				</div>
+			</h1>
+
+			{{#if showWarning}}
+				<div class="ui warning message">
+					<i class="close icon hide-warning"></i>
+					<div class="content">
+	  					<div class="header">Warning</div>
+						<p>Don't edit if you are not sure what you are doing.</p>
+					</div>
+				</div>
+			{{/if}}
+		</div>
+		{{> CodeMirror id="source-input" options=sourceInputOptions reactiveVar="sourceInputText"}}
+	</div>
+</template>

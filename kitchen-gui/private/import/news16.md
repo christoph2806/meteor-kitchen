@@ -1,0 +1,2 @@
+- CLI: Fixed bug in forms with checkbox when field type is "bool" (checkbox was not displayed)
+- CLI: Fixed bug with accessing restricted pages: in some circumstances, authenticated user without access rights was able to access restricted page by directly entering page url (user was not able to see data if your collection is properly secured)

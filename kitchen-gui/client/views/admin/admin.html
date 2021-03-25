@@ -1,0 +1,53 @@
+<template name="Admin">
+	<div class="page-container ui container">
+		<div class="row">
+			<div class="column" id="content">
+				<div class="row" id="title_row">
+					<div class="column">
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui stackable padded grid">
+			<div id="menu" class="three wide column">
+				{{> AdminSideMenu}}
+			</div>
+			<div id="subcontent" class="thirteen wide column">
+				{{> yield region='AdminSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="AdminSideMenu">
+	<div id="menu-items" class="ui secondary vertical pointing menu">
+
+		<a href="{{pathFor 'admin.user_stats'}}" id="menu-item-simple" class="item {{menuItemClass 'admin.user_stats'}}">
+			<span class="item-title">
+				User Stats
+			</span>
+		</a>
+
+		<a href="{{pathFor 'admin.users'}}" id="menu-item-simple" class="item {{menuItemClass 'admin.users'}}">
+			<span class="item-title">
+				Users
+			</span>
+		</a>
+
+		<a href="{{pathFor 'admin.newsletters'}}" id="menu-item-simple" class="item {{menuItemClass 'admin.newsletters'}}">
+			<span class="item-title">
+				Newsletters
+			</span>
+		</a>
+
+		<a href="{{pathFor 'admin.maintenance'}}" id="menu-item-simple" class="item {{menuItemClass 'admin.maintenance'}}">
+			<span class="item-title">
+				Maintenance
+			</span>
+		</a>
+
+	</div>
+</template>
+

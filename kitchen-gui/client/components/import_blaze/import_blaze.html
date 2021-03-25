@@ -1,0 +1,41 @@
+<template name="ImportBlazeBox">
+	<div id="{{boxId}}" class="ui modal import-blaze-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="ui two column grid">
+					<div class="column">
+						<div class="field">
+							<label>HTML</label>
+							{{> CodeMirror id="import-blaze-box-html" options=importBlazeBoxInputHTMLOptions reactiveVar="importBlazeBoxInputHTML"}}
+						</div>
+					</div>
+
+					<div class="column">
+						<div class="field">
+							<label>JS</label>
+							{{> CodeMirror id="import-blaze-box-js" options=importBlazeBoxInputJSOptions reactiveVar="importBlazeBoxInputJS"}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			{{#if showApproveButton}}
+				<div class="ui green ok button">
+					{{approveButtonTitle}}
+				</div>
+			{{/if}}
+
+			{{#if showDenyButton}}
+				<div class="ui basic cancel button">
+					{{denyButtonTitle}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

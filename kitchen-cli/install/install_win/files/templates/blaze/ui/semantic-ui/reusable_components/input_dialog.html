@@ -1,0 +1,32 @@
+<template name="InputBox">
+	<div id="{{boxId}}" class="ui small modal input-box">
+		<div class="header">
+			{{title}}
+		</div>
+
+		<div class="content">
+			<div class="ui form">
+				<div class="field">
+					<label for="inputValue">{{message}}</label>
+					{{#if multiline}}
+						<textarea name="inputValue" class="input-control" autofocus>{{defaultValue}}</textarea>
+					{{else}}
+						<input type="text" name="inputValue" class="input-control" value="{{defaultValue}}" placeholder="" autofocus>
+					{{/if}}
+					<div id="error-text" class="ui basic red pointing prompt label transition hidden"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			<div class="ui green ok button">
+				{{approveButtonTitle}}
+			</div>
+
+			<div class="ui basic cancel button">
+				{{denyButtonTitle}}
+			</div>
+		</div>
+	</div>
+</template>
+

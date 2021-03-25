@@ -1,0 +1,2 @@
+- First run is now much faster - meteor-kitchen now adds all packages in a single "meteor add ..." command.
+- Added "route_params" property to MenuItem object.

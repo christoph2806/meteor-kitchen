@@ -1,0 +1,13 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : ["marked"],
+		"mrt"   : []
+	},
+	"imports": [
+		"import {Markdown} from \"CLIENT_COMPONENTS_DIR/markdown/markdown.jsx\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/markdown.jsx", "dest": "CLIENT_COMPONENTS_DIR/markdown/markdown.jsx"}
+	]
+}

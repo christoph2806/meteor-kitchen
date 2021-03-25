@@ -1,0 +1,2 @@
+- Fixed bug with forms that doesn't close on submit (message "Saved" was not shown). Fixed now.
+- Removed some unnecessary events code that was generated in each page

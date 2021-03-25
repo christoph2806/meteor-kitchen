@@ -1,0 +1,39 @@
+<template name="StringArray">
+	<div class="ui form">
+		<div class="field">
+			<h3 class="list-label">
+				{{options.title}}
+				<button class="ui right floated small green button add-item">
+					<i class="plus icon"></i>
+					{{options.addButtonTitle}}
+				</button>
+			</h3>
+			{{#if options.items.length}}
+				<table class="ui very basic celled table">
+					<tbody>
+						{{#each options.items}}
+							{{> StringArrayItem}}
+						{{/each}}
+					</tbody>
+				</table>
+			{{else}}
+				<div class="ui info message">{{options.emptyTitle}}</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="StringArrayItem">
+	<tr class="object-table-row">
+		<td>
+			<div class="ui fluid input">
+				<input type="text" name="item-input" data-value="{{this}}" value="{{this}}">
+			</div>
+		</td>
+		<td class="collapsing">
+			<div class="object-table-row-controls">
+				<i class="fa fa-trash remove-item"></i>
+			</div>
+		</td>
+	</tr>	
+</template>

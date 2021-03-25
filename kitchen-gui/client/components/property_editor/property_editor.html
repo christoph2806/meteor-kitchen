@@ -1,0 +1,245 @@
+<template name="PropertyEditor">
+	{{#if object}}
+		<table class="ui very basic small compact selectable table">
+			<thead>
+				<tr>
+					<th>
+						Property
+					</th>
+					<th class="width-half">
+						Value
+					</th>
+					<th class="collapsing">
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each objectProperties}}
+					{{> PropertyEditorRow property=this object=../object}}
+				{{/each}}
+
+				{{#if gotAttributes}}
+					<tr class="property-editor-row-head">
+						<th colspan="2">
+							Attributes
+						</th>
+						<th class="collapsing">
+							<span class="fa fa-plus icon add-attribute" title="Add attribute">
+							</span>
+						</th>
+					</tr>
+					{{#if objectAttributes}}
+						<tr>
+							<td><i>Name</i></td>
+							<td><i>Value</i></td>
+							<td class="collapsing"></td>
+						</tr>
+						{{#each objectAttributes}}
+							{{> PropertyEditorAttributeRow attribute=this object=../object}}
+						{{/each}}
+					{{else}}
+					<tr class="property-editor-row">
+						<td colspan="3">
+							<i>No attributes</i>
+						</td>
+					</tr>
+					{{/if}}
+				{{/if}}
+
+				{{#if gotEvents}}
+					<tr class="property-editor-row-head">
+						<th colspan="2">
+							Events
+						</th>
+						<th class="collapsing">
+							<span class="fa fa-plus icon add-event" title="Add event">
+							</span>
+						</th>
+					</tr>
+					{{#if objectEvents}}
+						<tr>
+							<td><i>Event name</i></td>
+							<td><i>Handler name</i></td>
+							<td class="collapsing"></td>
+						</tr>
+						{{#each objectEvents}}
+							{{> PropertyEditorEventRow event=this object=../object}}
+						{{/each}}
+					{{else}}
+					<tr class="property-editor-row">
+						<td colspan="3">
+							<i>No events</i>
+						</td>
+					</tr>
+					{{/if}}
+				{{/if}}
+			</tbody>
+		</table>
+	{{else}}
+		No object selected
+	{{/if}}
+</template>
+
+<template name="PropertyEditorAttributeRow">
+	<tr class="attribute-editor-row">
+		{{#if editingAttribute}}
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{attribute._id}} class="edit-attribute-name" value="{{attribute.name}}">
+				</div>
+			</td>
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{attribute._id}} class="edit-attribute-value" value="{{attribute.value}}">
+				</div>
+			</td>
+		{{else}}
+			<td>
+				{{attribute.name}}
+			</td>
+
+			<td>
+				<b>{{attribute.value}}</b>
+			</td>
+		{{/if}}
+
+		<td class="collapsing">
+			<span class="fa fa-trash icon remove-attribute" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+
+<template name="PropertyEditorEventRow">
+	<tr class="event-editor-row">
+		{{#if editingEvent}}
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{event._id}} class="edit-event-name" value="{{event.event}}">
+				</div>
+			</td>
+			<td class="no-padding-vertical">
+				<div class="ui fluid input">
+					<input type="text" data-id={{event._id}} class="edit-event-handler" value="{{event.handler}}">
+				</div>
+			</td>
+		{{else}}
+			<td>
+				{{event.event}}
+			</td>
+
+			<td>
+				<b>{{event.handler}}</b>
+			</td>
+		{{/if}}
+
+		<td class="collapsing">
+			<span class="fa fa-trash icon remove-event" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+
+<template name="PropertyEditorRow">
+	<tr class="property-editor-row {{rowStateClass}}">
+		<td>
+			{{property.title}}
+		</td>
+		<td class="no-padding-vertical">
+			{{> Template.dynamic template=inputTemplate data=this}}
+		</td>
+		<td class="collapsing">
+			<span class="fa fa-question-circle icon property-description" data-title="{{property.title}}" data-content="{{property.description}}">
+			</span>
+		</td>
+	</tr>
+</template>
+
+<template name="PropertyEditorUnknown">
+<!--
+	({{property.input}} {{property.type}} {{property.subType}})
+-->
+	<i>Editing not implemented :(</i>
+</template>
+
+<template name="PropertyEditorDisplayValue">
+	<b>{{propertyValue}}</b>
+</template>
+
+<template name="PropertyEditorDisplayArray">
+	<i>Array of {{property.subType}} ({{propertyValue.length}} items)</i>
+</template>
+
+<template name="PropertyEditorDisplayTextarea">
+	<i>(text)</i>
+</template>
+
+<template name="PropertyEditorDisplayJavascript">
+	<i>(code)</i>
+</template>
+
+<template name="PropertyEditorStatic">
+	<b>{{propertyValue}}</b>
+</template>
+
+<template name="PropertyEditorText">
+	<div class="ui fluid input">
+		<input type="text" name="property_{{property.name}}" value="{{propertyValue}}">
+	</div>
+</template>
+
+<template name="PropertyEditorTextarea">
+	<i><a href="#" class="edit-text-link">Click to edit text</a></i>
+</template>
+
+<template name="PropertyEditorJavascript">
+	<i><a href="#" class="edit-js-link">Click to edit code</a></i>
+</template>
+
+<template name="PropertyEditorCheckbox">
+	<i class="{{iconClass}} checkbox-icon"></i>
+</template>
+
+<template name="PropertyEditorSelect">
+	<div class="ui fluid selection dropdown">
+		<input id="hidden-select" type="hidden" name="property_{{property.name}}" value="{{propertyValue}}">
+		<i class="dropdown icon"></i>
+		<div class="default text">{{property.name}}</div>
+		<div class="menu">
+			{{#each property.choiceItems}}
+				<div class="item" data-value="{{this}}">{{this}}</div>
+			{{/each}}
+		</div>
+	</div>
+</template>
+
+
+<template name="PropertyEditorSelectRoute">
+	{{> PropertyEditorSelectObject property=property object=object choiceItems=choiceItems}}
+</template>
+
+<template name="PropertyEditorSelectCollection">
+	{{> PropertyEditorSelectObject property=property object=object choiceItems=choiceItems}}
+</template>
+
+<template name="PropertyEditorSelectQuery">
+	{{> PropertyEditorSelectObject property=property object=object choiceItems=choiceItems}}
+</template>
+
+<template name="PropertyEditorSelectObject">
+	<div class="ui fluid selection dropdown">
+		<input id="hidden-select" type="hidden" name="property_{{property.name}}" value="{{propertyValue}}">
+		<i class="dropdown icon"></i>
+		<div class="default text">{{property.name}}</div>
+		<div class="menu">
+			{{#each choiceItems}}
+				<div class="item" data-value="{{this}}">{{this}}</div>
+			{{/each}}
+		</div>
+	</div>
+</template>
+
+<template name="PropertyEditorArray">
+	<i><a href="#" class="edit-array">Array of {{property.subType}} ({{propertyValue.length}} items)</a></i>
+</template>

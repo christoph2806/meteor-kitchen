@@ -1,0 +1,64 @@
+<template name="HomePrivateEditClientConfig">
+	<div class="ui two column padded grid editor-grid">
+		<div class="three wide column editor-column">
+			<div class="display-table height-max">
+				<div class="display-tr">
+					<div class="display-tc editor-content title">
+						<b>Client configuration</b>
+					</div>
+				</div>
+				<div class="display-tr height-max">
+					<div class="display-tc contains-scrollable">
+						<div class="scrollable-area">
+							<div class="editor-content">
+								{{> HomePrivateEditClientConfigSideMenu}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="thirteen wide column editor-column main-column">
+			<div class="display-table height-max">
+				<div class="display-tr">
+					<div class="display-tc editor-content title">
+						<b>&nbsp;</b>
+					</div>
+				</div>
+				<div class="display-tr height-max">
+					<div class="display-tc contains-scrollable">
+						<div class="scrollable-area">
+							<div class="editor-content-text height-max">
+								{{> yield region='HomePrivateEditClientConfigSubcontent'}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomePrivateEditClientConfigSideMenu">
+	<div id="menu-items" class="ui secondary vertical pointing menu">
+		<a href="{{pathFor 'home.edit.client_config.styles' applicationId=params.applicationId}}" class="item {{menuItemClass 'home.edit.client_config.styles'}}">
+			<span class="item-title">
+				Styles
+			</span>
+		</a>
+
+		<a href="{{pathFor 'home.edit.client_config.frontend' applicationId=params.applicationId}}" class="item {{menuItemClass 'home.edit.client_config.frontend'}}">
+			<span class="item-title">
+				Frontend
+			</span>
+		</a>
+
+		<a href="{{pathFor 'home.edit.client_config.startup' applicationId=params.applicationId}}" class="item {{menuItemClass 'home.edit.client_config.startup'}}">
+			<span class="item-title">
+				Startup
+			</span>
+		</a>
+	</div>
+</template>
+

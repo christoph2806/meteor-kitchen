@@ -1,0 +1,1 @@
+- Improved spacebars to jade converter - pages containing markdown blocks are now properly converted

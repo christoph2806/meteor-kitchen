@@ -1,0 +1,3 @@
+- Fixed bug in forms: required checkbox fields are now really required
+- Vertical menus `.nav-stacked` : menu item can have subitems (and parent item is collapsible)
+- Fixed small issue with html parser: textarea had extra tab characted inside content

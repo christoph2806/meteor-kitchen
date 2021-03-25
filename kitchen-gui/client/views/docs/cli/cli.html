@@ -1,0 +1,31 @@
+<template name="DocsCli">
+	<div class="cli-content">
+		<div class="ui pointing menu sub-nav cli-menu">
+			{{> DocsCliMenu}}
+		</div>
+
+		<div id="content" class="page-container cli-container">
+			{{> yield region='CliSubcontent'}}
+		</div>
+	</div>
+</template>
+
+<template name="DocsCliMenu">
+	<div class="ui container">
+		<a href="{{pathFor 'docs.cli.about'}}" class="item {{menuItemClass 'docs.cli.about'}}">
+			About CLI
+		</a>
+		<a href="{{pathFor 'docs.cli.getting_started'}}" class="item {{menuItemClass 'docs.cli.getting_started'}}">
+			Getting started
+		</a>
+		<a href="{{pathFor 'docs.cli.api_reference'}}" class="item {{menuItemClass 'docs.cli.api_reference'}}">
+			API Reference
+		</a>
+		<a href="{{pathFor 'docs.cli.videos'}}" class="item {{menuItemClass 'docs.cli.videos'}}">
+			Video Tutorials
+		</a>
+		<a href="{{pathFor 'docs.cli.examples'}}" class="item {{menuItemClass 'docs.cli.examples'}}">
+			Example Applications
+		</a>
+	</div>
+</template>

@@ -1,0 +1,241 @@
+<template name="AppGalery">
+	<div class="app-galery">
+		{{#if title}}
+			<div class="ui clearing no-padding basic segment">
+
+				<h1 class="ui left floated header">
+					{{title}}
+					{{#if totalCountVariable}}
+						<div class="sub header">
+							{{#if isFiltered}}
+								<strong>Filtered:</strong>
+							{{/if}}
+							<span class="{{totalCountDisplayClass}}">
+								{{totalCount}}
+							</span>
+							public applications
+							{{#if isFiltered}}
+								<a href="#" class="filter-off">Show All</a>
+							{{/if}}
+						</div>
+					{{/if}}
+				</h1>
+
+				<div class="ui right floated no-padding no-margin basic segment">
+					{{#if filterVariable}}
+						<div class="ui buttons">
+							<button class="ui button {{filterAllButtonClass}} filter-all-button">All projects</button>
+
+							<button class="ui button {{filterStarredButtonClass}} filter-starred-button"><i class="ui yellow star icon"></i>Starred</button>
+
+							<button class="ui button {{filterFeaturedButtonClass}} filter-featured-button"><i class="ui blue announcement icon"></i>Featured</button>
+						</div>
+	  				{{/if}}
+
+					{{#if searchTextVariable}}
+						<div class="ui action left icon input">
+							<i class="search icon"></i>
+							<input type="text" class="search-input" placeholder="Search..." value="{{searchText}}">
+							<button class="ui primary button search-button">
+								Search
+							</button>
+						</div>
+					{{/if}}
+
+					<div class="ui buttons">
+						<button class="ui icon button view-style-cards {{viewStyleCardsButtonClass}}" title="View As Cards"><i class="ui grid layout icon"></i></button>
+						<button class="ui icon button view-style-list {{viewStyleListButtonClass}}" title="View As List"><i class="ui list layout icon"></i></button>
+					</div>
+
+					{{#if userCanInsertApplication}}
+						<button class="ui right floated green button insert-link">
+							<i class="plus icon"></i>
+							New project
+						</button>
+					{{/if}}
+				</div>
+
+			</div>
+		{{/if}}
+
+		{{#if gotApplications}}
+
+			{{#if viewStyleIsCards}}
+				<div class="ui special cards">
+					{{#each applications}}
+						{{> AppGaleryCard}}
+					{{/each}}
+				</div>
+			{{/if}}
+
+			{{#if viewStyleIsList}}
+				<div class="ui divided items">
+					{{#each applications}}
+						{{> AppGaleryListItem}}
+					{{/each}}
+				</div>
+			{{/if}}
+
+			<div class="ui center aligned basic segment">
+				{{#if isPaged}}
+					{{#if gotPrevPage}}
+						<button class="ui left labeled blue icon button page-prev">
+							<i class="left arrow icon"></i>
+							Previous
+						</button>
+					{{/if}}
+
+					{{#if gotNextPage}}
+						<button class="ui right labeled blue icon button page-next">
+							<i class="right arrow icon"></i>
+							Next
+						</button>
+					{{/if}}
+				{{/if}}
+			</div>
+		{{else}}
+			<div class="ui info message">
+				{{#if searchText}}
+					<p>"{{searchText}}" not found.</p>
+				{{else}}
+					<p>{{emptyText}}</p>
+				{{/if}}
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="AppGaleryCard">
+	<div class="card">
+		<div class="content">
+			<a class="header title-link">{{name}}</a>
+		</div>
+
+		{{#if userOwnsApplication}}
+			<div class="content">
+				{{#if ../settingsRoute}}
+					<span class="right floated">
+						<a class="settings-link">
+							<i class="settings icon"></i>
+							Settings
+						</a>
+					</span>
+				{{/if}}
+				<div class="meta">
+					{{#if isPublicApplication}}
+						<div class="ui green label">
+							<i class="unlock icon"></i>
+							Public
+						</div>
+					{{else}}
+						<i class="lock icon"></i>
+						Private
+					{{/if}}
+				</div>
+			</div>
+		{{else}}
+			<div class="content">
+				{{#with userData}}
+					<a href="#" class="owner-profile-link"><img class="ui avatar image" src="{{userAvatarURL _id 250}}"></a> <a href="#" class="owner-profile-link">{{profile.name}}</a>
+				{{/with}}
+			</div>
+		{{/if}}
+
+		<div class="blurring dimmable image">
+			{{#if ../detailsRoute}}
+				<div class="ui inverted dimmer">
+					<div class="content">
+						<div class="center">
+							<div class="ui primary button details-link">{{../detailsButtonTitle}}</div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+			<img src="/images/image-empty-card-app.png">
+		</div>
+
+		<div class="extra content">
+			<span class="right floated">
+				<a class="fork-link">
+					<i class="fork icon fork-icon"></i>
+					{{forkCount}} forks
+				</a>
+			</span>
+			<a class="star-link">
+				<i class="star {{starIconClass}} icon star-icon"></i>
+				{{starCount}} stars
+			</a>
+		</div>
+	</div>
+</template>
+
+
+<template name="AppGaleryListItem">
+	<div class="item">
+		<div class="image">
+			<img src="/images/image-empty-card-app.png">
+		</div>
+
+		<div class="content">
+			<a class="header details-link">{{name}}</a>
+
+			<div class="extra">
+				{{#if userOwnsApplication}}
+					{{#if isPublicApplication}}
+						<div class="ui green label">
+							<i class="unlock icon"></i>
+							Public
+						</div>
+					{{else}}
+						<i class="lock icon"></i>
+						Private
+					{{/if}}
+				{{else}}
+					{{#with userData}}
+						<a href="#" class="owner-profile-link"><img class="ui avatar image" src="{{userAvatarURL _id 250}}"></a> <a href="#" class="owner-profile-link">{{profile.name}}</a>
+					{{/with}}
+				{{/if}}
+
+			</div>
+
+			<div class="description">
+				{{#if description}}
+					{{#markdown}}{{descriptionShort}}{{/markdown}}
+				{{else}}
+					<p><i>No description provided</i></p>
+				{{/if}}
+			</div>
+
+			<div class="extra">
+				<div class="left floated">
+					<div class="extra content">
+						<a class="fork-link">
+							<i class="fork icon fork-icon"></i>
+							{{forkCount}} forks
+						</a>
+						&nbsp;
+						<a class="star-link">
+							<i class="star {{starIconClass}} icon star-icon"></i>
+							{{starCount}} stars
+						</a>
+					</div>
+				</div>
+
+				<div class="right floated">
+					{{#if userOwnsApplication}}
+						{{#if ../settingsRoute}}
+							<div class="ui basic button settings-link">
+								<i class="settings icon"></i>
+								Settings
+							</div>
+						{{/if}}
+					{{/if}}
+
+					{{#if ../detailsRoute}}
+						<div class="ui primary button details-link">{{../detailsButtonTitle}}</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

@@ -7,7 +7,7 @@
 Prerequisites:
 
 ```
-apt-get install -y build-essential libgit2-dev cmake
+apt-get install -y build-essential libgit2-dev
 ```
 
 Compile:
@@ -17,7 +17,7 @@ make -f linux.mk clean
 make -f linux.mk
 ```
 
-You will find binary in `/bin/` directory.
+You will find `meteor-kitchen` binary in `bin/` directory.
 
 
 **Having troubles?**

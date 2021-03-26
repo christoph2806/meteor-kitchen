@@ -1,51 +1,30 @@
 Meteor.startup(function() {
-// --- run once on next deploy and then remove
-	Users.update({ "profile.availableForHire": null }, { $set: { "profile.availableForHire": false } }, { multi: true });
-	Users.update({ "profile.devProfile": null }, { $set: { "profile.devProfile": {
-		cvURL: "",
-		team: false,
-		teamSize: 2,
-		devType: [],
-		selfRating: "beginner",
-		uiFrameworks: [],
-		stack: "frontend",
-		progLangs: [],
-		os: []
-	} } }, { multi: true });
+	let admin = Users.findOne({ roles: "admin" });
+	if(!admin) {
+		console.log("WARNING! There is no user with role \"admin\". Please restart the application after you create first user (who will be admin by default).");
+	}
 
-	Users.update({ "profile.devProfile.cvURL": null }, { $set: { "profile.devProfile.cvURL": "" } }, { multi: true });
-
-	Users.update({ "profile.subscribedToUnreadMessages": null }, { $set: { "profile.subscribedToUnreadMessages": true } }, { multi: true });
-
-// run once!
-/*
 	let dataJson = Assets.getText("boilerplates/boilerplate-accounts.json");
 	if(dataJson) {
 		let data = JSON.parse(dataJson);
 		let app = Applications.findOne({ name: "boilerplate-accounts", boilerplate: true });
-		if(app) {
+		if(!app) {
+			if(admin) {
+				let boilerplates = [
+					"boilerplate-accounts"
+				];
+				boilerplates.map(function(boilerplate) {
+					let dataJson = Assets.getText("boilerplates/" + boilerplate + ".json");
+					if(dataJson) {
+						let data = JSON.parse(dataJson);
+						let appId = Applications.insert({ name: boilerplate, boilerplate: true, public: false, data: data });
+						Applications.update({ _id: appId }, { $set: { createdBy: admin._id, modifiedBy: admin._id }});
+					}
+				});
+			}
+		} else {
 			Applications.update({ _id: app._id }, { $set: { data: data }});
 		}
-	}
-*/
-// ---
-
-
-
-	let admin = Users.findOne({ roles: "admin" });
-	let gotBoilerplates = Applications.find({ boilerplate: true }).count();
-	if(!gotBoilerplates && admin) {
-		let boilerplates = [
-			"boilerplate-accounts"
-		];
-		boilerplates.map(boilerplate => {
-			let dataJson = Assets.getText("boilerplates/" + boilerplate + ".json");
-			if(dataJson) {
-				let data = JSON.parse(dataJson);
-				let appId = Applications.insert({ name: boilerplate, boilerplate: true, public: false, data: data });
-				Applications.update({ _id: appId }, { $set: { createdBy: admin._id, modifiedBy: admin._id }});
-			}
-		});
 	}
 
 	// import events
@@ -79,6 +58,8 @@ Meteor.startup(function() {
 			Blog.update({ _id: id }, { $set: { createdAt: Date.parse(evt.date) }});
 		});
 	}
+
+	// Build gasoline palette
 
 	if(GasolinePaletteGroups.find({ title: "Control structures" }).count() == 0) {
 		var group = {

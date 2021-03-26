@@ -16,7 +16,7 @@ Open the browser and go to [https://localhost:3000](https://localhost:3000)
 
 ### To start in development mode in docker:
 
-With [docker.com](docker.com) installed, run:
+With [https://docker.com](https://docker.com) installed, run:
 
 ```
 ./docker_dev_build.sh
@@ -69,6 +69,11 @@ First user is `admin` by default. Other users will be normal `user` by default, 
 ### Restart after first user is created
 
 After admin user is created, stop/start the application (or restart docker container).
+
+
+### Boilerplate app
+
+After restart, admin user will have one project called "boilerplate-accounts". Don't delete it and don't edit it. That application is actually a template - it is automatically cloned by users when they choose "New application with user account system". If you edit this application, changes will be reflected in all new applications that users create in the future. So be careful with this.
 
 
 ### To be continued...

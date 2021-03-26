@@ -73,7 +73,11 @@ After admin user is created, stop/start the application (or restart docker conta
 
 ### Boilerplate app
 
-After restart, admin user will have one project called "boilerplate-accounts". Don't delete it and don't edit it. That application is actually a template - it is automatically cloned by users when they choose "New application with user account system". If you edit this application, changes will be reflected in all new applications that users create in the future. So be careful with this.
+After restart, admin user will have one project called `boilerplate-accounts`. Don't delete it and don't edit it. That application is actually a template - it is automatically cloned by users when they choose "New application with user account system". If you edit this application, changes will be reflected in all new applications that users create in the future. So be careful with this.
+
+
+If you delete or damage this application - it is not the end of the world: make sure it is deleted, and then restart the server. When server starts, it will be automatically imported from `/private/boilerplates/boilerplate-accounts.json`.
 
 
 ### To be continued...
+

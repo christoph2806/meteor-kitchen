@@ -1,0 +1,11 @@
+.clang
+.codelite
+bin/*
+Debug/*
+Release/*
+examples
+install
+lib
+node_modules
+plugins
+templates

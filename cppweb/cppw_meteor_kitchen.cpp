@@ -7708,7 +7708,9 @@ bool CWPage::GeneratePageReact(string* pErrorMessage)
 	for(int i = 0; i < include_files_count; i++)
 	{
 		string include = EnsureLastChar(IncludeFiles->Strings[i], ';');
-		jsx->Replace("/*IMPORTS*/", include + LINE_TERM + "/*IMPORTS*/", true, true);
+		if(jsx->Text->FindSubStr(include, true) < 0) {
+			jsx->Replace("/*IMPORTS*/", include + LINE_TERM + "/*IMPORTS*/", true, true);
+		}
 	}
 	jsx->Replace("/*IMPORTS*/", "", true, true);
 

@@ -1,0 +1,16 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : [],
+		"mrt"   : []
+	},
+	"imports": [
+		"import * as formUtils from \"CLIENT_LIB_DIR/form_utils\";",
+		"import * as objectUtils from \"BOTH_LIB_DIR/object_utils\";",
+		"import * as dateUtils from \"BOTH_LIB_DIR/date_utils\";",
+		"import * as stringUtils from \"BOTH_LIB_DIR/string_utils\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_CODE_DIR/form_utils.js", "dest": "CLIENT_LIB_DIR/form_utils.js" }
+	]
+}

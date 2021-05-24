@@ -1,0 +1,198 @@
+[hidden] {
+  display: none !important;
+}
+
+.cms-content {
+	position: relative;
+}
+
+.cms-content.read-write {
+	border: 1px solid transparent;
+	min-height: 30px;
+	padding: 5px;
+	margin: 5px 0;
+	cursor: pointer;
+}
+
+.cms-content:hover.read-write {
+	border: 1px dashed silver;
+}
+
+.cms-content.read-write.empty-content {
+}
+
+.cms-content:hover.read-write.empty-content {
+}
+/*
+.cms-content.read-only {
+	padding: 1px;
+	margin: -1px;
+}
+*/
+.cms-content-controls {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+}
+
+.cms-content-controls-left {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cms-content:hover .cms-content-controls-left,
+.cms-content:hover .cms-content-controls {
+	display: block;
+}
+
+.cms-content .raw-text {
+	white-space: pre;
+}
+
+.cms-head {
+	margin: 1px;
+}
+
+.cms-head .row {
+	margin: -1px;
+}
+
+.cms-content.read-write textarea {
+   font-family: monospace;
+}
+
+.cms-content .white-text {
+	color: white !important;
+}
+
+@media screen and (max-width: 767px) {
+	.cms-content .text-center-xs {
+		text-align: center;
+	}
+}
+
+.cms-content .row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.cms-image-choice {
+	display: inline-block;
+
+	label > input {
+	  visibility: hidden;
+	  position: absolute;
+	}
+
+	label > input + img {
+	  cursor: pointer;
+	  border: 2px solid #f8f8f8;
+	  padding: 2px;
+	  margin: 8px;
+	}
+
+	label > input:checked + img {
+	  border: 2px solid #337ab7;
+	}
+
+	.cms-image-choice-item {
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.cms-content.read-write {
+		.form-col:first-child {
+			padding-left: 0 !important;
+		}
+
+		.form-col:last-child {
+			padding-right: 0 !important;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.cms-content.read-write {
+		.form-col {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}
+}
+
+/*
+
+	All Headers
+
+*/
+
+.cms-header {
+	-webkit-background-repeat: no-repeat;
+	-webkit-background-position: center;
+	-webkit-background-size: cover;
+
+
+	-moz-background-repeat: no-repeat;
+	-moz-background-position: center;
+	-moz-background-size: cover;
+
+	-webkit-background-attachment: fixed;
+	-moz-background-attachment: fixed;
+	-o-background-attachment: fixed;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.cms-header.jumbotron {
+	background-color: transparent;
+	margin: 0;
+}
+
+/*
+
+	Header 1
+
+*/
+
+.cms-header01.jumbotron {
+	padding: calc(~"5% + 80px") calc(~"2% + 15px");
+}
+
+@media screen and (min-width: 768px) {
+	.cms-header01.jumbotron h1 {
+		font-size: 90px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.cms-header01.jumbotron h1 {
+		font-size: 36px;
+	}
+}
+
+.cms-header01 .btn-lg {
+	padding: 18px 36px;
+	font-size: 20px;
+}
+
+
+/*
+
+	Header 2
+
+*/
+
+.cms-header .col-image {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+}

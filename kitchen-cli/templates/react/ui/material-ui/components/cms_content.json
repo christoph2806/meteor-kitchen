@@ -1,0 +1,28 @@
+{
+	"packages": {
+		"meteor": ["accounts-base", "cfs:standard-packages", "cfs:gridfs"],
+		"npm"   : ["meteor-user-roles", "marked", "react-c3js"],
+		"mrt"   : []
+	},
+	"imports": [
+		"import {CMSContent} from \"CLIENT_COMPONENTS_DIR/cms_content/cms_content.jsx\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_client.jsx", "dest": "CLIENT_COMPONENTS_DIR/cms_content/cms_content.jsx"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_client.less", "dest": "CLIENT_COMPONENTS_DIR/cms_content/cms_content.less"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_both_collections.js", "dest": "BOTH_COLLECTIONS_DIR/cms_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_server_collections.js", "dest": "SERVER_COLLECTIONS_RULES_DIR/cms_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_server_methods.js", "dest": "SERVER_METHODS_DIR/cms_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_server_publish.js", "dest": "SERVER_PUBLISH_DIR/cms_content.js"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_block_thumb_header01.png", "dest": "PUBLIC_IMAGES_DIR/cms/thumbs/header01.png"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_block_thumb_header02.png", "dest": "PUBLIC_IMAGES_DIR/cms/thumbs/header02.png"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_block_thumb_markdown_1col.png", "dest": "PUBLIC_IMAGES_DIR/cms/thumbs/markdown_1col.png"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_block_thumb_markdown_2col.png", "dest": "PUBLIC_IMAGES_DIR/cms/thumbs/markdown_2col.png"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/cms_content_block_thumb_markdown_3col.png", "dest": "PUBLIC_IMAGES_DIR/cms/thumbs/markdown_3col.png"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/markdown.jsx", "dest": "CLIENT_COMPONENTS_DIR/markdown/markdown.jsx"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.jsx", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.jsx"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.less", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.less"},
+		{ "source": "TEMPLATE_CODE_DIR/form_utils.js", "dest": "CLIENT_LIB_DIR/form_utils.js" },
+		{ "source": "TEMPLATE_CODE_DIR/object_utils.js", "dest": "CLIENT_LIB_DIR/object_utils.js" }
+	]
+}

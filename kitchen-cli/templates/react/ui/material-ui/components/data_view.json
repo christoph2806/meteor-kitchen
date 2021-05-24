@@ -1,0 +1,17 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : ["marked"],
+		"mrt"   : []
+	},
+	"imports": [
+		"import * as objectUtils from \"BOTH_LIB_DIR/object_utils\";",
+		"import * as dateUtils from \"BOTH_LIB_DIR/date_utils\";",
+		"import * as httpUtils from \"CLIENT_LIB_DIR/http_utils\";",
+		"import {Markdown} from \"CLIENT_COMPONENTS_DIR/markdown/markdown.jsx\";",
+		"import {ConfirmationDialog} from \"CLIENT_COMPONENTS_DIR/confirmation_dialog/confirmation_dialog.jsx\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/markdown.jsx", "dest": "CLIENT_COMPONENTS_DIR/markdown/markdown.jsx"}
+	]
+}

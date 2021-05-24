@@ -1,0 +1,12 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : ["@material-ui/core"],
+		"mrt"   : []
+  },
+	"imports": [
+		"import {Typography, Box} from \"@material-ui/core\";"
+	],
+	"copy_files": [
+	]
+}

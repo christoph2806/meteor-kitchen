@@ -1,0 +1,14 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : [],
+		"mrt"   : []
+	},
+	"imports": [
+		"import * as objectUtils from \"BOTH_LIB_DIR/object_utils\";",
+		"import {ConfirmationDialog} from \"CLIENT_COMPONENTS_DIR/confirmation_dialog/confirmation_dialog.jsx\";",
+		"import {InputDialog} from \"CLIENT_COMPONENTS_DIR/input_dialog/input_dialog.jsx\";"
+	],
+	"copy_files": [
+	]
+}

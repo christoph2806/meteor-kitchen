@@ -5,7 +5,8 @@
 		"mrt"   : []
   },
 	"imports": [
-		"import {Typography, Box} from \"@material-ui/core\";"
+		"import { Card } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-plugins/card/card.jsx\";",
+		"import { theme } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-theme/theme.js\";"
 	],
 	"copy_files": [
 	]

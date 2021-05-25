@@ -4761,6 +4761,10 @@ bool CWComponent::ReadSettings(CWPackages* pPackages, CWArray<CWFilePair*>* pCop
 	if(!ParseJSONFile(settings_filename, &settings_json, false, pErrorMessage))
 		return false;
 
+	CWStringList imports;
+	JSONArrayToStringList(settings_json.GetArray("imports"), &imports, true);
+	Imports->Merge(&imports);
+
 	// load package list
 	CWJSONObject* packages_json = settings_json.GetObject("packages");
 	if(packages_json)
@@ -7607,6 +7611,7 @@ bool CWPage::GeneratePageReact(string* pErrorMessage)
 		if(IncludeFiles->Find(include) < 0)
 			IncludeFiles->Add(include);
 	}
+
 /*
 }
 	if(jsx->Name == "template")
@@ -8190,7 +8195,8 @@ bool CWZone::GenerateZoneReact(string* pErrorMessage)
 	for(int i = 0; i < includes_count; i++)
 	{
 		string include = RemoveLastChar(App()->ReplaceDirAlias(Imports->Strings[i], true, true), ';');
-		if(IncludeFiles->FindBeginWith(include) < 0) {
+		if(IncludeFiles->Find(include) < 0) {
+//		if(IncludeFiles->FindBeginWith(include) < 0) {
 			IncludeFiles->Add(include);
 		}
 	}
@@ -9826,11 +9832,10 @@ bool CWApplication::MeteorRemove(CWStringList* pRemovePackages, string* pErrorMe
 	if(old_packages_npm != NULL) {
 		CWStringList new_packages_npm;
 		new_packages_npm.Assign(PackagesToAdd->Npm);
-		new_packages_npm.TerminateAllAtChar('@');
-
+		new_packages_npm.TerminateAllAtChar('@', true);
 		int old_packages_npm_count = old_packages_npm->Count();
 		for(int i = 0; i < old_packages_npm_count; i++) {
-			string old_package_name = TerminateAtChar(old_packages_npm->Items[i]->GetString(), '@');
+			string old_package_name = TerminateAtChar(old_packages_npm->Items[i]->GetString(), '@', true);
 			if(new_packages_npm.Find(old_package_name) < 0) {
 				packages_to_remove_npm.AddUnique(old_package_name);
 			}

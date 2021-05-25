@@ -3,8 +3,13 @@
 		"title": "test-react-migration",
     "templating": "react",
     "frontend": "material-ui",
+
+    "copy_files": [
+    ],
+
 		"free_zone": {
 			"type": "zone",
+
 			"components": [
 				{
 					"name": "menu",

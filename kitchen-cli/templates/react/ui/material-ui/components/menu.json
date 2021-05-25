@@ -5,8 +5,11 @@
 		"mrt"   : []
 	},
 	"imports": [
-    "import { List, ListItem, ListItemText, ListItemIcon } from \"@material-ui/core\";",
-    "import LabelIcon from \"@material-ui/icons/Label\";"
+	    "import { List } from \"@material-ui/core\";",
+		"import { ListItem } from \"@material-ui/core\";",
+		"import { ListItemText } from \"@material-ui/core\";",
+		"import { ListItemIcon } from \"@material-ui/core\";",
+	    "import LabelIcon from \"@material-ui/icons/Label\";"
 	],
 	"copy_files": []
 }

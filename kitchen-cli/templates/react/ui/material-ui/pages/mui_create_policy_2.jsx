@@ -8,8 +8,8 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { theme } from "/imports/modules/both/object_utils";
 
+/*IMPORTS*/
 
 export function TEMPLATE_NAME(props) {
   React.useEffect(() => {

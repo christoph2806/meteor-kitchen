@@ -20,10 +20,9 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import LastPageIcon from '@material-ui/icons/LastPage'
 import styled from 'styled-components'
-import { theme } from "/imports/modules/both/object_utils";
-import { FileUpload } from "/imports/ui/mui-plugins/file-upload/file-upload.jsx";
-//WIP: Fix this import manually, set it to
-// "/imports/ui/stylesheets/framework/mui-plugins/file-upload/file-upload"
+
+/*IMPORTS*/
+
 
 const table_headers = [
   "Name",

@@ -1,18 +1,3 @@
-import {
-  ThemeProvider,
-  Container,
-  Paper,
-  Divider,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  ListSubheader,
-} from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import styled from "styled-components";
-import { theme } from "/imports/modules/both/object_utils";
-
 export function TEMPLATE_NAME(props) {
   React.useEffect(() => {
     /*TEMPLATE_CREATED_CODE*/

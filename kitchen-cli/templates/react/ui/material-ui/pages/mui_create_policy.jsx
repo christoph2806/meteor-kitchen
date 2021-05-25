@@ -3,23 +3,20 @@ import { withTracker, createContainer } from "meteor/react-meteor-data";
 import * as Yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  Box,
-  Typography,
-  TextField,
-  Paper,
-  Button,
-} from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import styled from "styled-components";
-import { theme } from "/imports/modules/both/object_utils";
-
 
 /*IMPORTS*/
+
 function createYupSchema(schema, config) {
   const { name, validationType, validations = [] } = config;
   if (!Yup[validationType]) {
@@ -252,9 +249,8 @@ const Step1 = ({ state = {}, onSubmit = () => {} }) => {
               key={field.name}
               name={field.name}
               control={control}
-              render={(controlProps) =>
-                renderField({ ...field, ...controlProps })
-              }
+              test={null}
+              render={(controlProps) => renderField({ ...field, ...controlProps })}
             />
           ))}
         </FieldContainer>

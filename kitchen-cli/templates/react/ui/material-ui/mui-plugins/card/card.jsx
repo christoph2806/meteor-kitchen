@@ -7,7 +7,9 @@ import {
   Button,
 } from "@material-ui/core";
 import styled from "styled-components";
-import { theme } from "/imports/modules/both/object_utils";
+
+// Temporary hard-coded path...
+import { theme } from "/imports/ui/stylesheets/framework/mui-theme/theme.js";
 
 export const Card = () => {
   return (

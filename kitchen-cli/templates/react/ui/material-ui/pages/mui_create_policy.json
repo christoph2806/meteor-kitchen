@@ -3,9 +3,12 @@
 		"meteor": [],
 		"npm"   : ["@material-ui/core", "react-hook-form", "@date-io/date-fns@1.3.13", "@material-ui/pickers", "styled-components", "@hookform/resolvers", "date-fns", "yup"],
 		"mrt"   : []
-  },
+	},
+
 	"imports": [
+		"import { theme } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-theme/theme.js\";"
 	],
+
 	"copy_files": [
 	]
 }

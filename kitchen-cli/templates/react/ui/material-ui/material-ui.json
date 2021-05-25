@@ -1,11 +1,12 @@
 {
 	"packages": {
-		"meteor": ["less"],
+		"meteor": ["less", "jquery"],
     "mrt"   : [],
-		"npm"   : ["@material-ui/core", "styled-components"]
+		"npm"   : ["@material-ui/core", "styled-components", "jquery"]
 	},
 	"copy_files": [
-		{ "source": "TEMPLATE_UI_DIR/mui-plugins/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/mui-plugins/" }
+		{ "source": "TEMPLATE_UI_DIR/mui-plugins/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/mui-plugins/" },
+		{ "source": "TEMPLATE_UI_DIR/mui-theme/", "dest": "CLIENT_STYLES_FRAMEWORK_DIR/mui-theme/" }
 
 	],
 	"import_files": {

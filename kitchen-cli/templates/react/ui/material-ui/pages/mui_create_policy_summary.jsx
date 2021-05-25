@@ -10,12 +10,14 @@ import {
 } from "@material-ui/core";
 import styled from "styled-components";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { theme } from "/imports/modules/both/object_utils";
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+
+/*IMPORTS*/
+
 
 const renderHelpers = {
   text: function renderTextField({ label, value }) {

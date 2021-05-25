@@ -1,9 +1,7 @@
 import React from "react";
 import { withTracker, createContainer } from "meteor/react-meteor-data";
-import { Card } from "/imports/ui/mui-plugins/card/card.jsx";
-import {Box} from "@material-ui/core"
-//WIP: Fix this import manually, set it to
-// "/imports/ui/stylesheets/framework/mui-plugins/card/card"
+import { Typography } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 /*IMPORTS*/
 

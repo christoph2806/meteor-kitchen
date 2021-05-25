@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { Typography, Box, ButtonBase, FormHelperText } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { theme } from "/imports/modules/both/object_utils";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+
+// Temporary hard-coded path...
+import { theme } from "/imports/ui/stylesheets/framework/mui-theme/theme.js";
 
 FileUpload.propTypes = {
   onSubmit: PropTypes.func,

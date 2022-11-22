@@ -1,6 +1,6 @@
 {
 	"packages": {
-		"meteor": ["flemay:less-autoprefixer"],
+		"meteor": ["semantic:ui", "flemay:less-autoprefixer"],
 		"mrt"   : []
 	},
 	"copy_files": [

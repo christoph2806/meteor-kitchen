@@ -17,6 +17,7 @@ var frontendsForTemplating = function(templating) {
 			frontends = [
 				{ value: "", title: "Default (Bootstrap 3)" },
 				{ value: "bootstrap3", title: "Bootstrap 3" },
+				{ value: "materialui", title: "Material UI" },
 				{ value: "aframe", title: "A-Frame" }
 			];
 		}; break;

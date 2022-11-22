@@ -5,6 +5,7 @@
 
        getPropertyValue("x.y.z", { x: { y: { z: 123 } } }); // returns 123
 */
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
 
 export const getPropertyValue = function(propertyName, obj) {
 	if(typeof obj == "undefined") {
@@ -22,7 +23,7 @@ export const getPropertyValue = function(propertyName, obj) {
 };
 
 
-/* 
+/*
    converts properties in format { "x.y": "z" } to { x: { y: "z" } }
 */
 
@@ -237,3 +238,21 @@ export const getArray = function(a) {
 	return array;
 };
 
+export const theme = responsiveFontSizes(createMuiTheme({
+  palette: {
+    primary: {
+      main: '#FD8204',
+      contrastText: '#fff',
+    },
+    success: {
+      contrastText: '#fff',
+      main: '#4caf50',
+    },
+    text: {
+      primary: '#444444',
+    },
+  },
+  shape: {
+    borderRadius: 4,
+  },
+}))

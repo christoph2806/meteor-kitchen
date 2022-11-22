@@ -1,44 +1,49 @@
 <template name="TEMPLATE_NAME">
 	<div id="COMPONENT_ID" class="COMPONENT_CLASS">
-		<h2 id="component-title"><span id="component-title-icon" class="COMPONENT_TITLE_ICON_CLASS"></span>COMPONENT_TITLE</h2>
+		<h2 id="component-title"><span id="component-title-icon"
+				class="COMPONENT_TITLE_ICON_CLASS"></span>COMPONENT_TITLE</h2>
 
 		<form id="dataview-controls" class="form-inline">
 		</form>
 
 		{{#if isNotEmpty}}
-			<div id="dataview-data">
-			</div>
-			<nav aria-label="...">
-				<ul class="pager">
-					{{#if gotPrevPage}}<li><a href="#" class="prev-page-link">Previous page</a>&nbsp;</li>{{/if}}
-					{{#if gotNextPage}}<li>&nbsp;<a href="#" class="next-page-link">Next page</a></li>{{/if}}
-				</ul>
-			</nav>
+		<div id="dataview-data">
+		</div>
+		<nav aria-label="...">
+			<ul class="pager">
+				{{#if gotPrevPage}}<li><a href="#" class="prev-page-link">Previous page</a>&nbsp;</li>{{/if}}
+				{{#if gotNextPage}}<li>&nbsp;<a href="#" class="next-page-link">Next page</a></li>{{/if}}
+			</ul>
+		</nav>
 		{{else}}
-			{{#if isNotFound}}
-				<div class="alert alert-warning">TEXT_IF_NOT_FOUND</div>
-			{{else}}
-				<div class="alert alert-info">TEXT_IF_EMPTY</div>
-			{{/if}}
+		{{#if isNotFound}}
+		<div class="alert alert-warning">TEXT_IF_NOT_FOUND</div>
+		{{else}}
+		<div class="alert alert-info">TEXT_IF_EMPTY</div>
+		{{/if}}
 		{{/if}}
 	</div>
 </template>
 
 <div id="dataview-controls-insert" class="form-group INSERT_BUTTON_CLASS">
-	<button type="submit" id="dataview-insert-button" class="btn btn-success"><span class="fa fa-plus"></span> INSERT_BUTTON_TITLE</button>
+	<button type="submit" id="dataview-insert-button" class="btn btn-success"><span class="fa fa-plus"></span>
+		INSERT_BUTTON_TITLE</button>
 </div>
 
 <div id="dataview-controls-search">
 	<div id="dataview-controls-search-group" class="input-group">
-		<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
-		<span class="input-group-btn"><button type="button" id="dataview-search-button" class="btn btn-primary"><span class="fa fa-search"></span></button></span>
+		<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search"
+			value="{{searchString}}" autofocus="autofocus">
+		<span class="input-group-btn"><button type="button" id="dataview-search-button" class="btn btn-primary"><span
+					class="fa fa-search"></span></button></span>
 	</div>
 </div>
 
 <form id="search-engine-form">
 	<div class="form-group form-group-lg">
 		<div class="input-group">
-			<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+			<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search"
+				value="{{searchString}}" autofocus="autofocus">
 			<span class="input-group-btn">
 				<button type="button" id="dataview-search-button" class="btn-lg btn btn-primary">
 					<span class="fa fa-search">
@@ -51,16 +56,17 @@
 
 <div id="dataview-controls-export" class="form-group">
 	{{#if isNotEmpty}}
-		<div class="btn-group">
-			<button type="button" class="btn btn-default" id="dataview-export-default">Export</button>
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#" id="dataview-export-csv">Export to CSV</a></li>
-				<li><a href="#" id="dataview-export-tsv">Export to TSV</a></li>
-				<li><a href="#" id="dataview-export-json">Export to JSON</a></li>
-			</ul>
-		</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-default" id="dataview-export-default">Export</button>
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#" id="dataview-export-xlsx">Export to XLSX</a></li>
+			<li><a href="#" id="dataview-export-csv">Export to CSV</a></li>
+			<li><a href="#" id="dataview-export-tsv">Export to TSV</a></li>
+			<li><a href="#" id="dataview-export-json">Export to JSON</a></li>
+		</ul>
+	</div>
 	{{/if}}
 </div>

@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.8",
     "blaze2gasoline": "^0.2.4",
     "gasoline-turbo": "^0.3.5",
     "meteor-node-stubs": "~0.2.4",

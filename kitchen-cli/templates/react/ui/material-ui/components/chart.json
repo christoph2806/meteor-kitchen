@@ -1,0 +1,14 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm": ["react-c3js"],
+		"mrt": []
+	},
+	"imports": [
+		"import {Chart} from \"CLIENT_COMPONENTS_DIR/chart/chart.jsx\";"
+	],
+	"copy_files": [
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.jsx", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.jsx"},
+		{ "source": "TEMPLATE_UI_DIR/reusable_components/chart.less", "dest": "CLIENT_COMPONENTS_DIR/chart/chart.less"}
+	]
+}

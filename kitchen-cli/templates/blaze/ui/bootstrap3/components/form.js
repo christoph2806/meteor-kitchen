@@ -73,7 +73,7 @@ Template.TEMPLATE_NAME.events({
 		validateForm(
 			$(e.target),
 			function(fieldName, fieldValue) {
-
+				/*CANCEL_CODE*/
 			},
 			function(msg) {
 
@@ -89,9 +89,7 @@ Template.TEMPLATE_NAME.events({
 	},
 	"click #form-cancel-button": function(e, t) {
 		e.preventDefault();
-
-		/*CANCEL_CODE*/
-
+		
 		/*CANCEL_REDIRECT*/
 	},
 	"click #form-close-button": function(e, t) {

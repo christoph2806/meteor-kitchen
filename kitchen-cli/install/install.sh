@@ -6,7 +6,7 @@
 # Are you looking at this in your web browser, and would like to install meteor-kitchen?
 # If you are using Mac or Linux, just open up your terminal and type:
 #
-#     curl https://github.com/christoph2806/meteor-kitchen/raw/master/kitchen-cli/install/install.sh | /bin/sh
+#     curl https://raw.githubusercontent.com/christoph2806/meteor-kitchen/master/kitchen-cli/install/install.sh | /bin/sh
 #
 # If you are using Windows, visit www.meteorkitchen.com for installation instructions.
 

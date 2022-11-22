@@ -353,6 +353,7 @@ void CWNode::ParseTag(const char* cInput, int iPos, bool bXML, bool bJSX, int* p
     int word_start = iPos;
     bool inside_double_quotes = false;
     bool inside_helper = false;
+    int inside_code_block = 0;
     bool tag_end = false;
     while(cInput[pos] != 0 && !tag_end)
     {
@@ -380,15 +381,24 @@ void CWNode::ParseTag(const char* cInput, int iPos, bool bXML, bool bJSX, int* p
 		
 		if(bJSX)
 		{
-			if(cInput[pos] == '=' && cInput[pos + 1] == '{')
+			if(cInput[pos] == '=' && cInput[pos + 1] == '{' && !inside_helper)
 			{
 				inside_helper = true;
 				pos++;
 			}
 
+            if(cInput[pos] == '{' && inside_helper) {
+                inside_code_block++;
+            }
+
 			if(cInput[pos] == '}' && inside_helper)
 			{
-				inside_helper = false;
+				inside_code_block--;
+
+                if(inside_code_block <= 0) {
+                    inside_helper = false;
+                    inside_code_block = 0;
+                }
 			}
 		}
 

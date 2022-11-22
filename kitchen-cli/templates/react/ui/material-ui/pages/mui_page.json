@@ -1,0 +1,13 @@
+{
+	"packages": {
+		"meteor": [],
+		"npm"   : ["@material-ui/core"],
+		"mrt"   : []
+  },
+	"imports": [
+		"import { Card } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-plugins/card/card.jsx\";",
+		"import { theme } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-theme/theme.js\";"
+	],
+	"copy_files": [
+	]
+}

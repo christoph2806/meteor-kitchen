@@ -1,0 +1,110 @@
+{
+	"application": {
+		"title": "test-react-migration",
+    "templating": "react",
+    "frontend": "material-ui",
+
+    "copy_files": [
+    ],
+
+		"free_zone": {
+			"type": "zone",
+
+			"components": [
+				{
+					"name": "menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "Free Zone Page",
+							"route": "free_zone_page"
+            },
+            {
+              "title": "MUI page",
+              "route": "mui_page"
+            },
+            {
+              "title": "Create policy",
+              "route": "create_policy"
+            },
+            {
+              "title": "Create policy - step 2",
+              "route": "create_policy_2"
+            },
+            {
+              "title": "Create policy - Summary",
+              "route": "create_policy_summary"
+            },
+            {
+              "title": "Load policy",
+              "route": "load_policy"
+            }
+					],
+					"object_type": "menu"
+        }
+			],
+			"pages": [
+				{
+					"name": "free_zone_page",
+					"type": "page",
+          "title": "Free zone - please go to /mui_page",
+          "components": [],
+					"template": "page_empty"
+        },
+        {
+          "name": "mui_page",
+          "type": "page",
+          "title": "Mui test page",
+          "components": [
+            {
+              "name": "header",
+              "type": "div",
+              "text": "MUI - Dashboard"
+            },
+            {
+              "name": "title_component",
+              "type": "custom_component",
+              "template": "title",
+              "text": "Title component text"
+            }
+          ],
+          "template": "mui_page"
+        },
+        {
+          "name": "create_policy",
+          "type": "page",
+          "title": "Create Policy",
+          "components": [
+          ],
+          "template": "mui_create_policy"
+        },
+        {
+          "name": "create_policy_2",
+          "type": "page",
+          "title": "Create Policy - Step 2",
+          "components": [
+          ],
+          "template": "mui_create_policy_2"
+        },
+        {
+          "name": "create_policy_summary",
+          "type": "page",
+          "title": "Create Policy - Summary",
+          "components": [
+          ],
+          "template": "mui_create_policy_summary"
+        },
+        {
+          "name": "load_policy",
+          "type": "page",
+          "title": "Load policy",
+          "components": [
+          ],
+          "template": "mui_load_policy"
+        }
+
+      ],
+			"layout": "etherisc"
+		}
+	}
+}

@@ -1,0 +1,5 @@
+{
+	"imports": [
+		"import { theme } from \"CLIENT_STYLES_FRAMEWORK_DIR/mui-theme/theme.js\";"
+	]
+}

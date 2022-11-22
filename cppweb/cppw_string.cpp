@@ -597,9 +597,15 @@ int FindChar(const char* str, char c, int pos, int num)
     return -1;
 }
 
-string TerminateAtChar(string sString, char cChar)
+string TerminateAtChar(string sString, char cChar, bool bIgnoreFirstChar)
 {
-	size_t pos = sString.find(cChar);
+    size_t start_from = 0;
+    if(bIgnoreFirstChar) {
+        start_from = 1;
+    }
+
+	size_t pos = sString.find(cChar, start_from);
+
     if(pos != string::npos) {
 		return sString.erase(pos, sString.size() - 1);
 	}
@@ -1321,12 +1327,16 @@ void CWStringList::ReplaceSubStr(string sOld, string sNew, bool bCaseSensitive, 
 		ReplaceSubString(&(Strings[i]), sOld, sNew, bCaseSensitive, bWholeWord);
 }
 
-void CWStringList::TerminateAllAtChar(char cChar)
+void CWStringList::TerminateAllAtChar(char cChar, bool bIgnoreFirstChar)
 {
     int count = Count();
+    int start_from = 0;
+    if(bIgnoreFirstChar) {
+        start_from = 1;
+    }
     for(int i = 0; i < count; i++)
 	{
-		size_t pos = Strings[i].find(cChar);
+		size_t pos = Strings[i].find(cChar, start_from);
         if(pos != string::npos) Strings[i] = Strings[i].erase(pos, Strings[i].size() - 1);
 	}
 }

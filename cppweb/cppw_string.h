@@ -98,7 +98,7 @@ string RemoveFirstChar(const string& sString, char cChar);
 string RemoveLastChar(const string& sString, char cChar);
 
 int FindChar(const char* str, char c, int pos = 0, int num = -1);
-string TerminateAtChar(string sString, char cChar);
+string TerminateAtChar(string sString, char cChar, bool bIgnoreFirstChar = false);
 string Trim(string sString, bool bSpaces = true, bool bNewLines = true);
 string TrimRight(string sString, bool bSpaces = true, bool bNewLines = true);
 string LastLineWhitespace(string sString);
@@ -173,7 +173,7 @@ class CWStringList
 
         void ReplaceStr(string sOld, string sNew, bool bCaseSensitive = true, int iStartIndex = 0);
         void ReplaceSubStr(string sOld, string sNew, bool bCaseSensitive = true, int iStartIndex = 0, bool bWholeWord = false);
-        void TerminateAllAtChar(char cChar); // remove char and everything after it in all strings
+        void TerminateAllAtChar(char cChar, bool bIgnoreFirstChar = false); // remove char and everything after it in all strings
         void TrimAll(); // remove leading and trailing whitespaces from all strings (space, tab and newline characters)
 
         void ReplaceValues(string sOld, string sNew, bool bCaseSensitive = true);

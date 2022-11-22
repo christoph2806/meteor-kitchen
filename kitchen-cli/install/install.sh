@@ -6,7 +6,7 @@
 # Are you looking at this in your web browser, and would like to install meteor-kitchen?
 # If you are using Mac or Linux, just open up your terminal and type:
 #
-#     curl https://www.meteorkitchen.com/install | /bin/sh
+#     curl https://github.com/christoph2806/meteor-kitchen/raw/master/kitchen-cli/install/install.sh | /bin/sh
 #
 # If you are using Windows, visit www.meteorkitchen.com for installation instructions.
 
@@ -14,7 +14,8 @@ echo "Installing \"Meteor Kitchen\" - Meteor application code generator"
 
 set -u
 
-HOME_URL="https://www.meteorkitchen.com"
+# HOME_URL="https://www.meteorkitchen.com"
+HOME_URL="https://github.com/christoph2806/meteor-kitchen/raw/master/kitchen-cli"
 UNAME=$(uname)
 BUNDLE_FILENAME=""
 TMP_DIR="/tmp"
@@ -22,7 +23,7 @@ DEST_DIR="$HOME/.meteor-kitchen"
 LAUNCH_DIR="/usr/local"
 
 echo "Detecting OS..."
-if [ "$UNAME" != "Linux" -a "$UNAME" != "Darwin" ] ; then
+if [ "$UNAME" != "Linux" ] ; then # -a "$UNAME" != "Darwin" ] ; then
 	echo "Sorry, this OS is not supported yet."
 	exit 1
 fi
@@ -34,7 +35,7 @@ if [ "$UNAME" = "Darwin" ] ; then
 else
 	BUNDLE_FILENAME="install_linux.tar.gz"
 fi
-
+# https://github.com/christoph2806/meteor-kitchen/raw/master/kitchen-cli/install/install_linux.tar.gz
 echo "Downloading distribution..."
 curl --progress-bar --fail -L -o "$TMP_DIR/$BUNDLE_FILENAME" "$HOME_URL/install/$BUNDLE_FILENAME" || exit $?
 

@@ -8,7 +8,7 @@ if(typeof Reflect == "undefined") {
 	require("babel-polyfill");
 }
 */
-var randomString = function(len) {
+var randomString = function (len) {
 	len = len || 17;
 
 	let text = "";
@@ -18,38 +18,38 @@ var randomString = function(len) {
 
 	// other chars can be numbers
 	charset += "0123456789";
-	for(var i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++) {
 		text += charset.charAt(Math.floor(Math.random() * charset.length));
 	}
 
 	return text;
 };
 
-var AddDirSeparator = function(dir) {
-	if(!dir) {
+var AddDirSeparator = function (dir) {
+	if (!dir) {
 		return "/";
 	}
 
-	if(dir[dir.length - 1] != "/") {
+	if (dir[dir.length - 1] != "/") {
 		return dir + "/";
 	}
 
 	return dir;
 };
 
-var isNonEmptyObject = function(obj) {
+var isNonEmptyObject = function (obj) {
 	return !!Object.keys(obj).length;
 };
 
-var extractStringsFromObject = function(obj) {
+var extractStringsFromObject = function (obj) {
 	var strings = [];
 
-	if(typeof obj == "array") {
+	if (typeof obj == "array") {
 		obj.map(el => {
-			if(typeof el == "string") {
+			if (typeof el == "string") {
 				strings.push(el);
 			} else {
-				if(typeof el == "array" || typeof el == "object") {
+				if (typeof el == "array" || typeof el == "object") {
 					var tmp = extractStringsFromObject(el);
 					tmp.map(str => {
 						strings.push(str);
@@ -58,12 +58,12 @@ var extractStringsFromObject = function(obj) {
 			}
 		});
 	} else {
-		if(typeof obj == "object") {
-			for(var key in obj) {
-				if(typeof obj[key] == "string") {
+		if (typeof obj == "object") {
+			for (var key in obj) {
+				if (typeof obj[key] == "string") {
 					strings.push(obj[key]);
 				} else {
-					if(typeof obj[key] == "array" || typeof obj[key] == "object") {
+					if (typeof obj[key] == "array" || typeof obj[key] == "object") {
 						var tmp = extractStringsFromObject(obj[key]);
 						tmp.map(str => {
 							strings.push(str);
@@ -112,7 +112,7 @@ class KClassKitchen {
 
 	removeClass(name) {
 		let index = this.classes.findIndex(c => c.name == name);
-		if(index < 0) {
+		if (index < 0) {
 			return;
 		}
 		this.classes.splice(index, 1);
@@ -120,7 +120,7 @@ class KClassKitchen {
 
 	create(name, parent) {
 		let classInfo = this.classes.find(c => c.name == name);
-		if(!classInfo) {
+		if (!classInfo) {
 			return null;
 		}
 		return classInfo.functor(parent);
@@ -128,7 +128,7 @@ class KClassKitchen {
 
 	getDocs(includeThis = false) {
 		let docs = "";
-		if(includeThis) {
+		if (includeThis) {
 			docs += "# " + this.factoryName + "\n";
 			docs += this.factoryDescription + "\n";
 			docs += "\n";
@@ -139,7 +139,7 @@ class KClassKitchen {
 		classNames.map(className => {
 			let c = this.getClass(className);
 			let tmp = c.functor(null);
-			if(tmp.getDocs) {
+			if (tmp.getDocs) {
 				docs += tmp.getDocs();
 				docs += "\n";
 			}
@@ -158,12 +158,12 @@ class KClassKitchen {
 		classNames.map(className => {
 			let c = this.getClass(className);
 			let tmp = c.functor(null);
-			if(!forDocs || tmp.getDocs) {
+			if (!forDocs || tmp.getDocs) {
 				list.push(className);
 			}
 		});
 
-		if(sort) {
+		if (sort) {
 			list.sort();
 		}
 
@@ -174,17 +174,17 @@ class KClassKitchen {
 		var classNames = [];
 		this.classes.map(cls => {
 			let obj = this.create(cls.name);
-			if(obj.isInheritedFrom && obj.isInheritedFrom(className) && skipClassNames.indexOf(cls.name) < 0) {
+			if (obj.isInheritedFrom && obj.isInheritedFrom(className) && skipClassNames.indexOf(cls.name) < 0) {
 				var skip = false;
-				if(skipParentClassNames.length) {
+				if (skipParentClassNames.length) {
 					skipParentClassNames.map(skipParentClass => {
-						if(obj.isInheritedFrom(skipParentClass)) {
+						if (obj.isInheritedFrom(skipParentClass)) {
 							skip = true;
 						}
 					});
 				}
 
-				if(!skip) {
+				if (!skip) {
 					classNames.push(cls.name);
 				}
 			}
@@ -210,20 +210,20 @@ class KBaseObject {
 
 	getSuperClassName() {
 		var realSuper = Object.getPrototypeOf(Object.getPrototypeOf(this));
-		if(realSuper.constructor.getClassName) {
+		if (realSuper.constructor.getClassName) {
 			return realSuper.constructor.getClassName();
 		}
 		return "";
 	}
 
 	isInheritedFrom(className) {
-		if(this.constructor.getClassName() == className) {
+		if (this.constructor.getClassName() == className) {
 			return true;
 		}
 
 		var realSuper = Object.getPrototypeOf(Object.getPrototypeOf(this));
 
-		if(realSuper && realSuper.isInheritedFrom) {
+		if (realSuper && realSuper.isInheritedFrom) {
 			return realSuper.isInheritedFrom(className);
 		}
 
@@ -231,17 +231,17 @@ class KBaseObject {
 	}
 
 	addProperty(name, type, subType, defaultValue, title, description, input, choiceItems, required) {
-		if(!name) {
+		if (!name) {
 			return;
 		}
 		this[name] = defaultValue || ClassKitchen.create(type, this);
 
-		if(this[name] instanceof KBaseArray) {
+		if (this[name] instanceof KBaseArray) {
 			this[name]._defaultItemType = subType;
 		}
 
-		if(this[name] instanceof KBaseObject || this[name] instanceof KBaseArray || type == "object" || type == "array") {
-			if(!defaultValue) {
+		if (this[name] instanceof KBaseObject || this[name] instanceof KBaseArray || type == "object" || type == "array") {
+			if (!defaultValue) {
 				defaultValue = ClassKitchen.create(type, this);
 			}
 		}
@@ -266,23 +266,23 @@ class KBaseObject {
 	}
 
 	updateProperty(name, type, subType, defaultValue, title, description, input, choiceItems, required) {
-		if(!name) {
+		if (!name) {
 			return;
 		}
 
 		var propertyIndex = this._properties.findIndex(prop => prop.name == name);
-		if(propertyIndex < 0) {
+		if (propertyIndex < 0) {
 			return;
 		}
 
 		this[name] = defaultValue || ClassKitchen.create(type, this);
 
-		if(this[name] instanceof KBaseArray) {
+		if (this[name] instanceof KBaseArray) {
 			this[name]._defaultItemType = subType;
 		}
 
-		if(this[name] instanceof KBaseObject || this[name] instanceof KBaseArray || type == "object" || type == "array") {
-			if(!defaultValue) {
+		if (this[name] instanceof KBaseObject || this[name] instanceof KBaseArray || type == "object" || type == "array") {
+			if (!defaultValue) {
 				defaultValue = ClassKitchen.create(type, this);
 			}
 		}
@@ -309,7 +309,7 @@ class KBaseObject {
 
 	removeProperty(name) {
 		var propertyIndex = this._properties.findIndex(prop => prop.name == name);
-		if(propertyIndex < 0) {
+		if (propertyIndex < 0) {
 			return;
 		}
 
@@ -323,16 +323,16 @@ class KBaseObject {
 
 	propertyHasValue(name) {
 		var value = this[name + ""];
-		if(typeof value == "undefined") {
+		if (typeof value == "undefined") {
 			return false;
 		}
 
 		var property = this.getProperty(name);
-		if(!property || !property.type) {
+		if (!property || !property.type) {
 			return false;
 		}
 
-		if(property.type == "array") {
+		if (property.type == "array") {
 			return value && value.length;
 		}
 
@@ -340,7 +340,7 @@ class KBaseObject {
 	}
 
 	getRoot() {
-		if(!this._parent || !this._parent.getRoot) {
+		if (!this._parent || !this._parent.getRoot) {
 			return this;
 		}
 
@@ -348,7 +348,7 @@ class KBaseObject {
 	}
 
 	getParents(parents = []) {
-		if(!this._parent || !this._parent.getParents) {
+		if (!this._parent || !this._parent.getParents) {
 			return parents;
 		}
 
@@ -372,13 +372,13 @@ class KBaseObject {
 	}
 
 	getParentKeyName() {
-		if(!this._parent) {
+		if (!this._parent) {
 			return "";
 		}
 
 		let propertyName = "";
 		this._parent._properties.find(property => {
-			if(this._parent[property.name] && this._parent[property.name]._id == this._id) {
+			if (this._parent[property.name] && this._parent[property.name]._id == this._id) {
 				propertyName = property.name;
 				return true;
 			}
@@ -392,40 +392,40 @@ class KBaseObject {
 
 		docs += "<h2 id=\"_" + this._className + "\">" + this._className + "</h2>\n";
 		docs += "\n";
-		if(this._classDescription) {
+		if (this._classDescription) {
 			docs += this._classDescription + "\n";
 			docs += "\n";
 		}
-		if(this.getSuperClassName()) {
+		if (this.getSuperClassName()) {
 			docs += "**Inherited from:** <a href=\"#_" + this.getSuperClassName() + "\">" + this.getSuperClassName() + "</a>\n";
 		}
 		docs += "\n";
-		if(this._properties.length) {
+		if (this._properties.length) {
 			docs += "#### " + this._className + " properties\n";
 			docs += "Property name | Type | Default value | Description\n";
-			docs +=	"--------------|------|---------------|------------\n";
+			docs += "--------------|------|---------------|------------\n";
 			this._properties.map(property => {
 				docs += property.name + " | ";
 				let type = property.type;
-				if(type == "base_array" && property.subType) {
+				if (type == "base_array" && property.subType) {
 					type = "<a href=\"#_base_array\">array</a> of ";
 					var kitchenClass = ClassKitchen.getClass(property.subType);
-					if(kitchenClass && !kitchenClass.primitive) {
+					if (kitchenClass && !kitchenClass.primitive) {
 						type += "<a href=\"#_" + property.subType + "\">" + property.subType + "</a>";
 					} else {
 						type += property.subType;
 					}
 				} else {
 					var kitchenClass = ClassKitchen.getClass(property.type);
-					if(kitchenClass && !kitchenClass.primitive) {
+					if (kitchenClass && !kitchenClass.primitive) {
 						type = "<a href=\"#_" + property.type + "\">" + property.type + "</a>";
 					}
 				}
 				docs += type + " | ";
-				if(property.defaultValue && property.defaultValue.save) {
+				if (property.defaultValue && property.defaultValue.save) {
 					docs += " | ";
 				} else {
-					if(property.type == "object" || property.type == "array") {
+					if (property.type == "object" || property.type == "array") {
 						docs += "`" + JSON.stringify(property.defaultValue) + "` | ";
 					} else {
 						docs += (property.defaultValue || property.type == "bool") ? "`" + property.defaultValue + "` | " : " | ";
@@ -448,7 +448,7 @@ class KBaseObject {
 	clear() {
 		this._properties.map(property => {
 			let prop = this[property.name];
-			if(prop && prop.clear) {
+			if (prop && prop.clear) {
 				prop.clear();
 			} else {
 				this[property.name] = property.defaultValue;
@@ -457,17 +457,17 @@ class KBaseObject {
 	}
 
 	isEqual(obj) {
-		if(!obj) {
+		if (!obj) {
 			return false;
 		}
 
 		let nonEqIndex = this._properties.findIndex(property => {
-			if(this[property.name] && this[property.name].isEqual) {
-				if(!this[property.name].isEqual(obj[property.name])) {
+			if (this[property.name] && this[property.name].isEqual) {
+				if (!this[property.name].isEqual(obj[property.name])) {
 					return true;
 				}
 			} else {
-				if(JSON.stringify(this[property.name]) != JSON.stringify(obj[property.name])) {
+				if (JSON.stringify(this[property.name]) != JSON.stringify(obj[property.name])) {
 					return true;
 				}
 			}
@@ -477,25 +477,25 @@ class KBaseObject {
 
 	save(obj, simplify, fullSimplify, saveId) {
 		let o = obj || {};
-		if(saveId && this._id) {
+		if (saveId && this._id) {
 			o._id = this._id;
 		}
 
 		this._properties.map(property => {
 			let tmp = this[property.name];
-			if(tmp && tmp.save) {
+			if (tmp && tmp.save) {
 				o[property.name] = tmp.save(null, simplify, fullSimplify, saveId);
 			} else {
 				o[property.name] = tmp;
 			}
 
-			if(simplify) {
-				if(tmp && tmp.isEqual) {
-					if(fullSimplify && tmp.isEqual(property.defaultValue)) {
+			if (simplify) {
+				if (tmp && tmp.isEqual) {
+					if (fullSimplify && tmp.isEqual(property.defaultValue)) {
 						delete o[property.name];
 					}
 				} else {
-					if((property.type == "object" && !isNonEmptyObject(o[property.name]) && !isNonEmptyObject(property.defaultValue) && fullSimplify) || (property.name != "type" && o[property.name] == property.defaultValue)) {
+					if ((property.type == "object" && !isNonEmptyObject(o[property.name]) && !isNonEmptyObject(property.defaultValue) && fullSimplify) || (property.name != "type" && o[property.name] == property.defaultValue)) {
 						delete o[property.name];
 					}
 				}
@@ -508,25 +508,25 @@ class KBaseObject {
 		this.clear();
 		let o = obj || {};
 
-		if(loadId && o._id) {
+		if (loadId && o._id) {
 			this._id = o._id;
 		}
 
 		this._properties.map(property => {
 			let tmp = this[property.name];
-			if(tmp && tmp.load) {
+			if (tmp && tmp.load) {
 				tmp.load(o[property.name], loadId);
 			} else {
 				// special processing for query.filter and query.options - REMOVE AFTER CONVERT DATA
-				if(this._className == "query" && (property.name == "filter" || property.name == "options") && property.type == "string" && typeof o[property.name] != "string") {
+				if (this._className == "query" && (property.name == "filter" || property.name == "options") && property.type == "string" && typeof o[property.name] != "string") {
 					this[property.name] = JSON.stringify(o[property.name] || {});
 				} else {
 					// normal processing
-					if(o.hasOwnProperty(property.name)) {
+					if (o.hasOwnProperty(property.name)) {
 						this[property.name] = o[property.name];
 					} else {
 						this[property.name] = property.defaultValue;
-					}					
+					}
 				}
 			}
 		});
@@ -541,15 +541,15 @@ class KBaseObject {
 		let obj = null;
 		this._properties.find(property => {
 			let prop = this[property.name];
-			if(prop && prop.findObjectById) {
-				if(prop._id == id) {
+			if (prop && prop.findObjectById) {
+				if (prop._id == id) {
 					obj = prop;
 					return true;
 				}
 
-				if(recoursive) {
+				if (recoursive) {
 					obj = prop.findObjectById(id, recoursive);
-					if(obj) {
+					if (obj) {
 						return true;
 					}
 				}
@@ -559,34 +559,34 @@ class KBaseObject {
 	}
 
 	findObjectByName(name, recoursive = true) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj.getProperty && obj.getProperty("name") && obj.name == name;
 		}, recoursive);
 	}
 
 	findObjectByNameAndType(name, type, recoursive = true) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj.getProperty && obj.getProperty("name") && obj.name == name && obj._className == type;
 		}, recoursive);
 	}
 
 	findObject(callback, recoursive = true) {
-		if(!callback) {
+		if (!callback) {
 			return null;
 		}
 
 		let obj = null;
 		this._properties.find(property => {
 			let prop = this[property.name];
-			if(prop && prop.findObject) {
-				if(callback(prop)) {
+			if (prop && prop.findObject) {
+				if (callback(prop)) {
 					obj = prop;
 					return true;
 				}
 
-				if(recoursive) {
+				if (recoursive) {
 					obj = prop.findObject(callback, recoursive);
-					if(obj) {
+					if (obj) {
 						return true;
 					}
 				}
@@ -596,18 +596,18 @@ class KBaseObject {
 	}
 
 	getObjectOfType(type, recoursive = true) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj._className == type;
 		}, recoursive);
 	}
 
 	getObjectsOfType(className, recoursive = true) {
 		var objects = [];
-		if(this._className == className) {
+		if (this._className == className) {
 			objects.push(this);
 		}
 		this.findObject(obj => {
-			if(obj._className == className) {
+			if (obj._className == className) {
 				objects.push(obj);
 			}
 		}, recoursive);
@@ -625,7 +625,7 @@ class KBaseObject {
 	}
 
 	findPageByRoute(routeName, recoursive = true) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj.getRoute && obj.getRoute() == routeName;
 		}, recoursive);
 	}
@@ -634,13 +634,13 @@ class KBaseObject {
 		let removed = false;
 		this._properties.find(property => {
 			let prop = this[property.name];
-			if(prop && prop.removeObjectById && recoursive) {
-				if(prop.removeObjectById(id, recoursive)) {
+			if (prop && prop.removeObjectById && recoursive) {
+				if (prop.removeObjectById(id, recoursive)) {
 					removed = true;
 					return true;
 				}
 
-				if(prop._id == id) {
+				if (prop._id == id) {
 					// this function doesn't remove object member, so... do nothing here
 					return true;
 				}
@@ -672,20 +672,20 @@ class KBaseArray extends Array {
 
 	getSuperClassName() {
 		var realSuper = Object.getPrototypeOf(Object.getPrototypeOf(this));
-		if(realSuper.constructor.getClassName) {
+		if (realSuper.constructor.getClassName) {
 			return realSuper.constructor.getClassName();
 		}
 		return "";
 	}
 
 	isInheritedFrom(className) {
-		if(this.constructor.getClassName() == className) {
+		if (this.constructor.getClassName() == className) {
 			return true;
 		}
 
 		var realSuper = Object.getPrototypeOf(Object.getPrototypeOf(this));
 
-		if(realSuper && realSuper.isInheritedFrom) {
+		if (realSuper && realSuper.isInheritedFrom) {
 			return realSuper.isInheritedFrom(className);
 		}
 
@@ -693,7 +693,7 @@ class KBaseArray extends Array {
 	}
 
 	getRoot() {
-		if(!this._parent || !this._parent.getRoot) {
+		if (!this._parent || !this._parent.getRoot) {
 			return this;
 		}
 
@@ -701,7 +701,7 @@ class KBaseArray extends Array {
 	}
 
 	getParents(parents = []) {
-		if(!this._parent || !this._parent.getParents) {
+		if (!this._parent || !this._parent.getParents) {
 			return parents;
 		}
 
@@ -718,13 +718,13 @@ class KBaseArray extends Array {
 	}
 
 	getParentKeyName() {
-		if(!this._parent) {
+		if (!this._parent) {
 			return "";
 		}
 
 		let propertyName = "";
 		this._parent._properties.find(property => {
-			if(this._parent[property.name] && this._parent[property.name]._id == this._id) {
+			if (this._parent[property.name] && this._parent[property.name]._id == this._id) {
 				propertyName = property.name;
 				return true;
 			}
@@ -738,11 +738,11 @@ class KBaseArray extends Array {
 
 		docs += "<h2 id=\"_" + this._className + "\">" + this._className + "</h2>\n";
 		docs += "\n";
-		if(this._classDescription) {
+		if (this._classDescription) {
 			docs += this._classDescription + "\n";
 			docs += "\n";
 		}
-		if(this.getSuperClassName()) {
+		if (this.getSuperClassName()) {
 			docs += "**Inherited from:** <a href=\"#_" + this.getSuperClassName() + "\">" + this.getSuperClassName() + "</a>\n";
 		}
 		docs += "\n";
@@ -754,18 +754,18 @@ class KBaseArray extends Array {
 	}
 
 	isEqual(arr) {
-		if(!arr || this.length != arr.length) {
+		if (!arr || this.length != arr.length) {
 			return false;
 		}
 
 		let nonEqIndex = this.findIndex((item, index) => {
-			if(item && item.isEqual) {
-				if(!item.isEqual(arr[index])) {
+			if (item && item.isEqual) {
+				if (!item.isEqual(arr[index])) {
 					return true;
 				}
 			} else {
-				if(JSON.stringify(item) != JSON.stringify(arr[index])) {
-					return true;					
+				if (JSON.stringify(item) != JSON.stringify(arr[index])) {
+					return true;
 				}
 			}
 		});
@@ -776,14 +776,14 @@ class KBaseArray extends Array {
 	save(arr, simplify, fullSimplify, saveId) {
 		let a = arr || [];
 
-		if(saveId && this._id) {
+		if (saveId && this._id) {
 			a._id = this._id;
 		}
 
 		this.map(item => {
-			if(item && item.save) {
+			if (item && item.save) {
 				let obj = item.save(null, simplify, fullSimplify, saveId);
-				if(item._className != this._defaultItemType) {
+				if (item._className != this._defaultItemType) {
 					obj.object_type = item._className;
 				}
 				a.push(obj);
@@ -799,26 +799,26 @@ class KBaseArray extends Array {
 		this.clear();
 		let a = arr || [];
 
-		if(loadId && a._id) {
+		if (loadId && a._id) {
 			this._id = a._id;
 		}
 
-		if(!a.map) {
+		if (!a.map) {
 			return;
 		}
 
 		a.map(item => {
 			let obj = null;
 
-			if(item) {
-				if(item.object_type) {
+			if (item) {
+				if (item.object_type) {
 					obj = ClassKitchen.create(item.object_type, self);
 				} else {
-					if(item.type) {
-						if(self._defaultItemType == "component") {
+					if (item.type) {
+						if (self._defaultItemType == "component") {
 							obj = ClassKitchen.create(item.type, self);
 						} else {
-							if(self._defaultItemType == "gas_node" || self._defaultItemType == "gas_element" || self._defaultItemType == "gas_template") {
+							if (self._defaultItemType == "gas_node" || self._defaultItemType == "gas_element" || self._defaultItemType == "gas_template") {
 								obj = ClassKitchen.create("gas_" + item.type.replace(/-/g, "_"), self);
 							}
 						}
@@ -826,15 +826,15 @@ class KBaseArray extends Array {
 				}
 			}
 
-			if(!obj) {
-				if(self._defaultItemType) {
+			if (!obj) {
+				if (self._defaultItemType) {
 					obj = ClassKitchen.create(self._defaultItemType, self);
 				} else {
 
 				}
 			}
 
-			if(obj && obj.load) {
+			if (obj && obj.load) {
 				obj.load(item, loadId);
 				self.push(obj);
 			} else {
@@ -850,7 +850,7 @@ class KBaseArray extends Array {
 		do {
 			newName = newNameTemplate + (index ? index : "");
 			index++;
-		} while(this.findObject(object => {
+		} while (this.findObject(object => {
 			return object.name == newName;
 		}, false));
 		return newName;
@@ -861,15 +861,15 @@ class KBaseArray extends Array {
 
 		let obj = null;
 		this.find(item => {
-			if(item && item.findObjectById) {
-				if(item._id == id) {
+			if (item && item.findObjectById) {
+				if (item._id == id) {
 					obj = item;
 					return true;
 				}
 
-				if(recoursive) {
+				if (recoursive) {
 					obj = item.findObjectById(id, recoursive);
-					if(obj) {
+					if (obj) {
 						return true;
 					}
 				}
@@ -879,7 +879,7 @@ class KBaseArray extends Array {
 	}
 
 	findObject(callback, recoursive) {
-		if(!callback) {
+		if (!callback) {
 			return null;
 		}
 
@@ -887,15 +887,15 @@ class KBaseArray extends Array {
 
 		let obj = null;
 		this.find(item => {
-			if(item && item.findObject) {
-				if(callback(item)) {
+			if (item && item.findObject) {
+				if (callback(item)) {
 					obj = item;
 					return true;
 				}
 
-				if(recoursive) {
+				if (recoursive) {
 					obj = item.findObject(callback, recoursive);
-					if(obj) {
+					if (obj) {
 						return true;
 					}
 				}
@@ -905,13 +905,13 @@ class KBaseArray extends Array {
 	}
 
 	findObjectByName(name, recoursive) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj.getProperty && obj.getProperty("name") && obj.name == name;
 		}, recoursive);
 	}
 
 	findObjectByNameAndType(name, type, recoursive) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj.getProperty && obj.getProperty("name") && obj.name == name && obj._className == type;
 		}, recoursive);
 	}
@@ -928,7 +928,7 @@ class KBaseArray extends Array {
 
 	moveItemUp(id) {
 		let index = this.indexOfObjectById(id);
-		if(index < 1) {
+		if (index < 1) {
 			return;
 		}
 
@@ -937,7 +937,7 @@ class KBaseArray extends Array {
 
 	moveItemDown(id) {
 		let index = this.indexOfObjectById(id);
-		if(index >= this.length - 1) {
+		if (index >= this.length - 1) {
 			return;
 		}
 
@@ -945,18 +945,18 @@ class KBaseArray extends Array {
 	}
 
 	getObjectOfType(type, recoursive) {
-		return this.findObject(function(obj) {
+		return this.findObject(function (obj) {
 			return obj._className == type;
 		}, recoursive);
 	}
 
 	getObjectsOfType(className, recoursive = true) {
 		var objects = [];
-		if(this._className == className) {
+		if (this._className == className) {
 			objects.push(this);
 		}
 		this.findObject(obj => {
-			if(obj._className == className) {
+			if (obj._className == className) {
 				objects.push(obj);
 			}
 		}, recoursive);
@@ -968,8 +968,8 @@ class KBaseArray extends Array {
 
 		let removed = false;
 		let index = this.findIndex(item => {
-			if(item && item.removeObjectById && recoursive) {
-				if(item.removeObjectById(id, recoursive)) {
+			if (item && item.removeObjectById && recoursive) {
+				if (item.removeObjectById(id, recoursive)) {
 					removed = true;
 					return true;
 				}
@@ -977,12 +977,12 @@ class KBaseArray extends Array {
 			return item._id == id;
 		});
 
-		if(removed) {
+		if (removed) {
 			return true;
 		}
 
-		if(index >= 0) {
-			if(this[index] && this[index].updateRefs) {
+		if (index >= 0) {
+			if (this[index] && this[index].updateRefs) {
 				this[index].updateRefs(this[index].name, "");
 			}
 			this.splice(index, 1);
@@ -1022,7 +1022,7 @@ class KKitchen extends KBaseObject {
 
 }
 
-KKitchen.getClassName = function() { return "kitchen"; };
+KKitchen.getClassName = function () { return "kitchen"; };
 
 ClassKitchen.addClass(KKitchen);
 
@@ -1036,7 +1036,7 @@ class KField extends KNamedObject {
 		this._classDescription = "";
 		this.updateProperty("name", "string", "object_name", "", "Name", "Object name", "text", [], true);
 		this.addProperty("title", "string", "", "", "Title", "Field title (used in form labels, table column headers etc.)", "text", [], false);
-		var type_choice_items = ["string","integer","float","date","time","bool","array","object","email"];
+		var type_choice_items = ["string", "integer", "float", "date", "time", "bool", "array", "object", "email"];
 		this.addProperty("type", "string", "", "string", "Type", "Field data type used in form validations. Examples: \"string\", \"integer\", \"float\", \"date\", \"time\", \"bool\", \"array\", \"email\", \"random_string\". Default: \"string\"", "select", type_choice_items, true);
 		this.addProperty("default", "string", "", "", "Default value", "Default value. For date fields you can use special constant \"today\", for time fields you can use \"now\". Also, you can set helper here \"{{myHelper}}\".", "text", [], false);
 		this.addProperty("min", "string", "", "", "Min. value", "Minimum value (only for numeric fields)", "text", [], false);
@@ -1046,7 +1046,7 @@ class KField extends KNamedObject {
 		this.addProperty("searchable", "bool", "", true, "Searchable", "Is field searchable? Default: true", "checkbox", [], false);
 		this.addProperty("sortable", "bool", "", true, "Sortable", "Is field sortable? Default: true", "checkbox", [], false);
 		this.addProperty("exportable", "bool", "", false, "Exportable", "If true field will be exported to CSV/JSON (used in dataview component). Default: false", "checkbox", [], false);
-		var input_choice_items = ["text","password","datepicker","read-only","textarea","radio","checkbox","select","select-multiple","tags","crud","file","custom"];
+		var input_choice_items = ["text", "password", "datepicker", "read-only", "textarea", "radio", "checkbox", "select", "select-multiple", "tags", "crud", "file", "custom"];
 		this.addProperty("input", "string", "", "text", "Input", "Form input control type: \"text\", \"password\", \"datepicker\", \"read-only\", \"textarea\", \"radio\", \"checkbox\", \"select\", \"crud\", \"file\", \"custom\"", "select", input_choice_items, false);
 		this.addProperty("input_template", "string", "", "", "Input template", "Template for \"custom\" input field (relative to input file)", "text", [], false);
 		this.addProperty("input_template_code", "string", "", "", "Input template code", "Source code (markup) for \"custom\" input field. If you need any initialization (e.g. jQuery) here, you can put that into form's template_rendered_code", "javascript", [], false);
@@ -1058,7 +1058,7 @@ class KField extends KNamedObject {
 		this.addProperty("lookup_key", "string", "", "", "Lookup value field", "Field name from lookup_query used as option value in input type \"select\". Mandatory field if lookup_query is defined", "text", [], false);
 		this.addProperty("lookup_field", "string", "", "", "Lookup title field", "Field name from lookup_query used as option title in input type \"select\". Mandatory field if lookup query is defined", "text", [], false);
 		this.addProperty("display_helper", "string", "", "", "Display helper", "Helper name used to display value from this field (used in DataView, Forms etc.)", "text", [], false);
-		var array_item_type_choice_items = ["","string","integer","float","date","time","bool","object","email"];
+		var array_item_type_choice_items = ["", "string", "integer", "float", "date", "time", "bool", "object", "email"];
 		this.addProperty("array_item_type", "string", "", "", "Array item type", "If \"type\" is set to \"array\" then you can define array item type here. Format is the same as for \"type\" property.", "select", array_item_type_choice_items, false);
 		this.addProperty("crud_fields", "base_array", "field", null, "CRUD input fields", "If \"array_item_type\" is set to \"object\" then you can define fields for input type \"crud\".", "", [], false);
 		this.addProperty("crud_insert_title", "string", "", "", "CRUD insert title", "For fields with \"input\": \"crud\" - insert button and insert form title", "text", [], false);
@@ -1072,13 +1072,13 @@ class KField extends KNamedObject {
 		this.addProperty("show_in_insert_form", "bool", "", true, "Show in insert forms", "If set to \"false\", field will not be included in forms with mode \"insert\". Default: true", "checkbox", [], false);
 		this.addProperty("show_in_update_form", "bool", "", true, "Show in update forms", "If set to \"false\", field will not be included in forms with mode \"update\". Default: true", "checkbox", [], false);
 		this.addProperty("show_in_read_only_form", "bool", "", true, "Show in read-only forms", "If set to \"false\", field will not be included in forms with mode \"read_only\". Default: true", "checkbox", [], false);
-		var role_in_blog_choice_items = ["","title","subtitle","text","date"];
+		var role_in_blog_choice_items = ["", "title", "subtitle", "text", "date"];
 		this.addProperty("role_in_blog", "string", "", "", "Role in Blog", "Specify which role this field will have in dataview (\"view_style\": \"blog\"). Can be one of: \"title\", \"subtitle\", \"text\", \"date\".", "select", role_in_blog_choice_items, false);
 	}
 
 }
 
-KField.getClassName = function() { return "field"; };
+KField.getClassName = function () { return "field"; };
 
 ClassKitchen.addClass(KField);
 
@@ -1096,7 +1096,7 @@ class KHiddenField extends KBaseObject {
 
 }
 
-KHiddenField.getClassName = function() { return "hidden_field"; };
+KHiddenField.getClassName = function () { return "hidden_field"; };
 
 ClassKitchen.addClass(KHiddenField);
 
@@ -1114,7 +1114,7 @@ class KInputItem extends KBaseObject {
 
 }
 
-KInputItem.getClassName = function() { return "input_item"; };
+KInputItem.getClassName = function () { return "input_item"; };
 
 ClassKitchen.addClass(KInputItem);
 
@@ -1127,9 +1127,9 @@ class KCollection extends KNamedObject {
 
 		this._classDescription = "";
 		this.updateProperty("name", "string", "object_name", "", "Name", "Object name", "text", [], true);
-		var type_choice_items = ["collection","file_collection","bigchaindb"];
+		var type_choice_items = ["collection", "file_collection", "bigchaindb"];
 		this.addProperty("type", "string", "", "collection", "Type", "Collection type. Can be \"collection\", \"file_collection\" (FS.Collection) or \"bigchaindb\". Default: \"collection\".", "select", type_choice_items, true);
-		var storage_adapters_choice_items = ["gridfs","filesystem","s3","dropbox"];
+		var storage_adapters_choice_items = ["gridfs", "filesystem", "s3", "dropbox"];
 		this.addProperty("storage_adapters", "base_array", "string", null, "Storage adapters", "For collection of type \"file_collection\": list of CollectionFS storage adapters: \"gridfs\", \"filesystem\", \"s3\" or \"dropbox\". If not specified, generator will assume \"gridfs\".", "stringlist", storage_adapters_choice_items, false);
 		this.addProperty("storage_adapter_options", "string", "", "", "Storage adapter options", "For collection of type \"file_collection\": list of CollectionFS storage adapters and their options. Example: `{ \"s3\": { \"bucket\": \"mybucket\" }, \"gridfs\": { } }`.", "json", [], false);
 		this.addProperty("fields", "base_array", "field", null, "Fields", "Field list. Not mandatory, used by components such as form, dataview etc.", "", [], false);
@@ -1157,13 +1157,13 @@ class KCollection extends KNamedObject {
 
 	updateRefs(oldName, newName) {
 		var kitchen = this.getRoot();
-		if(!kitchen) {
+		if (!kitchen) {
 			return;
 		}
 
 		kitchen.findObject(obj => {
 			obj._properties.map(property => {
-				if(property.subType == "collection_name" && obj[property.name] && obj[property.name] == oldName) {
+				if (property.subType == "collection_name" && obj[property.name] && obj[property.name] == oldName) {
 					obj[property.name] = newName;
 				}
 			});
@@ -1182,24 +1182,24 @@ class KCollection extends KNamedObject {
 		var fieldsSQL = "";
 		var keysSQL = "";
 
-		if(fieldsSQL) {
+		if (fieldsSQL) {
 			fieldsSQL += ",\n";
 		}
 		fieldsSQL += "\tID " + KEY_DATATYPE + " NOT NULL";
 
-		if(keysSQL) {
+		if (keysSQL) {
 			keysSQL += ",\n";
 		}
 		keysSQL += "\tPRIMARY KEY (ID)";
 
-		if(this.fields) {
-			this.fields.map(function(field) {
+		if (this.fields) {
+			this.fields.map(function (field) {
 				var fieldName = toSnakeCase(field.name).toUpperCase();
 				var fieldType = "";
-				if(field.join_collection) {
+				if (field.join_collection) {
 					fieldType = KEY_DATATYPE;
 				} else {
-					switch(field.type) {
+					switch (field.type) {
 						case "string": fieldType = "VARCHAR(255)"; break;
 						case "email": fieldType = "VARCHAR(255)"; break;
 						case "integer": fieldType = "INTEGER"; break;
@@ -1214,15 +1214,15 @@ class KCollection extends KNamedObject {
 					}
 				}
 
-				if(fieldsSQL) {
+				if (fieldsSQL) {
 					fieldsSQL += ",\n";
 				}
 				fieldsSQL += "\t" + fieldName + " " + fieldType || "string";
-				if(field.required) {
+				if (field.required) {
 					fieldsSQL += " NOT NULL";
 				}
-				if(field.join_collection) {
-					if(keysSQL) {
+				if (field.join_collection) {
+					if (keysSQL) {
 						keysSQL += ",\n";
 					}
 
@@ -1234,11 +1234,11 @@ class KCollection extends KNamedObject {
 		}
 
 		sql += fieldsSQL;
-		if(fieldsSQL) {
+		if (fieldsSQL) {
 			sql += ",\n";
 		}
 		sql += keysSQL;
-		if(keysSQL) {
+		if (keysSQL) {
 			sql += "\n";
 		}
 		sql += ");\n";
@@ -1251,24 +1251,24 @@ class KCollection extends KNamedObject {
 		gql += "type " + this.name + " {\n";
 
 		var gqlFields = "";
-		if(this.fields) {
-			var idField = this.fields.find(function(fld) { 
-				return !!fld.name && (fld.name.toLowerCase() == "_id" || fld.name.toLowerCase() == "id"); 
+		if (this.fields) {
+			var idField = this.fields.find(function (fld) {
+				return !!fld.name && (fld.name.toLowerCase() == "_id" || fld.name.toLowerCase() == "id");
 			});
 
-			if(!idField) {
+			if (!idField) {
 				gqlFields += "\tid: ID!";
 			}
 
-			this.fields.map(function(field) {
-				if(gqlFields) {
+			this.fields.map(function (field) {
+				if (gqlFields) {
 					gqlFields += ",\n";
 				}
 
 				gqlFields += "\t" + field.name + ": ";
 
 				var fieldType = "";
-				switch(field.type) {
+				switch (field.type) {
 					case "string": fieldType = "String"; break;
 					case "email": fieldType = "String"; break;
 					case "integer": fieldType = "Int"; break;
@@ -1282,7 +1282,7 @@ class KCollection extends KNamedObject {
 					default: fieldType = "String";
 				}
 
-				if(field.required) {
+				if (field.required) {
 					fieldType += "!";
 				}
 
@@ -1299,7 +1299,7 @@ class KCollection extends KNamedObject {
 
 }
 
-KCollection.getClassName = function() { return "collection"; };
+KCollection.getClassName = function () { return "collection"; };
 
 ClassKitchen.addClass(KCollection);
 
@@ -1322,13 +1322,13 @@ class KQuery extends KNamedObject {
 
 	updateRefs(oldName, newName) {
 		var kitchen = this.getRoot();
-		if(!kitchen) {
+		if (!kitchen) {
 			return;
 		}
 
 		kitchen.findObject(obj => {
 			obj._properties.map(property => {
-				if(property.subType == "query_name" && obj[property.name] && obj[property.name] == oldName) {
+				if (property.subType == "query_name" && obj[property.name] && obj[property.name] == oldName) {
 					obj[property.name] = newName;
 				}
 			});
@@ -1339,7 +1339,7 @@ class KQuery extends KNamedObject {
 		var filterObject = {};
 		try {
 			filterObject = JSON.parse(this.filter || "{}");
-		} catch(err) {
+		} catch (err) {
 
 		}
 
@@ -1347,7 +1347,7 @@ class KQuery extends KNamedObject {
 		var optionsObject = {};
 		try {
 			optionsObject = JSON.parse(this.options || "{}");
-		} catch(err) {
+		} catch (err) {
 
 		}
 
@@ -1357,18 +1357,18 @@ class KQuery extends KNamedObject {
 		var params = [];
 
 		filterStrings.map(str => {
-			if(str != "" && (str[0] == ":" || str[0] == "#")) {
+			if (str != "" && (str[0] == ":" || str[0] == "#")) {
 				str = str.slice(1);
-				if(params.indexOf(str) < 0) {
+				if (params.indexOf(str) < 0) {
 					params.push(str);
 				}
 			}
 		});
 
 		optionsStrings.map(str => {
-			if(str != "" && (str[0] == ":" || str[0] == "#")) {
+			if (str != "" && (str[0] == ":" || str[0] == "#")) {
 				str = str.slice(1);
-				if(params.indexOf(str) < 0) {
+				if (params.indexOf(str) < 0) {
 					params.push(str);
 				}
 			}
@@ -1379,7 +1379,7 @@ class KQuery extends KNamedObject {
 
 }
 
-KQuery.getClassName = function() { return "query"; };
+KQuery.getClassName = function () { return "query"; };
 
 ClassKitchen.addClass(KQuery);
 
@@ -1397,7 +1397,7 @@ class KSubscription extends KBaseObject {
 
 }
 
-KSubscription.getClassName = function() { return "subscription"; };
+KSubscription.getClassName = function () { return "subscription"; };
 
 ClassKitchen.addClass(KSubscription);
 
@@ -1414,7 +1414,7 @@ class KComponent extends KNamedObject {
 		this.addProperty("custom_template", "string", "", "", "Custom template", "Custom html and js template filename (without extension). Path is relative to input JSON file.", "text", [], false);
 		this.addProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.addProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.addProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.addProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.addProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -1434,15 +1434,15 @@ class KComponent extends KNamedObject {
 
 	routeParamNames() {
 		var routeParams = [];
-		if(this.isInheritedFrom("page")) {
-			if(this.route_params) {
+		if (this.isInheritedFrom("page")) {
+			if (this.route_params) {
 				this.route_params.map(paramName => {
 					routeParams.push(paramName);
 				});
 			}
 		} else {
 			var parentPage = this.getParentOfType("page");
-			if(parentPage) {
+			if (parentPage) {
 				return parentPage.routeParamNames();
 			}
 		}
@@ -1451,7 +1451,7 @@ class KComponent extends KNamedObject {
 
 }
 
-KComponent.getClassName = function() { return "component"; };
+KComponent.getClassName = function () { return "component"; };
 
 ClassKitchen.addClass(KComponent);
 
@@ -1469,7 +1469,7 @@ class KParam extends KBaseObject {
 
 }
 
-KParam.getClassName = function() { return "param"; };
+KParam.getClassName = function () { return "param"; };
 
 ClassKitchen.addClass(KParam);
 
@@ -1488,7 +1488,7 @@ class KVariable extends KBaseObject {
 
 }
 
-KVariable.getClassName = function() { return "variable"; };
+KVariable.getClassName = function () { return "variable"; };
 
 ClassKitchen.addClass(KVariable);
 
@@ -1511,7 +1511,7 @@ class KAction extends KBaseObject {
 
 }
 
-KAction.getClassName = function() { return "action"; };
+KAction.getClassName = function () { return "action"; };
 
 ClassKitchen.addClass(KAction);
 
@@ -1532,7 +1532,7 @@ class KServerSideRoute extends KNamedObject {
 
 }
 
-KServerSideRoute.getClassName = function() { return "server_side_route"; };
+KServerSideRoute.getClassName = function () { return "server_side_route"; };
 
 ClassKitchen.addClass(KServerSideRoute);
 
@@ -1546,7 +1546,7 @@ class KPage extends KComponent {
 		this._classDescription = "";
 		this.updateProperty("name", "string", "object_name", "", "Name", "Object name", "text", [], true);
 		this.updateProperty("type", "string", "", "page", "Type", "Component type name.", "static", [], false);
-		var template_choice_items = ["","page_empty","page_subcontent_sidenav","page_subcontent_sidenav_collapse","page_subcontent_tabnav","page_subcontent_tabnav_2col","page_subcontent_navbar","page_subcontent_navbar_top","change_pass","create_password","forgot_password","login","logout","register","reset_password","verify_email"];
+		var template_choice_items = ["", "page_empty", "page_subcontent_sidenav", "page_subcontent_sidenav_collapse", "page_subcontent_tabnav", "page_subcontent_tabnav_2col", "page_subcontent_navbar", "page_subcontent_navbar_top", "change_pass", "create_password", "forgot_password", "login", "logout", "register", "reset_password", "verify_email"];
 		this.addProperty("template", "string", "", "", "Template", "Built-in html and js template file name (without extension) contained in kitchen templates directory.", "select", template_choice_items, false);
 		this.updateProperty("custom_template", "string", "", "", "Custom template", "Custom html and js template filename (without extension). Path is relative to input JSON file.", "text", [], false);
 		this.addProperty("html", "string", "", "", "HTML code", "Custom HTML code (for \"blaze\" applications only - ignored if \"react\" is used)", "html", [], false);
@@ -1583,7 +1583,7 @@ class KPage extends KComponent {
 		this.addProperty("pages", "base_array", "page", null, "Subpages", "Subpages", "", [], false);
 		this.addProperty("related_queries", "base_array", "subscription", null, "Related queries", "List of additional queries (publications) to subscribe", "", [], false);
 		this.addProperty("force_yield_subpages", "bool", "", false, "Force yield subpages", "Deprecated. Please use \"render_subpages\" property instead.", "checkbox", [], false);
-		var render_subpages_choice_items = ["auto","never","always"];
+		var render_subpages_choice_items = ["auto", "never", "always"];
 		this.addProperty("render_subpages", "string", "", "", "Render subpages", "Should page render subpages in \"subcontent\" area? \"auto\" = only if page has menu pointing to subpages. \"never\" - never, \"always\" - always", "select", render_subpages_choice_items, false);
 		this.addProperty("zoneless", "bool", "", false, "Zoneless", "Deprecated - will be removed soon. For applications with user account system: make this page visible for both authenticated and non-authenticated users", "checkbox", [], false);
 		this.addProperty("parent_layout", "bool", "", false, "Parent layout", "If set to true parent page will be used as layoutTemplate. Default: false", "checkbox", [], false);
@@ -1621,7 +1621,7 @@ class KPage extends KComponent {
 		var parents = this.getParents();
 		var route = newName || this.name;
 		parents.map(parent => {
-			if(parent._className == "page") {
+			if (parent._className == "page") {
 				route = parent.name + "." + route;
 			}
 		});
@@ -1632,27 +1632,26 @@ class KPage extends KComponent {
 		var name = newName || this.name;
 		var parentURL = "";
 		var parentPage = this.parentPage();
-		if(parentPage) {
+		if (parentPage) {
 			parentURL = parentPage.getURL() || "/";
-			if(parentURL[parentURL.length - 1] != "/") {
+			if (parentURL[parentURL.length - 1] != "/") {
 				parentURL += "/";
 			}
 		}
 		parentURL = parentURL || "/";
 
 		var url = "";
-		if(this.name == "home_free" || this.name == "home_public" || this.name == "home")
+		if (this.name == "home_free" || this.name == "home_public" || this.name == "home")
 			url = "/";
-		else
-		{
-			if(this.name == "home_private")
+		else {
+			if (this.name == "home_private")
 				url = "/home_private";
 			else
 				url = parentURL + this.name;
 		}
 
 		this.route_params.map(param => {
-			if(url[url.length - 1] != "/") {
+			if (url[url.length - 1] != "/") {
 				url += "/";
 			}
 			url += ":";
@@ -1667,18 +1666,18 @@ class KPage extends KComponent {
 		var newRoute = newName ? this.getRoute(newName) : "";
 
 		var kitchen = this.getRoot();
-		if(!kitchen) {
+		if (!kitchen) {
 			return;
 		}
 		kitchen.findObject(obj => {
 			obj._properties.map(property => {
-				if(property.subType == "route_name" && obj[property.name]) {
+				if (property.subType == "route_name" && obj[property.name]) {
 					// update pointers to this route
-					if(obj[property.name] == oldRoute) {
+					if (obj[property.name] == oldRoute) {
 						obj[property.name] = newRoute;
 					}
 					// update pointers to child routes
-					if(obj[property.name].indexOf(oldRoute + ".") == 0) {
+					if (obj[property.name].indexOf(oldRoute + ".") == 0) {
 						obj[property.name] = obj[property.name].replace(new RegExp("^" + oldRoute + "."), newRoute + ".");
 					}
 				}
@@ -1688,7 +1687,7 @@ class KPage extends KComponent {
 
 }
 
-KPage.getClassName = function() { return "page"; };
+KPage.getClassName = function () { return "page"; };
 
 ClassKitchen.addClass(KPage);
 
@@ -1722,10 +1721,10 @@ class KZone extends KBaseObject {
 		this.addProperty("container_class", "string", "", "", "Container class", "Class to be added to page container. Example: \"container-fluid\". Default \"container\".", "text", [], false);
 		this.addProperty("pages", "base_array", "page", null, "Subpages", "Subpages", "", [], false);
 		this.addProperty("related_queries", "base_array", "subscription", null, "Related queries", "List of additional queries (publications) to subscribe", "", [], false);
-		var render_subpages_choice_items = ["auto","never","always"];
+		var render_subpages_choice_items = ["auto", "never", "always"];
 		this.addProperty("render_subpages", "string", "", "", "Render subpages", "Should page render subpages in \"subcontent\" area? \"auto\" = only if page has menu pointing to subpages. \"never\" - never, \"always\" - always", "select", render_subpages_choice_items, false);
 		this.addProperty("layout_template", "string", "", "", "Layout template name", "Custom layout template name", "text", [], false);
-		var layout_choice_items = ["","navbar","sidenav","landing","admin","sticky_footer","empty"];
+		var layout_choice_items = ["", "navbar", "sidenav", "landing", "admin", "sticky_footer", "empty"];
 		this.addProperty("layout", "string", "", "", "Layout", "Built-in layout template name: \"navbar\", \"sidenav\", \"sticky_footer\" or \"empty\". Default: \"navbar\"", "select", layout_choice_items, false);
 		this.addProperty("default_route", "string", "route_name", "", "Default route", "\"home\" route for this zone.", "select_route", [], false);
 		this.addProperty("navbar_class", "string", "", "", "Navbar Class", "CSS class name to be added to navbar.", "text", [], false);
@@ -1734,7 +1733,7 @@ class KZone extends KBaseObject {
 
 }
 
-KZone.getClassName = function() { return "zone"; };
+KZone.getClassName = function () { return "zone"; };
 
 ClassKitchen.addClass(KZone);
 
@@ -1753,7 +1752,7 @@ class KFilePair extends KBaseObject {
 
 }
 
-KFilePair.getClassName = function() { return "file_pair"; };
+KFilePair.getClassName = function () { return "file_pair"; };
 
 ClassKitchen.addClass(KFilePair);
 
@@ -1772,7 +1771,7 @@ class KPackages extends KBaseObject {
 
 }
 
-KPackages.getClassName = function() { return "packages"; };
+KPackages.getClassName = function () { return "packages"; };
 
 ClassKitchen.addClass(KPackages);
 
@@ -1787,11 +1786,11 @@ class KApplication extends KNamedObject {
 		this.addProperty("title", "string", "", "", "Title", "Application title", "text", [], false);
 		this.addProperty("meta_description", "string", "", "", "Meta Description", "Default meta_description for pages without meta_description", "text", [], false);
 		this.addProperty("meta_title", "string", "", "", "Meta Title", "Default meta_title for pages without meta_title", "text", [], false);
-		var templating_choice_items = ["blaze","react"];
+		var templating_choice_items = ["blaze", "react"];
 		this.addProperty("templating", "string", "", "blaze", "Templating framework", "\"blaze\" or \"react\". Default: \"blaze\". Note: \"react\" is not fully implemented yet.", "select", templating_choice_items, false);
-		var frontend_choice_items = ["bootstrap3","semantic-ui","materialize","aframe"];
+		var frontend_choice_items = ["bootstrap3", "semantic-ui", "materialize", "aframe"];
 		this.addProperty("frontend", "string", "", "bootstrap3", "Frontend", "\"bootstrap3\", \"semantic-ui\", \"materialize\" or \"aframe\". Default: \"bootstrap3\". \"materialize\" and \"aframe\" are not fully implemented yet. \"aframe\" works only with \"react\".", "select", frontend_choice_items, false);
-		var theme_choice_items = ["bootswatch-amelia","bootswatch-cerulean","bootswatch-cosmo","bootswatch-cyborg","bootswatch-cyborg-darkly","bootswatch-darkly","bootswatch-flatly","bootswatch-journal","bootswatch-lumen","bootswatch-paper","bootswatch-readable","bootswatch-sandstone","bootswatch-simplex","bootswatch-slate","bootswatch-solar","bootswatch-spacelab","bootswatch-superhero","bootswatch-united","bootswatch-yeti","flat-ui"];
+		var theme_choice_items = ["bootswatch-amelia", "bootswatch-cerulean", "bootswatch-cosmo", "bootswatch-cyborg", "bootswatch-cyborg-darkly", "bootswatch-darkly", "bootswatch-flatly", "bootswatch-journal", "bootswatch-lumen", "bootswatch-paper", "bootswatch-readable", "bootswatch-sandstone", "bootswatch-simplex", "bootswatch-slate", "bootswatch-solar", "bootswatch-spacelab", "bootswatch-superhero", "bootswatch-united", "bootswatch-yeti", "flat-ui"];
 		this.addProperty("theme", "string", "", "", "Theme", "Visual theme name. With \"bootstrap\" frontend theme can be \"flat-ui\" or one of bootswatch themes: \"bootswatch-amelia\", \"bootswatch-cerulean\", \"bootswatch-cosmo\", \"bootswatch-cyborg\", \"bootswatch-darkly\", \"bootswatch-flatly\", \"bootswatch-journal\", \"bootswatch-lumen\", \"bootswatch-paper\", \"bootswatch-readable\", \"bootswatch-sandstone\", \"bootswatch-simplex\", \"bootswatch-slate\", \"bootswatch-solar\", \"bootswatch-spacelab\", \"bootswatch-superhero\", \"bootswatch-united\", \"bootswatch-yeti\"", "text", theme_choice_items, false);
 		this.addProperty("animate", "bool", "", false, "Animate", "If set to true, animate.css will be included and all elements with \"animated\" css class will be animated when they reach viewport (on scroll and on resize)", "checkbox", [], false);
 		this.addProperty("footer_text", "string", "", "", "Footer text", "Text to show in page footer", "text", [], false);
@@ -1834,14 +1833,14 @@ class KApplication extends KNamedObject {
 	}
 
 	getSQL() {
-		if(!this.collections) {
+		if (!this.collections) {
 			return "";
 		}
 
 		var sql = "";
 		var sqlTables = "";
-		this.collections.map(function(collection) {
-			if(sqlTables) {
+		this.collections.map(function (collection) {
+			if (sqlTables) {
 				sqlTables += "\n";
 			}
 			sqlTables += collection.getSQL();
@@ -1853,14 +1852,14 @@ class KApplication extends KNamedObject {
 	}
 
 	getGraphQL() {
-		if(!this.collections) {
+		if (!this.collections) {
 			return "";
 		}
 
 		var gql = "";
 		var gqlTypes = "";
-		this.collections.map(function(collection) {
-			if(gqlTypes) {
+		this.collections.map(function (collection) {
+			if (gqlTypes) {
 				gqlTypes += "\n";
 			}
 
@@ -1876,15 +1875,15 @@ class KApplication extends KNamedObject {
 
 	usesAccounts() {
 		var usesAccounts = false;
-		if(this.public_zone && this.public_zone.pages.length) usesAccounts = true;
-		if(this.private_zone && this.private_zone.pages.length) usesAccounts = true;
+		if (this.public_zone && this.public_zone.pages.length) usesAccounts = true;
+		if (this.private_zone && this.private_zone.pages.length) usesAccounts = true;
 		return usesAccounts;
 	}
 
 	getOverview(tableClass) {
 		var overview = "";
 
-		var addRow = function(title, value) {
+		var addRow = function (title, value) {
 			overview += "<tr><td><b>" + title + "</b></td><td>" + value + "</td></tr>";
 		}
 
@@ -1892,17 +1891,17 @@ class KApplication extends KNamedObject {
 
 		var userAccounts = this.usesAccounts();
 		addRow("User accounts", userAccounts ? "Yes" : "No");
-		if(userAccounts) {
+		if (userAccounts) {
 			var loginWith = "";
-			if(this.login_with_password) { loginWith += loginWith ? ", " : ""; loginWith += "Password"; }
-			if(this.login_with_google)   { loginWith += loginWith ? ", " : ""; loginWith += "Google"; }
-			if(this.login_with_github)   { loginWith += loginWith ? ", " : ""; loginWith += "Github"; }
-			if(this.login_with_linkedin) { loginWith += loginWith ? ", " : ""; loginWith += "LinkedIn"; }
-			if(this.login_with_facebook) { loginWith += loginWith ? ", " : ""; loginWith += "Facebook"; }
-			if(this.login_with_twitter)  { loginWith += loginWith ? ", " : ""; loginWith += "Twitter"; }
-			if(this.login_with_meteor)   { loginWith += loginWith ? ", " : ""; loginWith += "Meteor"; }
+			if (this.login_with_password) { loginWith += loginWith ? ", " : ""; loginWith += "Password"; }
+			if (this.login_with_google) { loginWith += loginWith ? ", " : ""; loginWith += "Google"; }
+			if (this.login_with_github) { loginWith += loginWith ? ", " : ""; loginWith += "Github"; }
+			if (this.login_with_linkedin) { loginWith += loginWith ? ", " : ""; loginWith += "LinkedIn"; }
+			if (this.login_with_facebook) { loginWith += loginWith ? ", " : ""; loginWith += "Facebook"; }
+			if (this.login_with_twitter) { loginWith += loginWith ? ", " : ""; loginWith += "Twitter"; }
+			if (this.login_with_meteor) { loginWith += loginWith ? ", " : ""; loginWith += "Meteor"; }
 
-			if(!loginWith) {
+			if (!loginWith) {
 				loginWith = "Password";
 			}
 
@@ -1910,8 +1909,8 @@ class KApplication extends KNamedObject {
 		}
 
 		var collections = "";
-		if(this.collections) {
-			this.collections.map(function(collection) {
+		if (this.collections) {
+			this.collections.map(function (collection) {
 				collections += collections ? ", " : "";
 				collections += collection.name || "(noname)";
 			});
@@ -1919,8 +1918,8 @@ class KApplication extends KNamedObject {
 		addRow("Database collections", collections || "-");
 
 		var freePages = "";
-		if(this.free_zone && this.free_zone.pages) {
-			this.free_zone.pages.map(function(page) {
+		if (this.free_zone && this.free_zone.pages) {
+			this.free_zone.pages.map(function (page) {
 				freePages += freePages ? ", " : "";
 				freePages += page.name || "(noname)";
 			});
@@ -1928,10 +1927,10 @@ class KApplication extends KNamedObject {
 		addRow(userAccounts ? "Pages in free zone" : "Pages", freePages || "-");
 
 
-		if(userAccounts) {
+		if (userAccounts) {
 			var publicPages = "";
-			if(this.public_zone && this.public_zone.pages) {
-				this.public_zone.pages.map(function(page) {
+			if (this.public_zone && this.public_zone.pages) {
+				this.public_zone.pages.map(function (page) {
 					publicPages += publicPages ? ", " : "";
 					publicPages += page.name || "(noname)";
 				});
@@ -1939,8 +1938,8 @@ class KApplication extends KNamedObject {
 			addRow("Pages in public zone", publicPages || "-");
 
 			var privatePages = "";
-			if(this.private_zone && this.private_zone.pages) {
-				this.private_zone.pages.map(function(page) {
+			if (this.private_zone && this.private_zone.pages) {
+				this.private_zone.pages.map(function (page) {
 					privatePages += privatePages ? ", " : "";
 					privatePages += page.name || "(noname)";
 				});
@@ -1955,7 +1954,7 @@ class KApplication extends KNamedObject {
 
 }
 
-KApplication.getClassName = function() { return "application"; };
+KApplication.getClassName = function () { return "application"; };
 
 ClassKitchen.addClass(KApplication);
 
@@ -1977,7 +1976,7 @@ class KCustomComponent extends KComponent {
 		this.addProperty("use_gasoline", "bool", "", false, "Use visual designer", "If set to true, generator will ignore HTML, JS and JSX members, and will use gasoline-turbo to build template(s)", "checkbox", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
 		this.updateProperty("query_params", "base_array", "param", null, "Query params", "Query (publication) params", "", [], false);
@@ -1998,7 +1997,7 @@ class KCustomComponent extends KComponent {
 
 }
 
-KCustomComponent.getClassName = function() { return "custom_component"; };
+KCustomComponent.getClassName = function () { return "custom_component"; };
 
 ClassKitchen.addClass(KCustomComponent);
 
@@ -2025,7 +2024,7 @@ class KMenuItem extends KNamedObject {
 
 }
 
-KMenuItem.getClassName = function() { return "menu_item"; };
+KMenuItem.getClassName = function () { return "menu_item"; };
 
 ClassKitchen.addClass(KMenuItem);
 
@@ -2039,11 +2038,11 @@ class KMenu extends KComponent {
 		this._classDescription = "";
 		this.updateProperty("name", "string", "object_name", "", "Name", "Object name", "text", [], true);
 		this.updateProperty("type", "string", "", "menu", "Type", "Component type name.", "static", [], false);
-		var template_choice_items = ["menu","menu_buttons"];
+		var template_choice_items = ["menu", "menu_buttons"];
 		this.addProperty("template", "string", "", "", "Template", "Built-in html and js template file name (without extension) contained in kitchen templates directory.", "select", template_choice_items, false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -2068,7 +2067,7 @@ class KMenu extends KComponent {
 
 }
 
-KMenu.getClassName = function() { return "menu"; };
+KMenu.getClassName = function () { return "menu"; };
 
 ClassKitchen.addClass(KMenu);
 
@@ -2084,7 +2083,7 @@ class KJumbotron extends KComponent {
 		this.updateProperty("type", "string", "", "jumbotron", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -2112,7 +2111,7 @@ class KJumbotron extends KComponent {
 
 }
 
-KJumbotron.getClassName = function() { return "jumbotron"; };
+KJumbotron.getClassName = function () { return "jumbotron"; };
 
 ClassKitchen.addClass(KJumbotron);
 
@@ -2129,7 +2128,7 @@ class KForm extends KComponent {
 		this.updateProperty("type", "string", "", "form", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -2145,9 +2144,9 @@ class KForm extends KComponent {
 		this.updateProperty("template_created_code", "string", "", "", "Template created code", "Code to be executed when template is created (before it is rendered)", "javascript", [], false);
 		this.updateProperty("template_rendered_code", "string", "", "", "Template rendered code", "Code to be executed when template is rendered", "javascript", [], false);
 		this.updateProperty("template_destroyed_code", "string", "", "", "Template destroyed code", "Code to be executed before template is destroyed", "javascript", [], false);
-		var mode_choice_items = ["insert","update","read_only"];
+		var mode_choice_items = ["insert", "update", "read_only"];
 		this.addProperty("mode", "string", "", "", "Mode", "\"insert\", \"update\" or \"read_only\"", "select", mode_choice_items, true);
-		var layout_choice_items = ["default","horizontal","inline"];
+		var layout_choice_items = ["default", "horizontal", "inline"];
 		this.addProperty("layout", "string", "", "default", "Form layout", "\"default\", \"horizontal\" or \"inline\"", "select", layout_choice_items, false);
 		this.addProperty("autofocus", "bool", "", true, "Autofocus", "If set to true, first focusable input element will have \"autofocus\" attribute set", "checkbox", [], false);
 		this.addProperty("submit_route", "string", "route_name", "", "Submit route", "Route name of page to navigate after successfull submit. Mandatory field for submit button to appear", "select_route", [], false);
@@ -2171,7 +2170,7 @@ class KForm extends KComponent {
 
 }
 
-KForm.getClassName = function() { return "form"; };
+KForm.getClassName = function () { return "form"; };
 
 ClassKitchen.addClass(KForm);
 
@@ -2187,7 +2186,7 @@ class KDataView extends KComponent {
 		this.updateProperty("type", "string", "", "data_view", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -2221,7 +2220,7 @@ class KDataView extends KComponent {
 		this.addProperty("update_button_title", "string", "", "", "Update button title", "", "text", [], false);
 		this.addProperty("delete_button_title", "string", "", "", "Delete button title", "Delete button title", "text", [], false);
 		this.addProperty("on_item_clicked_code", "string", "", "", "OnItemClicked code", "Code to execute when item is clicked (before redirect if DetailsRoute is specified)", "javascript", [], false);
-		var views_choice_items = ["table","blog","list","cards"];
+		var views_choice_items = ["table", "blog", "list", "cards"];
 		this.addProperty("views", "base_array", "string", null, "View styles", "View styles: \"table\", \"list\", \"cards\" or \"blog\". Default: \"table\".", "stringlist", views_choice_items, false);
 		this.addProperty("search_engine_style", "bool", "", false, "Search engine style", "If this member is \"true\" then large search box is shown initially. User must enter search string in order to see the data.", "checkbox", [], false);
 		this.addProperty("fields", "base_array", "field", null, "Fields", "Definition of table columns. If empty, generator will use fields defined at collection level.", "", [], false);
@@ -2231,7 +2230,7 @@ class KDataView extends KComponent {
 
 }
 
-KDataView.getClassName = function() { return "data_view"; };
+KDataView.getClassName = function () { return "data_view"; };
 
 ClassKitchen.addClass(KDataView);
 
@@ -2247,7 +2246,7 @@ class KTreeView extends KComponent {
 		this.updateProperty("type", "string", "", "tree_view", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("title", "string", "", "", "Title", "Component title", "text", [], false);
@@ -2277,7 +2276,7 @@ class KTreeView extends KComponent {
 
 }
 
-KTreeView.getClassName = function() { return "tree_view"; };
+KTreeView.getClassName = function () { return "tree_view"; };
 
 ClassKitchen.addClass(KTreeView);
 
@@ -2293,7 +2292,7 @@ class KMarkdown extends KComponent {
 		this.updateProperty("type", "string", "", "markdown", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
 		this.updateProperty("query_params", "base_array", "param", null, "Query params", "Query (publication) params", "", [], false);
@@ -2317,7 +2316,7 @@ class KMarkdown extends KComponent {
 
 }
 
-KMarkdown.getClassName = function() { return "markdown"; };
+KMarkdown.getClassName = function () { return "markdown"; };
 
 ClassKitchen.addClass(KMarkdown);
 
@@ -2333,7 +2332,7 @@ class KDiv extends KComponent {
 		this.updateProperty("type", "string", "", "div", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
@@ -2356,7 +2355,7 @@ class KDiv extends KComponent {
 
 }
 
-KDiv.getClassName = function() { return "div"; };
+KDiv.getClassName = function () { return "div"; };
 
 ClassKitchen.addClass(KDiv);
 
@@ -2372,7 +2371,7 @@ class KSection extends KComponent {
 		this.updateProperty("type", "string", "", "section", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
@@ -2395,7 +2394,7 @@ class KSection extends KComponent {
 
 }
 
-KSection.getClassName = function() { return "section"; };
+KSection.getClassName = function () { return "section"; };
 
 ClassKitchen.addClass(KSection);
 
@@ -2411,7 +2410,7 @@ class KEditableContent extends KComponent {
 		this.updateProperty("type", "string", "", "editable_content", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("show_condition", "string", "", "", "Show Condition", "Show component only if condition is satisfied", "javascript", [], false);
@@ -2434,7 +2433,7 @@ class KEditableContent extends KComponent {
 
 }
 
-KEditableContent.getClassName = function() { return "editable_content"; };
+KEditableContent.getClassName = function () { return "editable_content"; };
 
 ClassKitchen.addClass(KEditableContent);
 
@@ -2450,7 +2449,7 @@ class KCmsContent extends KComponent {
 		this.updateProperty("type", "string", "", "cms_content", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("show_condition", "string", "", "", "Show Condition", "Show component only if condition is satisfied", "javascript", [], false);
@@ -2473,7 +2472,7 @@ class KCmsContent extends KComponent {
 
 }
 
-KCmsContent.getClassName = function() { return "cms_content"; };
+KCmsContent.getClassName = function () { return "cms_content"; };
 
 ClassKitchen.addClass(KCmsContent);
 
@@ -2489,7 +2488,7 @@ class KPlugin extends KComponent {
 		this.updateProperty("type", "string", "", "", "Type", "Component type name.", "text", [], true);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
 		this.updateProperty("query_params", "base_array", "param", null, "Query params", "Query (publication) params", "", [], false);
@@ -2512,7 +2511,7 @@ class KPlugin extends KComponent {
 
 }
 
-KPlugin.getClassName = function() { return "plugin"; };
+KPlugin.getClassName = function () { return "plugin"; };
 
 ClassKitchen.addClass(KPlugin);
 
@@ -2528,7 +2527,7 @@ class KChart extends KComponent {
 		this.updateProperty("type", "string", "", "chart", "Type", "Component type name.", "static", [], false);
 		this.updateProperty("imports", "base_array", "string", null, "Import modules", "list of modules to import. Example: `import {X} from \"Y\";` (\"react\" applications only)", "stringlist", [], false);
 		this.updateProperty("dest_selector", "string", "", "", "Dest. selector", "destination html element selector. Similar to jQuery selector, but only three simple formats are supported: \"tagname\", \"#element_id\" and \".class_name\".", "text", [], false);
-		var dest_position_choice_items = ["","top","bottom","before","after"];
+		var dest_position_choice_items = ["", "top", "bottom", "before", "after"];
 		this.updateProperty("dest_position", "string", "", "", "Dest. position", "destination position relative to destination element: \"top\", \"bottom\", \"before\" or \"after\". Default: \"bottom\"", "select", dest_position_choice_items, false);
 		this.updateProperty("class", "string", "", "", "CSS class", "CSS class name to be added to component", "text", [], false);
 		this.updateProperty("query_name", "string", "query_name", "", "Query name", "Query (publication) name from application.queries used as main data context. Page's router will subscribe to this publication automatically.", "select_query", [], false);
@@ -2537,7 +2536,7 @@ class KChart extends KComponent {
 		this.updateProperty("custom_data_code", "string", "", "", "Custom Data Code", "Code to execute after data is read from database just before it is returned to program flow. (executes before iron-router `data` function returns or in React apps before `withTracker` returns). You can modify `data` variable here.", "javascript", [], false);
 		this.updateProperty("components", "base_array", "component", null, "Components", "Component list", "", [], false);
 		this.updateProperty("show_condition", "string", "", "", "Show Condition", "Show component only if condition is satisfied", "javascript", [], false);
-		var chart_type_choice_items = ["line","spline","step","area","area-spline","area-step","bar","scatter","pie","donut","gauge"];
+		var chart_type_choice_items = ["line", "spline", "step", "area", "area-spline", "area-step", "bar", "scatter", "pie", "donut", "gauge"];
 		this.addProperty("chart_type", "string", "", "line", "Chart Type", "", "select", chart_type_choice_items, true);
 		this.addProperty("value_field", "string", "", "", "Value field", "", "text", [], false);
 		this.addProperty("category_field", "string", "", "", "Category field", "", "text", [], false);
@@ -2556,7 +2555,7 @@ class KChart extends KComponent {
 
 }
 
-KChart.getClassName = function() { return "chart"; };
+KChart.getClassName = function () { return "chart"; };
 
 ClassKitchen.addClass(KChart);
 
@@ -2576,7 +2575,7 @@ class KGasoline extends KBaseObject {
 
 }
 
-KGasoline.getClassName = function() { return "gasoline"; };
+KGasoline.getClassName = function () { return "gasoline"; };
 
 ClassKitchen.addClass(KGasoline);
 
@@ -2597,7 +2596,7 @@ class KGasEvent extends KBaseObject {
 
 }
 
-KGasEvent.getClassName = function() { return "gas_event"; };
+KGasEvent.getClassName = function () { return "gas_event"; };
 
 ClassKitchen.addClass(KGasEvent);
 
@@ -2614,7 +2613,7 @@ class KGasNode extends KNamedObject {
 
 }
 
-KGasNode.getClassName = function() { return "gas_node"; };
+KGasNode.getClassName = function () { return "gas_node"; };
 
 ClassKitchen.addClass(KGasNode);
 
@@ -2634,7 +2633,7 @@ class KGasText extends KGasNode {
 
 }
 
-KGasText.getClassName = function() { return "gas_text"; };
+KGasText.getClassName = function () { return "gas_text"; };
 
 ClassKitchen.addClass(KGasText);
 
@@ -2652,7 +2651,7 @@ class KGasElement extends KGasNode {
 
 }
 
-KGasElement.getClassName = function() { return "gas_element"; };
+KGasElement.getClassName = function () { return "gas_element"; };
 
 ClassKitchen.addClass(KGasElement);
 
@@ -2671,7 +2670,7 @@ class KGasHandler extends KNamedObject {
 
 }
 
-KGasHandler.getClassName = function() { return "gas_handler"; };
+KGasHandler.getClassName = function () { return "gas_handler"; };
 
 ClassKitchen.addClass(KGasHandler);
 
@@ -2690,7 +2689,7 @@ class KGasHelper extends KNamedObject {
 
 }
 
-KGasHelper.getClassName = function() { return "gas_helper"; };
+KGasHelper.getClassName = function () { return "gas_helper"; };
 
 ClassKitchen.addClass(KGasHelper);
 
@@ -2711,7 +2710,7 @@ class KGasTemplate extends KGasElement {
 
 }
 
-KGasTemplate.getClassName = function() { return "gas_template"; };
+KGasTemplate.getClassName = function () { return "gas_template"; };
 
 ClassKitchen.addClass(KGasTemplate);
 
@@ -2735,7 +2734,7 @@ class KGasHtml extends KGasElement {
 
 }
 
-KGasHtml.getClassName = function() { return "gas_html"; };
+KGasHtml.getClassName = function () { return "gas_html"; };
 
 ClassKitchen.addClass(KGasHtml);
 
@@ -2756,7 +2755,7 @@ class KGasLoop extends KGasElement {
 
 }
 
-KGasLoop.getClassName = function() { return "gas_loop"; };
+KGasLoop.getClassName = function () { return "gas_loop"; };
 
 ClassKitchen.addClass(KGasLoop);
 
@@ -2777,7 +2776,7 @@ class KGasCondition extends KGasElement {
 
 }
 
-KGasCondition.getClassName = function() { return "gas_condition"; };
+KGasCondition.getClassName = function () { return "gas_condition"; };
 
 ClassKitchen.addClass(KGasCondition);
 
@@ -2797,7 +2796,7 @@ class KGasConditionTrue extends KGasElement {
 
 }
 
-KGasConditionTrue.getClassName = function() { return "gas_condition_true"; };
+KGasConditionTrue.getClassName = function () { return "gas_condition_true"; };
 
 ClassKitchen.addClass(KGasConditionTrue);
 
@@ -2817,7 +2816,7 @@ class KGasConditionFalse extends KGasElement {
 
 }
 
-KGasConditionFalse.getClassName = function() { return "gas_condition_false"; };
+KGasConditionFalse.getClassName = function () { return "gas_condition_false"; };
 
 ClassKitchen.addClass(KGasConditionFalse);
 
@@ -2838,7 +2837,7 @@ class KGasInclusion extends KGasElement {
 
 }
 
-KGasInclusion.getClassName = function() { return "gas_inclusion"; };
+KGasInclusion.getClassName = function () { return "gas_inclusion"; };
 
 ClassKitchen.addClass(KGasInclusion);
 
